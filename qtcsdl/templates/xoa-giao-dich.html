@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N7 SOFTWARE - Xóa giao dịch</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+            position: relative;
+            min-height: 100vh;
+            padding-bottom: 80px;
+        }
+        .header {
+            background-color: #001F8B;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px 5px 0 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .content {
+            padding: 20px;
+        }
+        .search-box {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .search-box input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #001F8B;
+            color: white;
+        }
+        .delete-btn {
+            color: #dc3545;
+            background: none;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+        .delete-btn:hover {
+            text-decoration: underline;
+        }
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            right: 90px;
+            background-color: #0044cc;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        .home-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #0044cc;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        .back-button:hover, .home-button:hover {
+            background-color: #002a80;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>N7 SOFTWARE</h1>
+            <h2>Xóa giao dịch</h2>
+        </div>
+        
+        <div class="content">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Nhập mã GD, mã PH hoặc mã GS...">
+            </div>
+            
+            <form method="POST" action="/xoa_gd">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mã GD</th>
+                            <th>Mã PH</th>
+                            <th>Mã GS</th>
+                            <th>Ngày GD</th>
+                            <th>Phí PH (VND)</th>
+                            <th>Phí GS (VND)</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for transaction in transactions %}
+                        <tr>
+                            <td>{{ transaction.MaGD }}</td>
+                            <td>{{ transaction.MaPH }}</td>
+                            <td>{{ transaction.MaGS }}</td>
+                            <td>{{ transaction.NgayGD }}</td>
+                            <td>{{ transaction.PhiPH }}</td>
+                            <td>{{ transaction.PhiGS }}</td>
+                            <td>
+                                <button class="delete-btn" type="submit" name="delete" value="{{ transaction.MaGD }}">
+                                    Xóa
+                                </button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <button class="back-button" onclick="window.history.back()" title="Quay lại">
+        <i class="fas fa-arrow-left"></i>
+    </button>
+    
+    <button class="home-button" onclick="window.location.href='trangchu.html'" title="Về trang chủ">
+        <i class="fas fa-home"></i>
+    </button>
+
+    <script>
+        // Function to confirm and delete the transaction
+        function confirmDelete(transactionId) {
+            if (confirm(`Bạn có chắc chắn muốn xóa giao dịch ${transactionId}?`)) {
+                // Send an AJAX request to delete the transaction
+                fetch(`/xoa_gd/${transactionId}`, {
+                    method: 'DELETE',
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert(`Đã xóa giao dịch ${transactionId} thành công!`);
+                        // Remove the deleted row from the table
+                        document.getElementById(transactionId).remove();
+                    } else {
+                        alert(`Không thể xóa giao dịch ${transactionId}.`);
+                    }
+                })
+                .catch(err => {
+                    alert("Lỗi kết nối. Vui lòng thử lại.");
+                });
+            }
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
+            
+            rows.forEach(row => {
+                const gdId = row.cells[0].textContent.toLowerCase();
+                const phId = row.cells[1].textContent.toLowerCase();
+                const gsId = row.cells[2].textContent.toLowerCase();
+                
+                if (gdId.includes(searchTerm) || phId.includes(searchTerm) || gsId.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+
+        // Function to load transaction data dynamically (for example)
+        window.onload = function() {
+            // Example: You can load data dynamically from a database using an AJAX call
+            // Here we assume transactions are hardcoded for simplicity
+            const transactions = [
+                { id: 'GD00001', maPH: 'PH0008', maGS: 'GS0005', ngayGD: '15/05/2024', phiPH: '5000000', phiGS: '4000000' },
+                // Add more transactions here
+            ];
+
+            const tbody = document.getElementById('transactionList');
+            transactions.forEach(transaction => {
+                const row = document.createElement('tr');
+                row.id = transaction.id;
+                row.innerHTML = `
+                    <td>${transaction.id}</td>
+                    <td>${transaction.maPH}</td>
+                    <td>${transaction.maGS}</td>
+                    <td>${transaction.ngayGD}</td>
+                    <td>${transaction.phiPH}</td>
+                    <td>${transaction.phiGS}</td>
+                    <td><button class="delete-btn" onclick="confirmDelete('${transaction.id}')">Xóa</button></td>
+                `;
+                tbody.appendChild(row);
+            });
+        };
+    </script>
+</body>
+</html>

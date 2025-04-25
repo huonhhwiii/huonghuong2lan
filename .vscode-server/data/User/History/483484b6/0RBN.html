@@ -1,0 +1,94 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<section class="hero-section text-center py-5 bg-light">
+    <div class="container">
+        <h1 class="display-4 fw-bold">SHAKHOASO</h1>
+        <p class="lead">Hệ thống quản lý phòng khám toàn diện</p>
+    </div>
+</section>
+
+<section id="services" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">DỊCH VỤ</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 service-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-user-injured service-icon mb-3"></i>
+                        <h5 class="card-title">Quản lý bệnh nhân</h5>
+                        <p class="card-text">Theo dõi thông tin bệnh nhân, lịch sử khám bệnh và hồ sơ y tế.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 service-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-user-md service-icon mb-3"></i>
+                        <h5 class="card-title">Quản lý bác sĩ</h5>
+                        <p class="card-text">Quản lý thông tin bác sĩ, lịch làm việc và chuyên môn.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 service-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-file-medical service-icon mb-3"></i>
+                        <h5 class="card-title">Quản lý phiếu khám</h5>
+                        <p class="card-text">Tạo và quản lý phiếu khám bệnh, kết quả chẩn đoán.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 service-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-calendar-check service-icon mb-3"></i>
+                        <h5 class="card-title">Quản lý lịch khám</h5>
+                        <p class="card-text">Đặt lịch hẹn, quản lý lịch khám bệnh hiệu quả.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 service-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-procedures service-icon mb-3"></i>
+                        <h5 class="card-title">Quản lý dịch vụ</h5>
+                        <p class="card-text">Quản lý các dịch vụ khám chữa bệnh của phòng khám.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 service-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-money-bill-wave service-icon mb-3"></i>
+                        <h5 class="card-title">Quản lý thanh toán</h5>
+                        <p class="card-text">Theo dõi và quản lý các khoản thanh toán của bệnh nhân.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="reports" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">BÁO CÁO VÀ THỐNG KÊ</h2>
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-chart-bar report-icon mb-3"></i>
+                        <p class="card-text">Hệ thống cung cấp các báo cáo và thống kê chi tiết giúp quản lý phòng khám hiệu quả.</p>
+                        <a href="#" class="btn btn-primary mt-3">Xem báo cáo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

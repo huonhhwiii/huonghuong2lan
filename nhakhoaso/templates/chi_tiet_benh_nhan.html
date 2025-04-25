@@ -1,0 +1,156 @@
+{% extends 'layout.html' %}
+
+{% block title %}Chi tiết bệnh nhân - NHAKHOASO{% endblock %}
+
+{% block content %}
+<div class="section-title">
+    <h2>QUẢN LÝ BỆNH NHÂN</h2>
+</div>
+
+<!-- Flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}<div class="flash-messages">
+            {% for category, message in messages %}<div class="flash-message {{ category }}">{{ message }}</div>
+            {% endfor %}</div>
+    {% endif %}
+{% endwith %}<div class="content-header">
+            <h2>Chi tiết bệnh nhân</h2><div class="header-actions">
+                <a href="{{ url_for('chinh_sua_benh_nhan', ma_bn=benh_nhan.MaBN) }}" class="btn btn-edit">
+                    <i class="fas fa-edit"></i> Chỉnh sửa
+                </a>
+                <a href="#" class="btn btn-delete" onclick="deletePatient('{{ benh_nhan.MaBN }}')">
+                    <i class="fas fa-trash"></i> Xóa
+                </a></div></div><div class="patient-details"><div class="detail-card"><div class="detail-header">
+                    <i class="fas fa-user-circle"></i>
+                    <h3>Thông tin cá nhân</h3></div><div class="detail-content"><div class="detail-item">
+                        <span class="detail-label">Mã bệnh nhân:</span>
+                        <span class="detail-value">{{ benh_nhan.MaBN }}</span></div><div class="detail-item">
+                        <span class="detail-label">Họ và tên:</span>
+                        <span class="detail-value">{{ benh_nhan.HoTen }}</span></div><div class="detail-item">
+                        <span class="detail-label">Ngày sinh:</span>
+                        <span class="detail-value">{{ benh_nhan.NgaySinh.strftime('%d/%m/%Y') if benh_nhan.NgaySinh else 'Chưa cập nhật' }}</span></div><div class="detail-item">
+                        <span class="detail-label">Giới tính:</span>
+                        <span class="detail-value">{{ benh_nhan.GioiTinh if benh_nhan.GioiTinh else 'Chưa cập nhật' }}</span></div><div class="detail-item">
+                        <span class="detail-label">Số điện thoại:</span>
+                        <span class="detail-value">{{ benh_nhan.Sdt }}</span></div></div></div></div><div class="action-buttons">
+            <a href="{{ url_for('benh_nhan_list') }}" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Quay lại danh sách
+            </a></div>
+    
+<style>
+    .header-actions {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .btn-edit {
+        background-color: var(--warning-color);
+    }
+    
+    .btn-delete {
+        background-color: var(--danger-color);
+    }
+    
+    .btn-secondary {
+        background-color: var(--border-color);
+        color: var(--text-color);
+    }
+    
+    .content-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .patient-details {
+        margin: 20px 0;
+    }
+    
+    .detail-card {
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+    
+    .detail-header {
+        background-color: var(--secondary-color);
+        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .detail-header i {
+        font-size: 24px;
+        margin-right: 10px;
+        color: var(--primary-color);
+    }
+    
+    .detail-header h3 {
+        margin: 0;
+        font-size: 18px;
+        color: var(--text-color);
+    }
+    
+    .detail-content {
+        padding: 20px;
+    }
+    
+    .detail-item {
+        display: flex;
+        margin-bottom: 15px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 10px;
+    }
+    
+    .detail-item:last-child {
+        margin-bottom: 0;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+    
+    .detail-label {
+        width: 150px;
+        font-weight: 500;
+        color: #666;
+    }
+    
+    .detail-value {
+        flex: 1;
+        color: var(--text-color);
+    }
+    
+    .action-buttons {
+        margin-top: 30px;
+        display: flex;
+        justify-content: flex-start;
+    }
+</style>
+
+{% block extra_js %}
+<script>
+    // Hàm xóa bệnh nhân
+    function deletePatient(maBN) {
+        if (confirm('Bạn có chắc chắn muốn xóa bệnh nhân này?')) {
+            // Gọi API xóa bệnh nhân
+            fetch(`/api/benh-nhan/${maBN}`, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Xóa bệnh nhân thành công!');
+                    window.location.href = "{{ url_for('benh_nhan_list') }}";
+                } else {
+                    alert('Lỗi: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Đã xảy ra lỗi khi xóa bệnh nhân');
+            });
+        }
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,200 @@
+{% extends 'layout.html' %}
+
+{% block title %}Thêm mới phiếu khám - NHAKHOASO{% endblock %}
+
+{% block content %}
+<div class="section-title">
+    <h2>QUẢN LÝ PHIẾU KHÁM</h2>
+</div>
+
+<!-- Flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+                <div class="flash-message {{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<div class="page-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-title">
+            <i class="fas fa-user-injured"></i> Quản lý bệnh nhân
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_benh_nhan') }}">
+                    <i class="fas fa-plus"></i> Thêm mới bệnh nhân
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('tim_kiem_benh_nhan') }}">
+                    <i class="fas fa-search"></i> Tìm kiếm bệnh nhân
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('benh_nhan_list') }}">
+                    <i class="fas fa-list"></i> Danh sách bệnh nhân
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-title">
+            <i class="fas fa-clipboard-list"></i> Quản lý bác sĩ
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_bac_si') }}">
+                    <i class="fas fa-plus"></i> Thêm mới bác sĩ
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('tim_kiem_bac_si') }}">
+                    <i class="fas fa-search"></i> Tìm kiếm bác sĩ
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('bac_si_page') }}">
+                    <i class="fas fa-list"></i> Danh sách bác sĩ
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-title">
+            <a href="{{ url_for('phieu_kham_list') }}" style="text-decoration: none; color: inherit;">
+                <i class="fas fa-chart-line"></i> Quản lý phiếu khám
+            </a>
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_phieu_kham') }}" class="active">
+                    <i class="fas fa-plus"></i> Tạo phiếu khám
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('tim_kiem_phieu_kham') }}">
+                    <i class="fas fa-search"></i> Tìm kiếm phiếu khám
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('phieu_kham_list') }}">
+                    <i class="fas fa-list"></i> Danh sách phiếu khám
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-title">
+            <i class="fas fa-calendar-check"></i> Quản lý lịch hẹn
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="#">
+                    <i class="fas fa-plus"></i> Đặt lịch hẹn
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-search"></i> Tìm kiếm lịch hẹn
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-list"></i> Danh sách lịch hẹn
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <div class="content-header">
+            <h2>Tạo phiếu khám mới</h2>
+        </div>
+
+        <form action="{{ url_for('them_moi_phieu_kham') }}" method="POST">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="ma_phieu_kham">Mã Phiếu Khám <span class="required">*</span></label>
+                    <input type="text" id="ma_phieu_kham" name="ma_phieu_kham" class="form-control" value="{{ ma_phieu_kham }}" required readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="ma_benh_nhan">Bệnh nhân <span class="required">*</span></label>
+                    <select id="ma_benh_nhan" name="ma_benh_nhan" class="form-control" required>
+                        <option value="">-- Chọn bệnh nhân --</option>
+                        {% for bn in benh_nhan_list %}
+                            <option value="{{ bn.MaBN }}">{{ bn.MaBN }} - {{ bn.HoTen }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="ma_bac_si">Bác sĩ <span class="required">*</span></label>
+                    <select id="ma_bac_si" name="ma_bac_si" class="form-control" required>
+                        <option value="">-- Chọn bác sĩ --</option>
+                        {% for bs in bac_si_list %}
+                            <option value="{{ bs.MaBS }}">{{ bs.MaBS }} - {{ bs.HoTen }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="ma_dich_vu">Dịch vụ <span class="required">*</span></label>
+                    <select id="ma_dich_vu" name="ma_dich_vu" class="form-control" required>
+                        <option value="">-- Chọn dịch vụ --</option>
+                        {% for dv in dich_vu_list %}
+                            <option value="{{ dv.MaDV }}">{{ dv.TenDV }} - {{ "{:,.0f}".format(dv.Gia) }} VNĐ</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="ngay_kham">Ngày khám</label>
+                    <input type="datetime-local" id="ngay_kham" name="ngay_kham" class="form-control" value="{{ now }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="chan_doan">Chẩn đoán</label>
+                    <textarea id="chan_doan" name="chan_doan" class="form-control" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="ghi_chu">Ghi chú</label>
+                    <textarea id="ghi_chu" name="ghi_chu" class="form-control" rows="3"></textarea>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-save">Lưu thông tin</button>
+                <div class="action-icons">
+                    <a href="{{ url_for('them_moi_phieu_kham') }}" class="action-icon" title="Làm mới">
+                        <i class="fas fa-sync-alt"></i>
+                    </a>
+                    <a href="{{ url_for('index') }}" class="action-icon" title="Về trang chủ">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .form-group:nth-child(5),
+    .form-group:nth-child(6),
+    .form-group:nth-child(7) {
+        grid-column: span 2;
+    }
+</style>
+{% endblock %}

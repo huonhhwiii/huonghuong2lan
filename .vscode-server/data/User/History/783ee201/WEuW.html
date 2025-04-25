@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+{% block title %}N7 SOFTWARE EDU - Xem thông tin gia sư{% endblock %}
+
+{% block page_icon %}<i class="fas fa-chalkboard-teacher"></i>{% endblock %}
+{% block page_title %}Thông tin gia sư{% endblock %}
+{% block page_subtitle %}Xem chi tiết thông tin gia sư{% endblock %}
+
+{% block content %}
+<div class="content-card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2 class="card-title"><i class="fas fa-chalkboard-teacher"></i> Chi tiết gia sư</h2>
+        <div class="btn-group">
+            <a href="{{ url_for('qlgs') }}" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Quay lại
+            </a>
+            <a href="{{ url_for('sua_gs', ma_gs=gs.MaGS) }}" class="btn btn-primary">
+                <i class="fas fa-edit"></i> Chỉnh sửa
+            </a>
+        </div>
+    </div>
+    
+    <div class="info-container">
+        <div class="info-section">
+            <div class="info-item">
+                <div class="info-label">Mã gia sư</div>
+                <div class="info-value">{{ gs.MaGS }}</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Họ tên</div>
+                <div class="info-value">{{ gs.HoTen }}</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Số điện thoại</div>
+                <div class="info-value">{{ gs.SoDT }}</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Bằng cấp</div>
+                <div class="info-value">{{ gs.BangCap or 'Chưa cung cấp' }}</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Môn dạy</div>
+                <div class="info-value">{{ gs.MonDay or 'Chưa cung cấp' }}</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Kinh nghiệm</div>
+                <div class="info-value">{{ gs.KinhNghiem or 'Chưa cung cấp' }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if ds_lh and ds_lh|length > 0 %}
+<div class="content-card">
+    <h2 class="card-title"><i class="fas fa-book-open"></i> Lớp học đang dạy</h2>
+    
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Mã lớp</th>
+                    <th>Môn học</th>
+                    <th>Cấp học</th>
+                    <th>Lịch học</th>
+                    <th>Địa điểm</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for lh in ds_lh %}
+                <tr>
+                    <td>{{ lh.MaLop }}</td>
+                    <td>{{ lh.MonHoc }}</td>
+                    <td>{{ lh.CapHoc }}</td>
+                    <td>{{ lh.LichHoc }}</td>
+                    <td>{{ lh.DiaDiem }}</td>
+                    <td>
+                        <a href="{{ url_for('xem_lh', ma_lh=lh.MaLop) }}" class="btn btn-sm btn-secondary">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}
+
+{% if ds_gd and ds_gd|length > 0 %}
+<div class="content-card">
+    <h2 class="card-title"><i class="fas fa-money-bill-wave"></i> Lịch sử giao dịch</h2>
+    
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Mã giao dịch</th>
+                    <th>Phụ huynh</th>
+                    <th>Ngày giao dịch</th>
+                    <th>Phí gia sư</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for gd in ds_gd %}
+                <tr>
+                    <td>{{ gd.MaGD }}</td>
+                    <td>{{ gd.TenPH }}</td>
+                    <td>{{ gd.NgayGD }}</td>
+                    <td>{{ "{:,.0f}".format(gd.PhiGS) }} VNĐ</td>
+                    <td>
+                        <a href="{{ url_for('xem_gd', ma_gd=gd.MaGD) }}" class="btn btn-sm btn-secondary">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .info-container {
+        background-color: #f8fafc;
+        border-radius: 8px;
+        padding: 20px;
+    }
+    
+    .info-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+    
+    .info-item {
+        margin-bottom: 15px;
+    }
+    
+    .info-label {
+        font-size: 14px;
+        color: #64748b;
+        margin-bottom: 5px;
+    }
+    
+    .info-value {
+        font-size: 16px;
+        color: #1e293b;
+        font-weight: 500;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,19 @@
+2025-04-24 10:00:03.701 [info] Experiment 'pythonaa' is active
+2025-04-24 10:00:03.701 [info] Experiment 'pythonRecommendTensorboardExt' is active
+2025-04-24 10:00:03.701 [info] Experiment 'pythonTerminalEnvVarActivation' is active
+2025-04-24 10:00:03.701 [info] Native locator: Refresh started
+2025-04-24 10:00:03.701 [info] Native locator: Refresh started
+2025-04-24 10:00:03.728 [info] > pyenv which python
+2025-04-24 10:00:03.728 [info] cwd: .
+2025-04-24 10:00:08.053 [info] Python interpreter path: /bin/python3
+2025-04-24 10:00:09.531 [info] Native locator: Refresh finished in 10793 ms
+2025-04-24 10:00:11.341 [info] Starting Pylance language server.
+2025-04-24 10:04:45.880 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/app.py
+2025-04-24 10:06:44.546 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/app.py
+2025-04-24 10:16:32.662 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/database/__init__.py
+2025-04-24 10:19:53.753 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/database/phieu_kham.py
+2025-04-24 10:19:54.133 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/database/__init__.py
+2025-04-24 10:51:56.665 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/app.py
+2025-04-24 10:55:04.664 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/app.py
+2025-04-24 11:17:09.266 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/app.py
+2025-04-24 11:42:13.459 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/app.py

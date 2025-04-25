@@ -1,0 +1,111 @@
+{% extends 'layout.html' %}
+
+{% block title %}Quản lý bệnh nhân - NHAKHOASO{% endblock %}
+
+{% block content %}
+<div class="section-title">
+    <h2>QUẢN LÝ BỆNH NHÂN</h2>
+</div>
+
+<!-- Flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}<div class="flash-messages">
+            {% for category, message in messages %}<div class="flash-message {{ category }}">{{ message }}</div>
+            {% endfor %}</div>
+    {% endif %}
+{% endwith %}
+
+<div class="content-header">
+    <h2>Danh sách bệnh nhân</h2>
+</div>
+
+<div class="module-actions">
+    <a href="{{ url_for('them_moi_benh_nhan') }}" class="btn"><i class="fas fa-plus"></i> Thêm bệnh nhân mới</a>
+    <div class="search-box">
+        <input type="text" placeholder="Tìm kiếm bệnh nhân...">
+        <button class="btn"><i class="fas fa-search"></i></button>
+    </div>
+</div>
+
+<div class="module-content">
+    <table class="data-table"><thead><tr><th>Mã BN</th><th>Họ và tên</th><th>Ngày sinh</th><th>Giới tính</th><th>Số điện thoại</th><th>Thao tác</th></tr></thead><tbody>
+            {% if benh_nhan_list %}
+                {% for bn in benh_nhan_list %}<tr id="benh-nhan-{{ bn.MaBN }}"><td>{{ bn.MaBN }}</td><td>{{ bn.HoTen }}</td><td>{{ bn.NgaySinh }}</td><td>{{ bn.GioiTinh }}</td><td>{{ bn.Sdt }}</td><td>
+                        <a 
+                            href="{{ url_for('chi_tiet_benh_nhan', ma_bn=bn.MaBN) }}" 
+                            class="action-btn view-btn" 
+                            title="Xem chi tiết">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                        <a 
+                            href="{{ url_for('chinh_sua_benh_nhan', ma_bn=bn.MaBN) }}" 
+                            class="action-btn edit-btn" 
+                            title="Chỉnh sửa">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a 
+                            href="#" 
+                            class="action-btn delete-btn" 
+                            title="Xóa" 
+                            onclick="deletePatient('{{ bn.MaBN }}')">
+                            <i class="fas fa-trash"></i>
+                        </a></td></tr>
+                {% endfor %}
+            {% else %}<tr><td colspan="6" class="text-center"><div class="no-data">
+                            <i class="fas fa-database"></i>
+                            <p>Chưa có dữ liệu bệnh nhân</p>
+                            <a href="{{ url_for('them_moi_benh_nhan') }}" class="btn">
+                                <i class="fas fa-plus"></i> Thêm bệnh nhân mới
+                            </a></div></td></tr>
+            {% endif %}</tbody>
+    </table>
+</div>
+
+<div class="pagination">
+    <a href="#" class="page-link">&laquo;</a>
+    <a href="#" class="page-link active">1</a>
+    <a href="#" class="page-link">2</a>
+    <a href="#" class="page-link">3</a>
+    <a href="#" class="page-link">&raquo;</a>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Hàm xóa bệnh nhân
+    function deletePatient(maBN) {
+        if (confirm('Bạn có chắc chắn muốn xóa bệnh nhân này?')) {
+            // Gọi API xóa bệnh nhân
+            fetch(`/api/benh-nhan/${maBN}`, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Xóa dòng khỏi bảng
+                    document.getElementById(`benh-nhan-${maBN}`).remove();
+                    alert('Xóa bệnh nhân thành công!');
+                    
+                    // Kiểm tra nếu không còn bệnh nhân nào, hiển thị thông báo
+                    const tbody = document.querySelector('.data-table tbody');
+                    if (tbody.children.length === 0) {
+                        tbody.innerHTML = `<tr><td colspan="6" class="text-center"><div class="no-data">
+                                    <i class="fas fa-database"></i>
+                                    <p>Chưa có dữ liệu bệnh nhân</p>
+                                    <a href="{{ url_for('them_moi_benh_nhan') }}" class="btn">
+                                        <i class="fas fa-plus"></i> Thêm bệnh nhân mới
+                                    </a></div></td></tr>
+                        `;
+                    }
+                } else {
+                    alert('Lỗi: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Đã xảy ra lỗi khi xóa bệnh nhân');
+            });
+        }
+    }
+</script>
+{% endblock %}

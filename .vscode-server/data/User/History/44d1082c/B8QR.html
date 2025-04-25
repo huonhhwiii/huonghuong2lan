@@ -1,0 +1,133 @@
+{% extends 'layout.html' %}
+
+{% block title %}Danh sách hóa đơn - NHAKHOASO{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Danh sách hóa đơn</h2>
+    <div class="breadcrumb">
+        <a href="{{ url_for('index') }}">Trang chủ</a> / 
+        <a href="{{ url_for('thanh_toan') }}">Quản lý thanh toán</a> / 
+        <span>Danh sách hóa đơn</span>
+    </div>
+</div>
+
+<div class="dashboard-container">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3>Chức năng</h3>
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_hoa_don') }}">
+                    <i class="fas fa-plus-circle"></i> Tạo hóa đơn
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('hoa_don_list') }}" class="active">
+                    <i class="fas fa-list"></i> Danh sách hóa đơn
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="action-bar">
+            <a href="{{ url_for('them_moi_hoa_don') }}" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Tạo hóa đơn mới
+            </a>
+            <a href="{{ url_for('tim_kiem_hoa_don') }}" class="btn btn-secondary">
+                <i class="fas fa-search"></i> Tìm kiếm
+            </a>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="data-table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Mã hóa đơn</th>
+                        <th>Mã phiếu khám</th>
+                        <th>Bệnh nhân</th>
+                        <th>Ngày lập</th>
+                        <th>Tổng tiền</th>
+                        <th>Phương thức thanh toán</th>
+                        <th>Trạng thái</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if hoa_don_list %}
+                        {% for hd in hoa_don_list %}
+                            <tr>
+                                <td>{{ hd.MaHD }}</td>
+                                <td>{{ hd.MaPK }}</td>
+                                <td>{{ hd.TenBenhNhan }}</td>
+                                <td>{{ hd.NgayLap }}</td>
+                                <td>{{ "{:,.0f}".format(hd.TongTien) }} VNĐ</td>
+                                <td>{{ hd.PhuongThucThanhToan }}</td>
+                                <td>{{ hd.TrangThai }}</td>
+                                <td class="actions">
+                                    <a href="{{ url_for('chi_tiet_hoa_don', ma_hd=hd.MaHD) }}" class="btn-icon" title="Xem chi tiết">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <button class="btn-icon delete-btn" data-id="{{ hd.MaHD }}" title="Xóa">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="8" class="no-data">Không có dữ liệu hóa đơn</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Xử lý sự kiện xóa hóa đơn
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const maHD = this.getAttribute('data-id');
+                if (confirm('Bạn có chắc chắn muốn xóa hóa đơn này không?')) {
+                    // Gửi request xóa
+                    fetch(`/api/hoa-don/${maHD}`, {
+                        method: 'DELETE',
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert(data.message);
+                            // Reload trang sau khi xóa thành công
+                            window.location.reload();
+                        } else {
+                            alert(data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Có lỗi xảy ra khi xóa hóa đơn');
+                    });
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

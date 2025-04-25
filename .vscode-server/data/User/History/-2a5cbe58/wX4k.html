@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N7 SOFTWARE - Thêm mới lớp học</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        
+        .header {
+            background-color: #001F8B;
+            color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .header h2 {
+            font-size: 20px;
+            font-weight: normal;
+        }
+        
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .form-group label.required:after {
+            content: " *";
+            color: red;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .form-control:focus {
+            border-color: #001F8B;
+            outline: none;
+        }
+        
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .btn-container {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: #001F8B;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #003399;
+        }
+        
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+        
+        .divider {
+            border-top: 1px solid #eee;
+            margin: 30px 0;
+        }
+        
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #0044cc;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .home-button {
+            position: fixed;
+            bottom: 20px;
+            right: 90px;
+            background-color: #0044cc;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .back-button:hover, .home-button:hover {
+            background-color: #002a80;
+            transform: scale(1.05);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>N7 SOFTWARE</h1>
+            <h2>Thêm mới lớp học</h2>
+        </div>
+        
+        <div class="form-container">
+            <form id="addClassForm" method="POST" action="/save_class">
+                <div class="form-group">
+                    <label for="classId" class="required">Mã lớp học</label>
+                    <input type="text" id="classId" class="form-control" value="{{ next_id }}" readonly>
+                    <small style="color: #666; font-style: italic;">Mã lớp học được tạo tự động</small>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="subject" class="required">Môn học</label>
+                        <select id="subject" name="subject" class="form-control" required>
+                            <option value="">-- Chọn môn học --</option>
+                            <option value="toan">Toán</option>
+                            <option value="van">Ngữ Văn</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="grade" class="required">Cấp học</label>
+                        <select id="grade" name="grade" class="form-control" required>
+                            <option value="">-- Chọn cấp học --</option>
+                            <option value="1">Lớp 1</option>
+                            <option value="4">Lớp 2</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="schedule" class="required">Lịch học</label>
+                        <input type="date" id="schedule" name="schedule" class="form-control" required>
+                    </div>
+                    
+                    
+                    <div class="form-group">
+                        <label for="location" class="required">Địa điểm</label>
+                        <select id="location" name="location" class="form-control" required>
+                            <option value="">-- Chọn địa điểm --</option>
+                            <option value="online">Online</option>
+                            <option value="tai_nha">Tại nhà phụ huynh</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="transactionId" class="required">Mã giao dịch</label>
+                    <input type="text" id="transactionId" name="transactionId" class="form-control" placeholder="Nhập mã giao dịch liên quan" required>
+                </div>
+                
+                <div class="btn-container">
+                    <button type="button" class="btn btn-secondary" onclick="window.history.back()">Quay lại</button>
+                    <button type="submit" class="btn btn-primary">Lưu thông tin</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Nút về trang chủ -->
+    <button class="home-button" onclick="window.location.href='trang-chu.html'" title="Trang chủ">
+        <i class="fas fa-home"></i>
+    </button>
+    
+    <!-- Nút quay lại cố định -->
+    <button class="back-button" onclick="window.history.back()" title="Quay lại">
+        <i class="fas fa-arrow-left"></i>
+    </button>
+    
+    <script>
+        document.getElementById('addClassForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Lấy dữ liệu từ form
+            const classData = {
+                classId: document.getElementById('classId').value,
+                subject: document.getElementById('subject').value,
+                grade: document.getElementById('grade').value,
+                schedule: document.getElementById('schedule').value,
+                location: document.getElementById('location').value,
+                transactionId: document.getElementById('transactionId').value
+            };
+            
+            // Kiểm tra dữ liệu
+            if (!classData.subject || !classData.grade || !classData.schedule || !classData.location || !classData.transactionId) {
+                alert('Vui lòng điền đầy đủ thông tin bắt buộc!');
+                return;
+            }
+            
+            // Gửi dữ liệu lên server
+            fetch('/them_lh', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(classData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Kiểm tra kết quả trả về từ server
+                if (data.success) {
+                    alert('Thông tin lớp học đã được lưu thành công!\nMã lớp: ' + classData.classId);
+                    // Redirect to the list page or somewhere else
+                    window.location.href = "{{ url_for('ds_lh') }}"; // Example redirect to the list page
+                } else {
+                    alert('Lỗi: ' + data.message);
+                }
+            })
+            .catch(error => {
+                alert('Có lỗi xảy ra, vui lòng thử lại.');
+                console.error('Error:', error);
+            });
+        });
+
+    </script>
+    
+</body>
+</html>

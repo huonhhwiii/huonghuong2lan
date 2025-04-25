@@ -1,0 +1,139 @@
+{% extends 'layout.html' %}
+
+{% block title %}Tìm kiếm hóa đơn - NHAKHOASO{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Tìm kiếm hóa đơn</h2>
+    <div class="breadcrumb">
+        <a href="{{ url_for('index') }}">Trang chủ</a> / 
+        <a href="{{ url_for('thanh_toan') }}">Quản lý thanh toán</a> / 
+        <a href="{{ url_for('hoa_don_list') }}">Danh sách hóa đơn</a> / 
+        <span>Tìm kiếm</span>
+    </div>
+</div>
+
+<div class="dashboard-container">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3>Chức năng</h3>
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_hoa_don') }}">
+                    <i class="fas fa-plus-circle"></i> Tạo hóa đơn
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('hoa_don_list') }}">
+                    <i class="fas fa-list"></i> Danh sách hóa đơn
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="search-container">
+            <h3>Tìm kiếm hóa đơn</h3>
+            
+            <form method="POST" action="{{ url_for('tim_kiem_hoa_don') }}" class="search-form">
+                <div class="form-group">
+                    <label for="tu_khoa">Từ khóa tìm kiếm</label>
+                    <input type="text" id="tu_khoa" name="tu_khoa" placeholder="Nhập từ khóa tìm kiếm..." required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="loai_tim_kiem">Loại tìm kiếm</label>
+                    <select id="loai_tim_kiem" name="loai_tim_kiem">
+                        <option value="ma_hoa_don">Mã hóa đơn</option>
+                        <option value="ma_phieu_kham">Mã phiếu khám</option>
+                        <option value="ma_benh_nhan">Mã bệnh nhân</option>
+                    </select>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Tìm kiếm
+                    </button>
+                    <button type="reset" class="btn btn-secondary">
+                        <i class="fas fa-redo"></i> Làm mới
+                    </button>
+                </div>
+            </form>
+            
+            <div class="search-results">
+                <h4>Kết quả tìm kiếm</h4>
+                
+                {% if ket_qua %}
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Mã hóa đơn</th>
+                                <th>Mã phiếu khám</th>
+                                <th>Bệnh nhân</th>
+                                <th>Ngày lập</th>
+                                <th>Tổng tiền</th>
+                                <th>Phương thức thanh toán</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for hd in ket_qua %}
+                                <tr>
+                                    <td>{{ hd.MaHD }}</td>
+                                    <td>{{ hd.MaPK }}</td>
+                                    <td>{{ hd.TenBenhNhan }}</td>
+                                    <td>{{ hd.NgayLap }}</td>
+                                    <td>{{ "{:,.0f}".format(hd.TongTien) }} VNĐ</td>
+                                    <td>{{ hd.PhuongThucThanhToan }}</td>
+                                    <td>{{ hd.TrangThai }}</td>
+                                    <td class="actions">
+                                        <a href="{{ url_for('chi_tiet_hoa_don', ma_hd=hd.MaHD) }}" class="btn-icon" title="Xem chi tiết">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% elif request.method == 'POST' %}
+                    <div class="no-results">
+                        <p>Không tìm thấy kết quả phù hợp.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .search-container {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        padding: 20px;
+    }
+    
+    .search-form {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .search-results h4 {
+        margin-bottom: 15px;
+        color: #333;
+    }
+    
+    .no-results {
+        padding: 20px;
+        text-align: center;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        color: #666;
+    }
+</style>
+{% endblock %}

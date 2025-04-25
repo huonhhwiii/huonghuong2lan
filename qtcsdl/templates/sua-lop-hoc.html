@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N7 SOFTWARE - Sửa lớp học</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 100px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            background-color: #001F8B;
+            color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #001F8B;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .form-select {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: #001F8B;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #003399;
+        }
+        
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        /* Nút quay lại */
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #0044cc;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .back-button:hover {
+            background-color: #002a80;
+            transform: scale(1.05);
+        }
+        
+        /* Nút trang chủ */
+        .home-button {
+            position: fixed;
+            bottom: 20px;
+            right: 100px;
+            background-color: #190599;
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .home-button:hover {
+            background-color: #005bb5;
+            transform: scale(1.05);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>N7 SOFTWARE</h1>
+            <h2>Sửa thông tin lớp học</h2>
+        </div>
+        
+        <form method="POST" action="{{ url_for('sua_lh') }}">
+            <div class="form-group">
+                <label for="classId">Mã lớp</label>
+                <input type="text" id="classId" class="form-control" name="classId" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="subject">Môn học</label>
+                <input type="text" id="subject" class="form-control" name="subject" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="grade">Cấp học</label>
+                <input type="text" id="grade" class="form-control" name="grade" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="schedule">Lịch học (ngày)</label>
+                <input type="date" id="schedule" class="form-control" name="schedule" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="location" class="required">Địa điểm</label>
+                <select id="location" name="location" class="form-control" required>
+                    <option value="">-- Chọn địa điểm --</option>
+                    <option value="online">Online</option>
+                    <option value="tai_nha">Tại nhà phụ huynh</option>
+                </select>
+            </div>
+            
+            
+            
+            <div class="btn-group">
+                <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                <button type="button" class="btn btn-secondary" onclick="window.history.back()">Hủy bỏ</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Nút quay lại -->
+    <button class="back-button" onclick="window.history.back()" title="Quay lại">
+        <i class="fas fa-arrow-left"></i>
+    </button>
+
+    <!-- Nút trang chủ -->
+    <a href="{{ url_for('trangchu') }}" class="home-button" title="Về trang chủ">
+        <i class="fas fa-home"></i>
+    </a>
+
+    <script>
+        // Xử lý khi form được submit
+        document.getElementById('editClassForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Lấy giá trị từ form
+            const classData = {
+                id: document.getElementById('classId').value,
+                subject: document.getElementById('subject').value,
+                grade: document.getElementById('grade').value,
+                schedule: document.getElementById('schedule').value,
+                location: document.getElementById('location').value,
+                teacherId: document.getElementById('teacherId').value
+            };
+            
+            // Hiển thị dữ liệu đã nhập (thay bằng API call trong thực tế)
+            console.log('Dữ liệu cập nhật:', classData);
+            alert('Đã cập nhật thông tin lớp học: ' + classData.id);
+            
+            // Trong thực tế: Gọi API để cập nhật dữ liệu
+            // fetch('/api/classes/update', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(classData)
+            // })
+            // .then(response => response.json())
+            // .then(data => {
+            //     alert('Cập nhật thành công!');
+            //     window.location.href = '/classes';
+            // })
+            // .catch(error => {
+            //     console.error('Error:', error);
+            //     alert('Có lỗi xảy ra khi cập nhật');
+            // });
+        });
+        
+        // Thiết lập giá trị ban đầu (trong thực tế lấy từ API)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Giả lập dữ liệu từ server
+            const classInfo = {
+                id: 'LH0001',
+                subject: 'Toán',
+                grade: '3',
+                schedule: '2023-08-15',
+                location: 'Online',
+                teacherId: 'GD001'
+            };
+            
+            // Đặt giá trị cho form
+            document.getElementById('subject').value = classInfo.subject;
+            document.getElementById('grade').value = classInfo.grade;
+            document.getElementById('schedule').value = classInfo.schedule;
+            document.getElementById('location').value = classInfo.location;
+            document.getElementById('teacherId').value = classInfo.teacherId;
+        });
+    </script>
+</body>
+</html>

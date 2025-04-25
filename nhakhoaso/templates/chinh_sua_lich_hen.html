@@ -1,0 +1,98 @@
+{% extends 'layout.html' %}
+
+{% block title %}Chỉnh sửa lịch hẹn - NHAKHOASO{% endblock %}
+
+{% block content %}
+<div class="section-title">
+    <h2>QUẢN LÝ LỊCH HẸN</h2>
+</div>
+
+<!-- Flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}<div class="flash-messages">
+            {% for category, message in messages %}<div class="flash-message {{ category }}">{{ message }}</div>
+            {% endfor %}</div>
+    {% endif %}
+{% endwith %}<div class="content-header">
+            <h2>Chỉnh sửa lịch hẹn</h2></div><div class="form-container">
+            <form action="{{ url_for('chinh_sua_lich_hen', ma_lh=lich_hen.MaLH) }}" method="POST"><div class="form-group">
+                    <label for="ma_lich_hen">Mã lịch hẹn:</label>
+                    <input type="text" id="ma_lich_hen" name="ma_lich_hen" value="{{ lich_hen.MaLH }}" readonly>
+                    <small>Mã lịch hẹn không thể thay đổi</small></div><div class="form-group">
+                    <label for="ma_benh_nhan">Bệnh nhân:</label>
+                    <select id="ma_benh_nhan" name="ma_benh_nhan" required>
+                        <option value="">-- Chọn bệnh nhân --</option>
+                        {% for bn in benh_nhan_list %}
+                            <option value="{{ bn.MaBN }}" {% if bn.MaBN == lich_hen.MaBN %}selected{% endif %}>
+                                {{ bn.MaBN }} - {{ bn.HoTen }}
+                            </option>
+                        {% endfor %}
+                    </select></div><div class="form-group">
+                    <label for="ngay_hen">Ngày hẹn:</label>
+                    <input type="datetime-local" id="ngay_hen" name="ngay_hen" value="{{ lich_hen.NgayHen|replace(' ', 'T') }}" required></div><div class="form-group">
+                    <label for="trang_thai">Trạng thái:</label>
+                    <select id="trang_thai" name="trang_thai">
+                        <option value="Chưa khám" {% if lich_hen.TrangThai == 'Chưa khám' %}selected{% endif %}>Chưa khám</option>
+                        <option value="Đã khám" {% if lich_hen.TrangThai == 'Đã khám' %}selected{% endif %}>Đã khám</option>
+                        <option value="Đã huỷ" {% if lich_hen.TrangThai == 'Đã huỷ' %}selected{% endif %}>Đã huỷ</option>
+                    </select></div><div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Lưu thay đổi
+                    </button>
+                    <a href="{{ url_for('chi_tiet_lich_hen', ma_lh=lich_hen.MaLH) }}" class="btn btn-secondary">
+                        <i class="fas fa-times"></i> Hủy
+                    </a></div>
+            </form></div>
+    
+<style>
+    .form-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+    
+    .form-group small {
+        display: block;
+        margin-top: 5px;
+        color: #666;
+        font-size: 0.85em;
+    }
+    
+    .form-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 30px;
+    }
+    
+    .btn-primary {
+        background-color: var(--primary-color);
+        color: white;
+    }
+    
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+    }
+</style>
+{% endblock %}

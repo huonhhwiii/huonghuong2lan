@@ -1,0 +1,1083 @@
+{
+	"name": "zencoder",
+	"publisher": "ZencoderAI",
+	"homepage": "https://zencoder.ai/",
+	"displayName": "Zencoder: AI Coding Agent and Chat for Python, Javascript, Typescript, Java, Go, and more",
+	"description": "Embedded AI agents for code, unit testing, and docstring generation",
+	"repository": "https://github.com/forgoodaigithub/zencoder-vscode-plugin",
+	"version": "1.26.1",
+	"icon": "out/zencoder_logo_128.png",
+	"categories": [
+		"Programming Languages",
+		"Snippets",
+		"Machine Learning",
+		"Education",
+		"Debuggers"
+	],
+	"keywords": [
+		"ai",
+		"autocomplete",
+		"bash",
+		"c",
+		"c++",
+		"chat",
+		"chatgpt",
+		"code completion",
+		"copilot",
+		"cpp",
+		"css",
+		"go",
+		"golang",
+		"html",
+		"intellicode",
+		"intellisense",
+		"java",
+		"javascript",
+		"jupyter",
+		"keybindings",
+		"kotlin",
+		"node",
+		"nodejs",
+		"php",
+		"python",
+		"react",
+		"ruby",
+		"rust",
+		"swift",
+		"typescript",
+		"chatbot",
+		"codegen",
+		"Documentation",
+		"docstring",
+		"llm",
+		"model",
+		"refactor",
+		"Test",
+		"assistant",
+		"bot",
+		"chatbot",
+		"coding assistant",
+		"code acceleration",
+		"developer tools",
+		"productivity",
+		"machine learning",
+		"automation",
+		"coding efficiency",
+		"error detection",
+		"intelligent coding"
+	],
+	"private": true,
+	"engines": {
+		"vscode": "^1.90.2"
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn workspaces foreach -Rt --from zencoder run compile",
+		"package": "vsce package --allow-missing-repository --no-dependencies --yarn",
+		"compile": "webpack-cli --config webpack.prod.ts",
+		"compile:dev": "webpack-cli --config webpack.dev.ts",
+		"compile:test": "rimraf test-out && tsc -p . --outDir test-out && tsc-alias --outDir test-out",
+		"test:unit": "jest",
+		"test:integration": "yarn run compile:test && node test-out/test/run-tests",
+		"watch": "webpack-cli --watch --config webpack.dev.ts",
+		"lint": "yarn run -T eslint --ext .js,.jsx,.ts,.tsx src --color",
+		"format:fix": "yarn run -T prettier --write 'src/**/*.{ts,tsx,scss,css,json}'",
+		"format:check": "yarn run -T prettier --check 'src/**/*.{ts,tsx,scss,css,json}'",
+		"check-types": "yarn run -T tsc --noEmit",
+		"codegen:graphql": "graphql-codegen",
+		"pre-commit": "yarn check-types && yarn run -T lint-staged",
+		"codegen:proto": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=./src/chat/coding-agent-client/proto_api --ts_proto_opt=esModuleInterop=true --ts_proto_opt=oneof=unions-value -I ../../services/workflow/workflow/proto_api/ ../../services/workflow/workflow/proto_api/schema.proto"
+	},
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "zencoder.show-panel",
+				"title": "Show panel",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.show-settings",
+				"title": "Settings",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.show-keyboard-shortcuts",
+				"title": "Shortcuts",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.show-repo-index-settings",
+				"title": "Repo Grokking",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.show-models-settings",
+				"title": "Models",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.show-integrations",
+				"title": "Integrations",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.show-custom-instructions",
+				"title": "Instructions for AI",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.show-memories-settings",
+				"title": "Memories",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.show-ui-kit-demo",
+				"title": "Show UI-Kit demo",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.show-context",
+				"title": "Show command context",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.show-commands-menu",
+				"title": "Show command menu",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.sign-in",
+				"title": "Sign in",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.generate-or-improve-code",
+				"title": "Generate/improve code",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.manage-custom-agents",
+				"title": "Custom agents",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.run-custom-agent",
+				"title": "Run custom agent",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.show-custom-agents-menu",
+				"title": "Call custom agent",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.generate-unit-tests",
+				"title": "Generate unit tests",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.explain-with-zencoder",
+				"title": "Explain code",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.review-with-zencoder",
+				"title": "Review code",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.start-new-chat",
+				"title": "Start new chat",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.submit-bug",
+				"title": "Submit feedback",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.sign-out",
+				"title": "Sign out",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.show-repo-indexing-data",
+				"title": "Zencoder: Show repo indexing details"
+			},
+			{
+				"command": "zencoder.insert-into-chat",
+				"title": "Insert selection into chat",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.edit-chat-message",
+				"title": "Edit selected message",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.insert-into-chat-from-terminal",
+				"title": "Insert last command into chat",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.clear-chats-history",
+				"title": "Clear chats history",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.explain-with-zencoder-from-terminal",
+				"title": "Explain with Zencoder",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.open-repo-storage",
+				"title": "Zencoder: Open repo storage"
+			},
+			{
+				"command": "zencoder.diff-viewer.open-source-file",
+				"title": "Open File",
+				"category": "Zencoder",
+				"icon": "$(preferences-open-settings)"
+			},
+			{
+				"command": "zencoder.diff-viewer.set-layout-inline",
+				"title": "Inline View",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.diff-viewer.set-layout-auto",
+				"title": "Auto Layout",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.diff-viewer.set-layout-side-by-side",
+				"title": "Side by Side View",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.diff-viewer.apply",
+				"title": "Diff - accept all",
+				"category": "Zencoder"
+			},
+			{
+				"command": "zencoder.diff-viewer.reject",
+				"title": "Diff - reject all",
+				"category": "Zencoder"
+			}
+		],
+		"configuration": {
+			"title": "Zencoder",
+			"properties": {
+				"zencoder.enableCodeLenses": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show Zencoder code-lens near defined symbols to ease an access to Zencoder features"
+				},
+				"zencoder.codeCompletion.enable": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable Zencoder code completion"
+				},
+				"zencoder.codeCompletion.enableMultiLine": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable Multi-Line completion"
+				},
+				"zencoder.enableRepoIndexing": {
+					"type": "boolean",
+					"default": true,
+					"description": "Allow Zencoder to collect embeddings for your repository to be able to perform a full repo search"
+				},
+				"zencoder.excludeFilesFromIndexing": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"default": [
+						"build/**",
+						"dist/**",
+						"out/**",
+						".hg/**",
+						"tmp/**",
+						"temp/**",
+						"cache/**",
+						"venv/**",
+						".venv/**",
+						"env/**",
+						"vendor/**",
+						"test_output/**",
+						"coverage/**",
+						"logs/**"
+					],
+					"markdownDescription": "Configure [glob patterns](https://aka.ms/vscode-glob-patterns) for excluding files from indexing. Refer to the `#zencoder.excludeGitIgnoreFromIndexing#` setting for ignoring files based on your `.gitignore`."
+				},
+				"zencoder.excludeGitIgnoreFromIndexing": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Controls whether entries in .gitignore should be parsed and excluded from the indexing. Similar to `#zencoder.excludeFilesFromIndexing#`."
+				},
+				"zencoder.inlineSuggestions.enable": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable \"Zencoder\" inline suggestions with keyboard shortcuts (\"Option/Alt+Shift+Enter\" for code improve/generation, \"Cmd/Ctrl+L\" to insert code into chat)"
+				},
+				"zencoder.shellTool.commandConfirmationPolicy": {
+					"type": "string",
+					"enum": [
+						"alwaysAsk",
+						"doNotAskForSpecified",
+						"neverAsk"
+					],
+					"enumItemLabels": [
+						"Always ask",
+						"Don’t ask for commands below",
+						"Never ask"
+					],
+					"default": "doNotAskForSpecified",
+					"description": "Whether agents should ask for user confirmation before executing commands",
+					"order": 1
+				},
+				"zencoder.shellTool.allowedCommands": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"default": [
+						"whoami",
+						"find",
+						"sort",
+						"cd",
+						"echo",
+						"ls",
+						"pwd",
+						"cat",
+						"head",
+						"tail",
+						"uname",
+						"id",
+						"env",
+						"printenv",
+						"df",
+						"free",
+						"ps",
+						"grep",
+						"uniq",
+						"wc",
+						"diff",
+						"dir",
+						"tree",
+						"chdir",
+						"type",
+						"help",
+						"ver",
+						"systeminfo",
+						"ipconfig",
+						"tasklist",
+						"hostname",
+						"netstat",
+						"which",
+						"awk",
+						"git status",
+						"git diff",
+						"git log",
+						"git branch"
+					],
+					"markdownDescription": "List of commands that will be run without confirmation, if *Command Confirmation Policy* is set to *Don’t ask for commands below*",
+					"order": 1.1
+				},
+				"zencoder.mcpServers": {
+					"type": "object",
+					"default": {},
+					"description": "Model Context Protocol (MCP) configuration",
+					"patternProperties": {
+						"^.*$": {
+							"type": "object",
+							"description": "Name of the MCP server",
+							"required": [
+								"command"
+							],
+							"properties": {
+								"command": {
+									"type": "string",
+									"description": "Command to start the MCP server"
+								},
+								"args": {
+									"type": "array",
+									"description": "Arguments to pass to the command",
+									"items": {
+										"type": "string"
+									}
+								},
+								"env": {
+									"type": "object",
+									"description": "Environment variables for the MCP server",
+									"additionalProperties": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				},
+				"zencoder.displayDebugInfo": {
+					"type": "boolean",
+					"default": false,
+					"description": "Controls whether debug information is displayed in the interface"
+				},
+				"zencoder.requirementsTool.enable": {
+					"type": "boolean",
+					"default": false,
+					"description": "(Beta) Enable the requirements tool for AI agents to ask clarifying questions"
+				},
+				"zencoder.enableShellTool": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable the Bash tool for AI agents for execute shell commands"
+				}
+			}
+		},
+		"submenus": [
+			{
+				"label": "Zencoder",
+				"id": "zencoder.submenu"
+			}
+		],
+		"menus": {
+			"view/title": [
+				{
+					"command": "zencoder.show-settings",
+					"when": "view == zencoder.webview",
+					"group": "zencoder.0_navigation"
+				},
+				{
+					"command": "zencoder.show-keyboard-shortcuts",
+					"when": "view == zencoder.webview",
+					"group": "zencoder.0_navigation"
+				},
+				{
+					"command": "zencoder.show-models-settings",
+					"when": "view == zencoder.webview && zencoder.authenticated",
+					"group": "zencoder.4_settings@0"
+				},
+				{
+					"command": "zencoder.show-integrations",
+					"when": "view == zencoder.webview && zencoder.authenticated && zencoder.jiraIntegrationEnabled",
+					"group": "zencoder.4_settings@1"
+				},
+				{
+					"command": "zencoder.show-repo-index-settings",
+					"when": "view == zencoder.webview && zencoder.authenticated",
+					"group": "zencoder.4_settings@2"
+				},
+				{
+					"command": "zencoder.show-custom-instructions",
+					"when": "view == zencoder.webview && zencoder.authenticated",
+					"group": "zencoder.4_settings@3"
+				},
+				{
+					"command": "zencoder.show-memories-settings",
+					"when": "view == zencoder.webview && zencoder.authenticated && zencoder.inDevMode",
+					"group": "zencoder.4_settings@4"
+				},
+				{
+					"command": "zencoder.manage-custom-agents",
+					"when": "view == zencoder.webview && zencoder.authenticated",
+					"group": "zencoder.4_settings@5"
+				},
+				{
+					"command": "zencoder.submit-bug",
+					"when": "view == zencoder.webview",
+					"group": "zencoder.9_feedback"
+				}
+			],
+			"commandPalette": [
+				{
+					"command": "zencoder.show-panel",
+					"when": "zencoder.inDevMode"
+				},
+				{
+					"command": "zencoder.show-ui-kit-demo",
+					"when": "zencoder.inDevMode"
+				},
+				{
+					"command": "zencoder.show-context",
+					"when": "zencoder.inDevMode"
+				},
+				{
+					"command": "zencoder.show-commands-menu",
+					"when": "zencoder.inProjectFile"
+				},
+				{
+					"command": "zencoder.sign-in",
+					"when": "!zencoder.authenticated"
+				},
+				{
+					"command": "zencoder.run-custom-agent",
+					"when": "false"
+				},
+				{
+					"command": "zencoder.start-new-chat",
+					"when": "false"
+				},
+				{
+					"command": "zencoder.generate-or-improve-code",
+					"when": "zencoder.inProjectFile"
+				},
+				{
+					"command": "zencoder.generate-unit-tests",
+					"when": "zencoder.unitTestsCommandAvailable && zencoder.inProjectFile"
+				},
+				{
+					"command": "zencoder.sign-out",
+					"when": "zencoder.authenticated"
+				},
+				{
+					"command": "zencoder.show-repo-indexing-data",
+					"when": "zencoder.authenticated"
+				},
+				{
+					"command": "zencoder.insert-into-chat"
+				},
+				{
+					"command": "zencoder.insert-into-chat-from-terminal"
+				},
+				{
+					"command": "zencoder.show-models-settings",
+					"when": "zencoder.authenticated"
+				},
+				{
+					"command": "zencoder.show-integrations",
+					"when": "zencoder.authenticated && zencoder.jiraIntegrationEnabled"
+				},
+				{
+					"command": "zencoder.explain-with-zencoder-from-terminal"
+				},
+				{
+					"command": "zencoder.show-repo-index-settings",
+					"when": "zencoder.authenticated"
+				},
+				{
+					"command": "zencoder.show-custom-instructions",
+					"when": "zencoder.authenticated"
+				},
+				{
+					"command": "zencoder.show-memories-settings",
+					"when": "zencoder.authenticated && zencoder.inDevMode"
+				},
+				{
+					"command": "zencoder.manage-custom-agents",
+					"when": "zencoder.authenticated"
+				},
+				{
+					"command": "zencoder.open-repo-storage",
+					"when": "zencoder.authenticated && zencoder.inDevMode"
+				},
+				{
+					"command": "zencoder.diff-viewer.open-source-file",
+					"when": "false"
+				},
+				{
+					"command": "zencoder.diff-viewer.set-layout-inline",
+					"when": "false"
+				},
+				{
+					"command": "zencoder.diff-viewer.set-layout-auto",
+					"when": "false"
+				},
+				{
+					"command": "zencoder.diff-viewer.set-layout-side-by-side",
+					"when": "false"
+				},
+				{
+					"command": "zencoder.diff-viewer.apply",
+					"when": "activeWebviewPanelId == 'zencoder.diff-viewer'"
+				},
+				{
+					"command": "zencoder.diff-viewer.reject",
+					"when": "activeWebviewPanelId == 'zencoder.diff-viewer'"
+				}
+			],
+			"editor/title": [
+				{
+					"command": "zencoder.diff-viewer.open-source-file",
+					"group": "navigation@1",
+					"when": "activeWebviewPanelId == 'zencoder.diff-viewer'"
+				},
+				{
+					"command": "zencoder.diff-viewer.set-layout-inline",
+					"group": "1_diff",
+					"when": "activeWebviewPanelId == 'zencoder.diff-viewer' && zencoder.diffViewer.layoutMode != 'inline'"
+				},
+				{
+					"command": "zencoder.diff-viewer.set-layout-auto",
+					"group": "1_diff",
+					"when": "activeWebviewPanelId == 'zencoder.diff-viewer' && zencoder.diffViewer.layoutMode != 'auto'"
+				},
+				{
+					"command": "zencoder.diff-viewer.set-layout-side-by-side",
+					"group": "1_diff",
+					"when": "activeWebviewPanelId == 'zencoder.diff-viewer' && zencoder.diffViewer.layoutMode != 'side-by-side'"
+				}
+			],
+			"editor/context": [
+				{
+					"submenu": "zencoder.submenu",
+					"group": "0_zencoder"
+				}
+			],
+			"terminal/context": [
+				{
+					"command": "zencoder.insert-into-chat-from-terminal",
+					"group": "navigation@top"
+				},
+				{
+					"command": "zencoder.explain-with-zencoder-from-terminal",
+					"group": "navigation@top"
+				}
+			],
+			"zencoder.submenu": [
+				{
+					"command": "zencoder.insert-into-chat",
+					"submenu": "zencoder.submenu",
+					"group": "zencoder.0_insert_into_chat"
+				},
+				{
+					"command": "zencoder.show-panel",
+					"submenu": "zencoder.submenu",
+					"when": "zencoder.inDevMode"
+				},
+				{
+					"command": "zencoder.show-ui-kit-demo",
+					"submenu": "zencoder.submenu",
+					"when": "zencoder.inDevMode"
+				},
+				{
+					"command": "zencoder.show-context",
+					"submenu": "zencoder.submenu",
+					"when": "zencoder.inDevMode"
+				},
+				{
+					"command": "zencoder.sign-in",
+					"submenu": "zencoder.submenu",
+					"when": "!zencoder.authenticated"
+				},
+				{
+					"command": "zencoder.show-custom-agents-menu",
+					"submenu": "zencoder.submenu",
+					"group": "zencoder.2_custom_agents",
+					"when": "zencoder.authenticated && zencoder.inProjectFile"
+				},
+				{
+					"command": "zencoder.explain-with-zencoder",
+					"submenu": "zencoder.submenu",
+					"group": "zencoder.1_code_actions@1",
+					"when": "zencoder.inProjectFile"
+				},
+				{
+					"command": "zencoder.review-with-zencoder",
+					"submenu": "zencoder.submenu",
+					"group": "zencoder.1_code_actions@1",
+					"when": "zencoder.inProjectFile"
+				},
+				{
+					"command": "zencoder.generate-or-improve-code",
+					"submenu": "zencoder.submenu",
+					"group": "zencoder.1_code_actions",
+					"when": "zencoder.inProjectFile"
+				},
+				{
+					"command": "zencoder.generate-unit-tests",
+					"submenu": "zencoder.submenu",
+					"group": "zencoder.1_code_actions",
+					"when": "zencoder.supportedFileType && zencoder.inProjectFile"
+				},
+				{
+					"command": "zencoder.submit-bug",
+					"submenu": "zencoder.submenu",
+					"group": "zencoder.9_menu"
+				},
+				{
+					"command": "zencoder.show-commands-menu",
+					"submenu": "zencoder.submenu",
+					"group": "zencoder.2_custom_agents",
+					"when": "zencoder.inProjectFile"
+				}
+			]
+		},
+		"keybindings": [
+			{
+				"command": "zencoder.generate-or-improve-code",
+				"key": "shift+alt+enter",
+				"mac": "shift+alt+enter",
+				"when": "editorTextFocus && zencoder.inProjectFile",
+				"args": {
+					"source": "shortcut"
+				}
+			},
+			{
+				"command": "zencoder.generate-unit-tests",
+				"key": "shift+alt+t",
+				"mac": "shift+alt+t",
+				"when": "editorTextFocus && zencoder.inProjectFile"
+			},
+			{
+				"command": "zencoder.insert-into-chat",
+				"mac": "cmd+l",
+				"key": "ctrl+l"
+			},
+			{
+				"command": "zencoder.show-custom-agents-menu",
+				"mac": "alt+shift+c",
+				"key": "alt+shift+c",
+				"when": "zencoder.authenticated"
+			},
+			{
+				"command": "zencoder.show-code-completion-feedback-form",
+				"mac": "shift+alt+cmd+f",
+				"key": "shift+alt+ctrl+f",
+				"when": "zencoder.authenticated && zencoder.codeCompletionEnabled"
+			},
+			{
+				"command": "zencoder.diff-viewer.apply",
+				"mac": "cmd+Enter",
+				"key": "ctrl+Enter",
+				"when": "activeWebviewPanelId == 'zencoder.diff-viewer'"
+			},
+			{
+				"command": "zencoder.diff-viewer.reject",
+				"key": "Escape",
+				"when": "activeWebviewPanelId == 'zencoder.diff-viewer'"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "zencoder",
+					"title": "Zencoder",
+					"icon": "out/zencoder_logo_128.png"
+				}
+			]
+		},
+		"views": {
+			"zencoder": [
+				{
+					"type": "webview",
+					"id": "zencoder.webview",
+					"name": "Zencoder",
+					"visibility": "visible"
+				}
+			]
+		},
+		"colors": [
+			{
+				"id": "zencoder.hoverBackground",
+				"description": "The background of highlighted elements in Zencoder Webview",
+				"defaults": {
+					"light": "#00000014",
+					"dark": "#ffffff14"
+				}
+			},
+			{
+				"id": "zencoder.secondaryBackground",
+				"description": "The background of highlighted elements in Zencoder Webview",
+				"defaults": {
+					"light": "#00000010",
+					"dark": "#ffffff0d"
+				}
+			},
+			{
+				"id": "zencoder.errorBackground",
+				"description": "Background color for error messages in Zencoder Webview",
+				"defaults": {
+					"light": "#de113524",
+					"dark": "#de113524"
+				}
+			},
+			{
+				"id": "zencoder.primaryBackground",
+				"description": "Primary color in Zencoder Webview",
+				"defaults": {
+					"light": "#f24a07",
+					"dark": "#f24a07"
+				}
+			},
+			{
+				"id": "zencoder.primaryHover",
+				"description": "Hovered primary color in Zencoder Webview",
+				"defaults": {
+					"light": "#f46931",
+					"dark": "#f46931"
+				}
+			},
+			{
+				"id": "zencoder.primaryActive",
+				"description": "Hovered primary color in Zencoder Webview",
+				"defaults": {
+					"light": "#a93405",
+					"dark": "#a93405"
+				}
+			},
+			{
+				"id": "zencoder.primaryForeground",
+				"description": "Foreground color on primary elements in Zencoder Webview",
+				"defaults": {
+					"light": "#ffffff",
+					"dark": "#ffffff"
+				}
+			},
+			{
+				"id": "zencoder.secondaryButtonBackground",
+				"description": "Color for secondary buttons in Zencoder Webview",
+				"defaults": {
+					"light": "#0000001a",
+					"dark": "#ffffff1a"
+				}
+			},
+			{
+				"id": "zencoder.secondaryButtonHover",
+				"description": "Color for secondary buttons in Zencoder Webview",
+				"defaults": {
+					"light": "#00000024",
+					"dark": "#ffffff0d"
+				}
+			},
+			{
+				"id": "zencoder.secondaryButtonActive",
+				"description": "Color for secondary buttons in Zencoder Webview",
+				"defaults": {
+					"light": "#0000003d",
+					"dark": "#ffffff3d"
+				}
+			},
+			{
+				"id": "zencoder.secondaryButtonForeground",
+				"description": "Color for secondary buttons in Zencoder Webview",
+				"defaults": {
+					"light": "#212121",
+					"dark": "#ffffff"
+				}
+			},
+			{
+				"id": "zencoder.completed",
+				"description": "Color for completed icons in Zencoder Webview",
+				"defaults": {
+					"light": "#34a853",
+					"dark": "#34a853"
+				}
+			},
+			{
+				"id": "zencoder.secondaryForeground",
+				"description": "Color for dimmed text in Zencoder Webview",
+				"defaults": {
+					"light": "#808080",
+					"dark": "#808080"
+				}
+			},
+			{
+				"id": "zencoder.checkboxBackground",
+				"description": "Color for checkbox/switch background in Zencoder Webview",
+				"defaults": {
+					"light": "#00000033",
+					"dark": "#ffffff21"
+				}
+			},
+			{
+				"id": "zencoder.modalDialogBackdrop",
+				"description": "Color for backdrop of modal dialogs in Zencoder Webview",
+				"defaults": {
+					"light": "#00000050",
+					"dark": "#ffffff10"
+				}
+			}
+		],
+		"icons": {
+			"zencoder-logo": {
+				"description": "Zencoder Logo",
+				"default": {
+					"fontPath": "out/zencoder-logo.woff",
+					"fontCharacter": "\\e900"
+				}
+			}
+		},
+		"languages": [
+			{
+				"id": "jsonc",
+				"filenamePatterns": [
+					"**/.zencoder/config.json"
+				]
+			}
+		],
+		"walkthroughs": [
+			{
+				"id": "zencoder.onboarding",
+				"title": "Bring zen to your code",
+				"description": "Welcome to Zencoder, a companion that helps out with routine in your coding",
+				"steps": [
+					{
+						"id": "zencoder.onboarding.autocomplete",
+						"title": "Multi-line code completion",
+						"description": "Finish your thoughts with real-time suggestions as you write the code.",
+						"media": {
+							"markdown": "out/assets/walkthroughs/autocomplete.md"
+						}
+					},
+					{
+						"id": "zencoder.onboarding.codegen",
+						"title": "Code generation and repair",
+						"description": "Generate production-ready code using repair pipelines.",
+						"when": "!isMac",
+						"media": {
+							"markdown": "out/assets/walkthroughs/codegen.md"
+						}
+					},
+					{
+						"id": "zencoder.onboarding.codegen.mac",
+						"title": "Code generation and repair",
+						"description": "Generate production-ready code using repair pipelines.",
+						"when": "isMac",
+						"media": {
+							"markdown": "out/assets/walkthroughs/codegen-mac.md"
+						}
+					},
+					{
+						"id": "zencoder.onboarding.chat",
+						"title": "Codebase-aware chat assistant",
+						"description": "Ask questions, request explanations, or seek advice about your code.",
+						"media": {
+							"markdown": "out/assets/walkthroughs/chat.md"
+						}
+					},
+					{
+						"id": "zencoder.onboarding.unittests",
+						"title": "Unit tests generation",
+						"description": "Write reliable code with meaningful tests and suggested scenarios that cover edge cases.",
+						"media": {
+							"markdown": "out/assets/walkthroughs/unittests.md"
+						}
+					},
+					{
+						"id": "zencoder.onboarding.docstrings",
+						"title": "Docstring generation",
+						"description": "Bring clarity to your codebase through automated docstring generation.",
+						"media": {
+							"markdown": "out/assets/walkthroughs/docstrings.md"
+						}
+					}
+				]
+			}
+		]
+	},
+	"dependencies": {
+		"@amplitude/experiment-node-server": "^1.10.1",
+		"@babel/preset-env": "^7.20.2",
+		"@graphql-tools/schema": "10.0.6",
+		"@modelcontextprotocol/sdk": "^1.9.0",
+		"@rudderstack/analytics-js-service-worker": "^3.1.12",
+		"@sentry/core": "^8.55.0",
+		"@sentry/node": "^8.55.0",
+		"@sentry/types": "^8.55.0",
+		"@testing-library/jest-dom": "^5.17.0",
+		"@testing-library/user-event": "^13.5.0",
+		"@types/babel__core": "^7.20.0",
+		"@types/node": "20.x",
+		"@types/semver": "^7.5.8",
+		"@types/triple-beam": "^1.3.5",
+		"@types/vscode": "^1.86.0",
+		"@types/webpack": "^5.28.5",
+		"@zencoder/diff-viewer": "workspace:^",
+		"@zencoder/webview": "*",
+		"ably": "^2.4.1",
+		"adm-zip": "^0.5.14",
+		"copy-webpack-plugin": "^12.0.2",
+		"debounce": "^2.1.0",
+		"dedent": "^1.5.3",
+		"denque": "^2.1.0",
+		"diff": "^7.0.0",
+		"diff-match-patch": "~1.0.5",
+		"express": "^4.21.2",
+		"graphql": "16.9.0",
+		"graphql-type-json": "^0.3.2",
+		"ignore": "^7.0.3",
+		"isomorphic-fetch": "^3.0.0",
+		"jest-mock-vscode": "^4.0.5",
+		"jsonc-parser": "3.3.1",
+		"jsonwebtoken": "^9.0.2",
+		"language-map": "^1.5.0",
+		"lodash.debounce": "^4.0.8",
+		"lodash.findlastindex": "^4.6.0",
+		"lru-cache": "^10.2.1",
+		"micromatch": "^4.0.8",
+		"monaco-vscode-textmate-theme-converter": "^0.1.7",
+		"ndjson-readablestream": "^1.2.0",
+		"node-cache": "^5.1.2",
+		"parse-git-diff": "^0.0.17",
+		"semaphore-async-await": "^1.5.1",
+		"semver": "^7.6.2",
+		"slugify": "^1.6.6",
+		"socket.io-client": "^4.8.0",
+		"ts-proto": "^2.6.1",
+		"typescript": "^5.7.3",
+		"url": "^0.11.3",
+		"utility-types": "3.11.0",
+		"uuid": "^9.0.1",
+		"vscode-uri": "^3.0.8",
+		"web-tree-sitter": "^0.22.5",
+		"winston": "^3.13.0",
+		"winston-transport": "^4.7.0",
+		"workerpool": "^9.2.0",
+		"xpath-ts": "^1.3.13",
+		"zod": "^3.23.8"
+	},
+	"devDependencies": {
+		"@graphql-codegen/cli": "5.0.2",
+		"@graphql-codegen/typescript": "4.0.9",
+		"@graphql-codegen/typescript-resolvers": "4.2.1",
+		"@sentry/webpack-plugin": "^2.22.6",
+		"@types/adm-zip": "^0.5.5",
+		"@types/diff": "^7.0.2",
+		"@types/diff-match-patch": "~1.0.36",
+		"@types/express": "^4.17.21",
+		"@types/isomorphic-fetch": "^0.0.39",
+		"@types/jest": "^27.5.2",
+		"@types/js-yaml": "^4.0.9",
+		"@types/jsonwebtoken": "^9.0.6",
+		"@types/lodash.debounce": "^4.0.9",
+		"@types/lodash.findlastindex": "^4.6.9",
+		"@types/micromatch": "^4.0.9",
+		"@types/mocha": "^10.0.6",
+		"@types/uuid": "^9.0.8",
+		"@vscode/test-cli": "^0.0.9",
+		"@vscode/test-electron": "^2.4.0",
+		"@vscode/vsce": "^2.27.0",
+		"@zencoder/context-server-schema": "workspace:*",
+		"dedent": "^1.5.3",
+		"dotenv-webpack": "^8.1.0",
+		"expect": "^29.7.0",
+		"glob": "^10.4.2",
+		"javascript-obfuscator": "^4.1.1",
+		"jest": "^29.7.0",
+		"js-yaml": "^4.1.0",
+		"rimraf": "^5.0.9",
+		"source-map-support": "^0.5.21",
+		"ts-jest": "^29.1.2",
+		"ts-loader": "^9.4.2",
+		"ts-node": "^8.5.4",
+		"tsc-alias": "^1.8.10",
+		"tsconfig-paths": "^4.2.0",
+		"webpack": "^5.92.1",
+		"webpack-cli": "^5.1.4",
+		"webpack-dev-server": "^5.0.4",
+		"webpack-merge": "^5.10.0",
+		"webpack-obfuscator": "^3.5.1",
+		"yargs": "^17.7.2"
+	},
+	"packageManager": "yarn@3.2.4",
+	"__metadata": {
+		"installedTimestamp": 1745056449346,
+		"targetPlatform": "undefined",
+		"size": 69989756
+	}
+}

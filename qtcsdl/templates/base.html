@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}N7 SOFTWARE EDU - Hệ thống Quản lý Gia sư{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1e40af;
+            --primary-light: #dbeafe;
+            --secondary-color: #4f46e5;
+            --accent-color: #8b5cf6;
+            --text-dark: #1e293b;
+            --text-light: #f8fafc;
+            --background-light: #f1f5f9;
+            --sidebar-width: 260px;
+            --sidebar-bg: #1e293b;
+            --sidebar-hover: #334155;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s ease;
+            --header-height: 60px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .user-nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-greeting {
+            font-weight: 500;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logout-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .logout-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: var(--header-height);
+            left: 0;
+            width: var(--sidebar-width);
+            height: calc(100vh - var(--header-height));
+            background-color: var(--sidebar-bg);
+            color: white;
+            overflow-y: auto;
+            z-index: 90;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .sidebar-menu {
+            padding: 20px 0;
+        }
+
+        .menu-section {
+            margin-bottom: 15px;
+        }
+
+        .menu-section-title {
+            padding: 10px 20px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #94a3b8;
+            font-weight: 700;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: #e2e8f0;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .menu-item:hover, .menu-item.active {
+            background-color: var(--sidebar-hover);
+            color: white;
+        }
+
+        .menu-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background-color: var(--primary-color);
+        }
+
+        .menu-item i {
+            margin-right: 12px;
+            font-size: 18px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .submenu {
+            padding-left: 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .submenu.open {
+            max-height: 500px;
+        }
+
+        .submenu-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 14px;
+        }
+
+        .submenu-item:hover, .submenu-item.active {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .submenu-item i {
+            margin-right: 10px;
+            font-size: 14px;
+            width: 16px;
+            text-align: center;
+        }
+
+        .menu-toggle {
+            cursor: pointer;
+        }
+
+        .menu-toggle i.fa-chevron-down {
+            transition: transform 0.3s ease;
+            margin-left: auto;
+        }
+
+        .menu-toggle.active i.fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        /* Main Content Styles */
+        .main-container {
+            margin-left: var(--sidebar-width);
+            margin-top: var(--header-height);
+            flex: 1;
+            padding: 20px;
+            transition: var(--transition);
+        }
+
+        .page-header {
+            background: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .page-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .page-subtitle {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* Flash Messages */
+        .flash-messages {
+            margin-bottom: 20px;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .alert i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .alert-success {
+            background-color: #ecfdf5;
+            color: #065f46;
+            border-left: 4px solid var(--success-color);
+        }
+
+        .alert-danger {
+            background-color: #fef2f2;
+            color: #991b1b;
+            border-left: 4px solid var(--danger-color);
+        }
+
+        .alert-warning {
+            background-color: #fffbeb;
+            color: #92400e;
+            border-left: 4px solid var(--warning-color);
+        }
+
+        /* Content Card */
+        .content-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .form-group label.required:after {
+            content: " *";
+            color: var(--danger-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 14px;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background-color: #64748b;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #475569;
+        }
+
+        .btn-success {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #059669;
+        }
+
+        .btn-danger {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #dc2626;
+        }
+
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Table Styles */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th, .data-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .data-table th {
+            background-color: #f8fafc;
+            font-weight: 600;
+            color: #475569;
+            font-size: 14px;
+        }
+
+        .data-table tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        .data-table td {
+            font-size: 14px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        /* Search and Filter */
+        .search-filter {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            flex: 1;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+        }
+
+        .filter-dropdown select {
+            padding: 10px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 14px;
+            background-color: white;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 20px;
+        }
+
+        .pagination-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            background-color: white;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 14px;
+            transition: var(--transition);
+            border: 1px solid #e2e8f0;
+        }
+
+        .pagination-item:hover, .pagination-item.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: white;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #64748b;
+            margin-top: auto;
+            margin-left: var(--sidebar-width);
+            transition: var(--transition);
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-container, .footer {
+                margin-left: 0;
+            }
+
+            .main-container.sidebar-active, .footer.sidebar-active {
+                margin-left: var(--sidebar-width);
+            }
+
+            .menu-toggle-btn {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .header {
+                padding: 0 15px;
+            }
+
+            .user-greeting span {
+                display: none;
+            }
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 24px;
+            cursor: pointer;
+            margin-right: 15px;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 99;
+            box-shadow: var(--box-shadow);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo-container">
+            <button class="menu-toggle-btn" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="{{ url_for('trangchu') }}" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                N7 SOFTWARE EDU
+            </a>
+        </div>
+        <div class="user-nav">
+            {% if session.username %}
+            <div class="user-greeting">
+                <i class="fas fa-user-circle"></i>
+                <span>Xin chào, <strong>{{ session.username }}</strong></span>
+            </div>
+            <a href="{{ url_for('logout') }}" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Đăng xuất
+            </a>
+            {% endif %}
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-menu">
+            <div class="menu-section">
+                <div class="menu-section-title">TRANG CHÍNH</div>
+                <a href="{{ url_for('trangchu') }}" class="menu-item {% if request.path == url_for('trangchu') %}active{% endif %}">
+                    <i class="fas fa-home"></i> Trang chủ
+                </a>
+            </div>
+
+            <div class="menu-section">
+                <div class="menu-section-title">QUẢN LÝ</div>
+                
+                <!-- Quản lý phụ huynh -->
+                <div class="menu-item menu-toggle {% if 'qlph' in request.path %}active{% endif %}" data-target="phuhuynhSubmenu">
+                    <i class="fas fa-users"></i> Quản lý phụ huynh
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="submenu {% if 'qlph' in request.path %}open{% endif %}" id="phuhuynhSubmenu">
+                    <a href="{{ url_for('qlph') }}" class="submenu-item {% if request.path == url_for('qlph') %}active{% endif %}">
+                        <i class="fas fa-list"></i> Danh sách phụ huynh
+                    </a>
+                    <a href="{{ url_for('them_ph') }}" class="submenu-item {% if request.path == url_for('them_ph') %}active{% endif %}">
+                        <i class="fas fa-plus"></i> Thêm phụ huynh mới
+                    </a>
+                    <a href="{{ url_for('tim_ph') }}" class="submenu-item {% if request.path == url_for('tim_ph') %}active{% endif %}">
+                        <i class="fas fa-search"></i> Tìm kiếm phụ huynh
+                    </a>
+                </div>
+                
+                <!-- Quản lý gia sư -->
+                <div class="menu-item menu-toggle {% if 'qlgs' in request.path %}active{% endif %}" data-target="giasuSubmenu">
+                    <i class="fas fa-chalkboard-teacher"></i> Quản lý gia sư
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="submenu {% if 'qlgs' in request.path %}open{% endif %}" id="giasuSubmenu">
+                    <a href="{{ url_for('qlgs') }}" class="submenu-item {% if request.path == url_for('qlgs') %}active{% endif %}">
+                        <i class="fas fa-list"></i> Danh sách gia sư
+                    </a>
+                    <a href="{{ url_for('them_gs') }}" class="submenu-item {% if request.path == url_for('them_gs') %}active{% endif %}">
+                        <i class="fas fa-plus"></i> Thêm gia sư mới
+                    </a>
+                    <a href="{{ url_for('tim_gs') }}" class="submenu-item {% if request.path == url_for('tim_gs') %}active{% endif %}">
+                        <i class="fas fa-search"></i> Tìm kiếm gia sư
+                    </a>
+                </div>
+                
+                <!-- Quản lý giao dịch -->
+                <div class="menu-item menu-toggle {% if 'qlgd' in request.path %}active{% endif %}" data-target="giaodichSubmenu">
+                    <i class="fas fa-money-bill-wave"></i> Quản lý giao dịch
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="submenu {% if 'qlgd' in request.path %}open{% endif %}" id="giaodichSubmenu">
+                    <a href="{{ url_for('qlgd') }}" class="submenu-item {% if request.path == url_for('qlgd') %}active{% endif %}">
+                        <i class="fas fa-list"></i> Danh sách giao dịch
+                    </a>
+                    <a href="{{ url_for('them_gd') }}" class="submenu-item {% if request.path == url_for('them_gd') %}active{% endif %}">
+                        <i class="fas fa-plus"></i> Thêm giao dịch mới
+                    </a>
+                    <a href="{{ url_for('tim_gd') }}" class="submenu-item {% if request.path == url_for('tim_gd') %}active{% endif %}">
+                        <i class="fas fa-search"></i> Tìm kiếm giao dịch
+                    </a>
+                </div>
+                
+                <!-- Quản lý lớp học -->
+                <div class="menu-item menu-toggle {% if 'qllh' in request.path %}active{% endif %}" data-target="lophocSubmenu">
+                    <i class="fas fa-book-open"></i> Quản lý lớp học
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="submenu {% if 'qllh' in request.path %}open{% endif %}" id="lophocSubmenu">
+                    <a href="{{ url_for('qllh') }}" class="submenu-item {% if request.path == url_for('qllh') %}active{% endif %}">
+                        <i class="fas fa-list"></i> Danh sách lớp học
+                    </a>
+                    <a href="{{ url_for('them_lh') }}" class="submenu-item {% if request.path == url_for('them_lh') %}active{% endif %}">
+                        <i class="fas fa-plus"></i> Thêm lớp học mới
+                    </a>
+                    <a href="{{ url_for('tim_lh') }}" class="submenu-item {% if request.path == url_for('tim_lh') %}active{% endif %}">
+                        <i class="fas fa-search"></i> Tìm kiếm lớp học
+                    </a>
+                </div>
+            </div>
+
+            <div class="menu-section">
+                <div class="menu-section-title">HỆ THỐNG</div>
+                <a href="{{ url_for('logout') }}" class="menu-item">
+                    <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-container" id="mainContainer">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">
+                {% block page_icon %}<i class="fas fa-home"></i>{% endblock %}
+                {% block page_title %}Trang chủ{% endblock %}
+            </h1>
+            <p class="page-subtitle">{% block page_subtitle %}Hệ thống quản lý gia sư{% endblock %}</p>
+        </div>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {% if category == 'success' %}
+                        <i class="fas fa-check-circle"></i>
+                    {% elif category == 'danger' %}
+                        <i class="fas fa-exclamation-circle"></i>
+                    {% elif category == 'warning' %}
+                        <i class="fas fa-exclamation-triangle"></i>
+                    {% endif %}
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        <!-- Page Content -->
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <p>© 2024 <strong>N7 SOFTWARE EDU</strong> - Hệ thống Quản lý Gia sư | <a href="#">Liên hệ hỗ trợ</a></p>
+    </footer>
+
+    <!-- Back to top button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sidebar toggle for mobile
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const mainContainer = document.getElementById('mainContainer');
+            const footer = document.getElementById('footer');
+            
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', function() {
+                    sidebar.classList.toggle('active');
+                    mainContainer.classList.toggle('sidebar-active');
+                    footer.classList.toggle('sidebar-active');
+                });
+            }
+            
+            // Submenu toggle
+            const menuToggles = document.querySelectorAll('.menu-toggle');
+            menuToggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const submenu = document.getElementById(targetId);
+                    
+                    // Close all other submenus
+                    if (!this.classList.contains('active')) {
+                        document.querySelectorAll('.menu-toggle').forEach(item => {
+                            if (item !== this) {
+                                item.classList.remove('active');
+                            }
+                        });
+                        
+                        document.querySelectorAll('.submenu').forEach(menu => {
+                            if (menu.id !== targetId) {
+                                menu.classList.remove('open');
+                            }
+                        });
+                    }
+                    
+                    // Toggle current submenu
+                    this.classList.toggle('active');
+                    submenu.classList.toggle('open');
+                });
+            });
+            
+            // Back to top button
+            const backToTopButton = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

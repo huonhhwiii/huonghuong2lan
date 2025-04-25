@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách Gia Sư</title>
+    <style>
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #999;
+            padding: 8px 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align:center;">Danh sách Gia Sư</h2>
+    <table>
+        <tr>
+            <th>Mã GS</th>
+            <th>Họ Tên</th>
+            <th>Số ĐT</th>
+            <th>Bằng Cấp</th>
+            <th>Môn Dạy</th>
+            <th>Kinh Nghiệm</th>
+        </tr>
+        {% for gs in giasu %}
+        <tr>
+            <td>{{ gs.MaGS }}</td>
+            <td>{{ gs.HoTen }}</td>
+            <td>{{ gs.SoDT }}</td>
+            <td>{{ gs.BangCap }}</td>
+            <td>{{ gs.MonDay }}</td>
+            <td>{{ gs.KinhNghiem }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,173 @@
+{% extends 'layout.html' %}
+
+{% block title %}Quản lý phiếu khám - NHAKHOASO{% endblock %}
+
+{% block content %}
+<div class="section-title">
+    <h2>QUẢN LÝ PHIẾU KHÁM</h2>
+</div>
+
+<!-- Flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+                <div class="flash-message {{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<div class="content-header">
+    <h2>Danh sách phiếu khám</h2>
+</div>
+
+<div class="module-actions">
+    <a href="{{ url_for('them_moi_phieu_kham') }}" class="btn"><i class="fas fa-plus"></i> Tạo phiếu khám mới</a>
+    <div class="search-box">
+        <form action="{{ url_for('tim_kiem_phieu_kham') }}" method="POST" style="display: flex;">
+            <input type="text" name="tu_khoa" placeholder="Tìm kiếm phiếu khám...">
+            <input type="hidden" name="loai_tim_kiem" value="ma_phieu_kham">
+            <button type="submit" class="btn"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+</div>
+
+<div class="module-content">
+    <!-- DEBUG INFO -->
+    <div style="background-color: #f8d7da; padding: 10px; margin-bottom: 15px; border-radius: 5px; display: none;">
+        <p><strong>DEBUG:</strong> Số lượng phiếu khám: {{ phieu_kham_list|length if phieu_kham_list else 0 }}</p>
+        {% if phieu_kham_list %}
+            <p><strong>Phiếu khám đầu tiên:</strong> {{ phieu_kham_list[0] }}</p>
+        {% else %}
+            <p><strong>Không có phiếu khám</strong></p>
+        {% endif %}
+    </div>    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Mã PK</th>
+                <th>Bệnh nhân</th>
+                <th>Bác sĩ</th>
+                <th>Dịch vụ</th>
+                <th>Ngày khám</th>
+                <th>Chẩn đoán</th>
+                <th>Ghi chú</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if phieu_kham_list %}
+                {% for pk in phieu_kham_list %}
+                    <tr id="phieu-kham-{{ pk.MaPK }}">
+                        <td>{{ pk.MaPK }}</td>
+                        <td>{{ pk.TenBenhNhan }}</td>
+                        <td>{{ pk.TenBacSi }}</td>
+                        <td>{{ pk.TenDichVu }}</td>
+                        <td>{{ pk.NgayKham }}</td>
+                        <td>{{ pk.ChanDoan }}</td>
+                        <td>{{ pk.GhiChu }}</td>
+                        <td>
+                            <a href="{{ url_for('chi_tiet_phieu_kham', ma_pk=pk.MaPK) }}" 
+                               class="action-btn view-btn" 
+                               title="Xem chi tiết">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="{{ url_for('chinh_sua_phieu_kham', ma_pk=pk.MaPK) }}" 
+                               class="action-btn edit-btn" 
+                               title="Chỉnh sửa">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a href="#" 
+                               class="action-btn delete-btn" 
+                               title="Xóa" 
+                               onclick="deletePhieuKham('{{ pk.MaPK }}')">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="8" class="text-center">
+                        <div class="no-data">
+                            <i class="fas fa-database"></i>
+                            <p>Chưa có dữ liệu phiếu khám</p>
+                            <a href="{{ url_for('them_moi_phieu_kham') }}" class="btn">
+                                <i class="fas fa-plus"></i> Tạo phiếu khám mới
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+
+<div class="pagination">
+    <a href="#" class="page-link">&laquo;</a>
+    <a href="#" class="page-link active">1</a>
+    <a href="#" class="page-link">2</a>
+    <a href="#" class="page-link">3</a>
+    <a href="#" class="page-link">&raquo;</a>
+</div>
+    
+{% block extra_js %}
+<script>
+    // Hàm xóa phiếu khám
+    function deletePhieuKham(maPK) {
+        if (confirm('Bạn có chắc chắn muốn xóa phiếu khám này?')) {
+            // Gọi API xóa phiếu khám
+            fetch(`/api/phieu-kham/${maPK}`, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Lỗi kết nối máy chủ');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    // Xóa dòng khỏi bảng
+                    const row = document.getElementById(`phieu-kham-${maPK}`);
+                    if (row) {
+                        row.remove();
+                        
+                        // Kiểm tra nếu không còn phiếu khám nào, hiển thị thông báo
+                        const tbody = document.querySelector('.data-table tbody');
+                        const remainingRows = tbody.querySelectorAll('tr:not(.no-data-row)');
+                        
+                        if (remainingRows.length === 0) {
+                            tbody.innerHTML = `
+                            <tr class="no-data-row">
+                                <td colspan="8" class="text-center">
+                                    <div class="no-data">
+                                        <i class="fas fa-database"></i>
+                                        <p>Chưa có dữ liệu phiếu khám</p>
+                                        <a href="{{ url_for('them_moi_phieu_kham') }}" class="btn">
+                                            <i class="fas fa-plus"></i> Tạo phiếu khám mới
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            `;
+                        }
+                    }
+                    
+                    alert('Xóa phiếu khám thành công!');
+                } else {
+                    alert('Lỗi: ' + (data.message || 'Không thể xóa phiếu khám'));
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Đã xảy ra lỗi khi xóa phiếu khám: ' + error.message);
+            });
+        }
+    }
+</script>
+{% endblock %}
+
+{% endblock %}

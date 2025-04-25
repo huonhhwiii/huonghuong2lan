@@ -1,0 +1,231 @@
+{% extends "base.html" %}
+
+{% block title %}N7 SOFTWARE EDU - Quản lý gia sư{% endblock %}
+
+{% block page_icon %}<i class="fas fa-chalkboard-teacher"></i>{% endblock %}
+{% block page_title %}Quản lý gia sư{% endblock %}
+{% block page_subtitle %}Xem và quản lý danh sách gia sư trong hệ thống{% endblock %}
+
+{% block content %}
+<div class="content-card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2 class="card-title"><i class="fas fa-list"></i> Danh sách gia sư</h2>
+        <a href="{{ url_for('them_gs') }}" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Thêm gia sư mới
+        </a>
+    </div>
+    
+    <div class="search-filter">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Tìm kiếm gia sư...">
+        </div>
+    </div>
+    
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Mã gia sư</th>
+                    <th>Họ tên</th>
+                    <th>Số điện thoại</th>
+                    <th>Bằng cấp</th>
+                    <th>Môn dạy</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody id="tutorTableBody">
+                {% for gs in ds_gs %}
+                <tr>
+                    <td>{{ gs.MaGS }}</td>
+                    <td>{{ gs.HoTen }}</td>
+                    <td>{{ gs.SoDT }}</td>
+                    <td>{{ gs.BangCap }}</td>
+                    <td>{{ gs.MonDay }}</td>
+                    <td>
+                        <div class="action-buttons">
+                            <a href="{{ url_for('xem_gs', ma_gs=gs.MaGS) }}" class="btn btn-sm btn-secondary">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="{{ url_for('sua_gs', ma_gs=gs.MaGS) }}" class="btn btn-sm btn-primary">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <button class="btn btn-sm btn-danger delete-btn" data-id="{{ gs.MaGS }}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="pagination">
+        <a href="#" class="pagination-item"><i class="fas fa-chevron-left"></i></a>
+        <a href="#" class="pagination-item active">1</a>
+        <a href="#" class="pagination-item">2</a>
+        <a href="#" class="pagination-item">3</a>
+        <a href="#" class="pagination-item"><i class="fas fa-chevron-right"></i></a>
+    </div>
+</div>
+
+<!-- Modal xác nhận xóa -->
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Xác nhận xóa</h3>
+            <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <p>Bạn có chắc chắn muốn xóa gia sư này không?</p>
+            <p>Hành động này không thể hoàn tác.</p>
+        </div>
+        <div class="modal-footer">
+            <button id="cancelDelete" class="btn btn-secondary">Hủy</button>
+            <button id="confirmDelete" class="btn btn-danger">Xóa</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Modal styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    .modal-content {
+        background-color: white;
+        margin: 15% auto;
+        padding: 0;
+        border-radius: 8px;
+        width: 400px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        animation: modalFadeIn 0.3s;
+    }
+    
+    @keyframes modalFadeIn {
+        from {opacity: 0; transform: translateY(-20px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+    
+    .modal-header {
+        padding: 15px 20px;
+        border-bottom: 1px solid #e2e8f0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .modal-header h3 {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--text-dark);
+    }
+    
+    .close {
+        color: #94a3b8;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    
+    .close:hover {
+        color: var(--text-dark);
+    }
+    
+    .modal-body {
+        padding: 20px;
+    }
+    
+    .modal-footer {
+        padding: 15px 20px;
+        border-top: 1px solid #e2e8f0;
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Tìm kiếm gia sư
+        const searchInput = document.getElementById('searchInput');
+        const tableBody = document.getElementById('tutorTableBody');
+        const tableRows = tableBody.querySelectorAll('tr');
+        
+        searchInput.addEventListener('keyup', filterTable);
+        
+        function filterTable() {
+            const searchTerm = searchInput.value.toLowerCase();
+            
+            tableRows.forEach(row => {
+                const code = row.cells[0].textContent.toLowerCase();
+                const name = row.cells[1].textContent.toLowerCase();
+                const phone = row.cells[2].textContent.toLowerCase();
+                const qualification = row.cells[3].textContent.toLowerCase();
+                const subject = row.cells[4].textContent.toLowerCase();
+                
+                const matchesSearch = code.includes(searchTerm) || 
+                                     name.includes(searchTerm) || 
+                                     phone.includes(searchTerm) ||
+                                     qualification.includes(searchTerm) ||
+                                     subject.includes(searchTerm);
+                
+                if (matchesSearch) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+        
+        // Xử lý modal xóa
+        const modal = document.getElementById('deleteModal');
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+        const closeBtn = document.querySelector('.close');
+        const cancelBtn = document.getElementById('cancelDelete');
+        const confirmBtn = document.getElementById('confirmDelete');
+        
+        let currentDeleteId = null;
+        
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                currentDeleteId = this.getAttribute('data-id');
+                modal.style.display = 'block';
+            });
+        });
+        
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+        
+        cancelBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        confirmBtn.addEventListener('click', function() {
+            if (currentDeleteId) {
+                window.location.href = `/xoa_gs/${currentDeleteId}`;
+            }
+        });
+    });
+</script>
+{% endblock %}

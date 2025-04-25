@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}N7 SOFTWARE EDU - Thêm gia sư mới{% endblock %}
+
+{% block page_icon %}<i class="fas fa-user-plus"></i>{% endblock %}
+{% block page_title %}Thêm gia sư mới{% endblock %}
+{% block page_subtitle %}Thêm thông tin gia sư mới vào hệ thống{% endblock %}
+
+{% block content %}
+<div class="content-card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2 class="card-title"><i class="fas fa-user-plus"></i> Thêm gia sư mới</h2>
+        <div class="btn-group">
+            <a href="{{ url_for('qlgs') }}" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Quay lại
+            </a>
+        </div>
+    </div>
+    
+    <form action="{{ url_for('them_gs') }}" method="post">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="hoTen" class="required">Họ tên</label>
+                <input type="text" id="hoTen" name="hoTen" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="soDT" class="required">Số điện thoại</label>
+                <input type="tel" id="soDT" name="soDT" class="form-control" required>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="bangCap">Bằng cấp</label>
+                <input type="text" id="bangCap" name="bangCap" class="form-control" placeholder="Ví dụ: Cử nhân Toán, Thạc sĩ Vật lý...">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="monDay">Môn dạy</label>
+            <input type="text" id="monDay" name="monDay" class="form-control" placeholder="Ví dụ: Toán, Lý, Hóa, Tiếng Anh...">
+        </div>
+        
+        <div class="form-group">
+            <label for="kinhNghiem">Kinh nghiệm</label>
+            <textarea id="kinhNghiem" name="kinhNghiem" class="form-control" rows="3" placeholder="Mô tả kinh nghiệm giảng dạy..."></textarea>
+        </div>
+        
+        <div class="form-group" style="margin-top: 30px;">
+            <div class="btn-group">
+                <button type="reset" class="btn btn-secondary">
+                    <i class="fas fa-redo"></i> Nhập lại
+                </button>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Lưu thông tin
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+    }
+    
+    textarea.form-control {
+        resize: vertical;
+        min-height: 100px;
+    }
+    
+    .required:after {
+        content: " *";
+        color: red;
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Validate phone number
+        const phoneInput = document.getElementById('soDT');
+        phoneInput.addEventListener('input', function() {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+        
+        // Form validation
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(event) {
+            const hoTen = document.getElementById('hoTen').value.trim();
+            const soDT = document.getElementById('soDT').value.trim();
+            
+            if (!hoTen || !soDT) {
+                event.preventDefault();
+                alert('Vui lòng điền đầy đủ thông tin bắt buộc!');
+            }
+            
+            if (soDT && !/^0[0-9]{9}$/.test(soDT)) {
+                event.preventDefault();
+                alert('Số điện thoại không hợp lệ! Vui lòng nhập 10 chữ số bắt đầu bằng số 0.');
+            }
+        });
+    });
+</script>
+{% endblock %}

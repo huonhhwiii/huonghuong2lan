@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N7 SOFTWARE - Tìm kiếm giao dịch</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+            position: relative;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        
+        .header {
+            background-color: #001F8B;
+            color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .header h2 {
+            font-size: 20px;
+            font-weight: normal;
+        }
+        .search-box {
+            margin-bottom: 20px;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #001F8B;
+            color: white;
+        }
+        .detail-view {
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: none;
+        }
+        .detail-view h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #333;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .detail-row {
+            display: flex;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        .detail-label {
+            width: 150px;
+            font-weight: bold;
+            color: #555;
+        }
+        .detail-value {
+            flex: 1;
+            color: #333;
+        }
+        .detail-link {
+            color: #0066cc;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .detail-link:hover {
+            text-decoration: underline;
+        }
+        .back-button {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            background-color: #0044cc;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: #0033aa;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .home-button {
+            position: fixed;
+            right: 100px;
+            bottom: 30px;
+            background-color: #1b10ba;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .home-button:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>N7 SOFTWARE</h1>
+            <h2>Tìm kiếm giao dịch</h2>
+        </div>
+        
+        <div class="search-box">
+            <form method="GET" action="{{ url_for('tim_gd') }}">
+                <input type="text" name="search" placeholder="Nhập mã giao dịch hoặc mã phụ huynh..." value="{{ search }}">
+            </form>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã GD</th>
+                    <th>Mã PH</th>
+                    <th>Mã GS</th>
+                    <th>Ngày giao dịch</th>
+                    <th>Phí PH</th>
+                    <th>Phí GS</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in transactions %}
+                <tr>
+                    <td>{{ row.MaGD }}</td>
+                    <td>{{ row.MaPH }}</td>
+                    <td>{{ row.MaGS }}</td>
+                    <td>{{ row.NgayGD.strftime('%d/%m/%Y') if row.NgayGD else '' }}</td>
+                    <td>{{ "{:,.0f}".format(row.PhiPH) }} VND</td>
+                    <td>{{ "{:,.0f}".format(row.PhiGS) }} VND</td>
+                    <td><a class="detail-link" onclick="showDetail('{{ row.MaGD }}', '{{ row.MaPH }}', '{{ row.MaGS }}', '{{ row.NgayGD.strftime('%d/%m/%Y') if row.NgayGD else '' }}', '{{ "{:,.0f}".format(row.PhiPH) }}', '{{ "{:,.0f}".format(row.PhiGS) }}')">Xem chi tiết</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <div id="detailView" class="detail-view">
+            <h3>Thông tin chi tiết giao dịch</h3>
+            <div class="detail-row"><div class="detail-label">Mã giao dịch:</div><div class="detail-value maGD"></div></div>
+            <div class="detail-row"><div class="detail-label">Mã phụ huynh:</div><div class="detail-value maPH"></div></div>
+            <div class="detail-row"><div class="detail-label">Mã gia sư:</div><div class="detail-value maGS"></div></div>
+            <div class="detail-row"><div class="detail-label">Ngày giao dịch:</div><div class="detail-value ngayGD"></div></div>
+            <div class="detail-row"><div class="detail-label">Phí phụ huynh:</div><div class="detail-value phiPH"></div></div>
+            <div class="detail-row"><div class="detail-label">Phí gia sư:</div><div class="detail-value phiGS"></div></div>
+            
+        </div>
+    </div>
+
+    <!-- Nút quay lại -->
+    <button class="back-button" onclick="window.history.back()" title="Quay lại">
+        <i class="fas fa-arrow-left"></i>
+    </button>
+
+    <!-- Nút về trang chủ -->
+    <a href="{{ url_for('trangchu') }}" class="home-button" title="Về trang chủ">
+        <i class="fas fa-home"></i>
+    </a>
+
+    <script>
+        function showDetail(maGD, maPH, maGS, ngayGD, phiPH, phiGS) {
+            const detailView = document.getElementById('detailView');
+            detailView.style.display = 'block';
+            detailView.scrollIntoView({ behavior: 'smooth' });
+    
+            document.querySelector('.detail-value.maGD').textContent = maGD;
+            document.querySelector('.detail-value.maPH').textContent = maPH;
+            document.querySelector('.detail-value.maGS').textContent = maGS;
+            document.querySelector('.detail-value.ngayGD').textContent = ngayGD;
+            document.querySelector('.detail-value.phiPH').textContent = phiPH + " VND";
+            document.querySelector('.detail-value.phiGS').textContent = phiGS + " VND";
+        }
+    </script>
+    
+</body>
+</html>

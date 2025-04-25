@@ -1,0 +1,215 @@
+{% extends 'layout.html' %}
+
+{% block title %}Chỉnh sửa lịch hẹn - NHAKHOASO{% endblock %}
+
+{% block content %}
+<div class="section-title">
+    <h2>QUẢN LÝ LỊCH HẸN</h2>
+</div>
+
+<!-- Flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+                <div class="flash-message {{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<div class="page-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-title">
+            <i class="fas fa-user-injured"></i> Quản lý bệnh nhân
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_benh_nhan') }}">
+                    <i class="fas fa-plus"></i> Thêm mới bệnh nhân
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('tim_kiem_benh_nhan') }}">
+                    <i class="fas fa-search"></i> Tìm kiếm bệnh nhân
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('benh_nhan_list') }}">
+                    <i class="fas fa-list"></i> Danh sách bệnh nhân
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-title">
+            <i class="fas fa-clipboard-list"></i> Quản lý bác sĩ
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_bac_si') }}">
+                    <i class="fas fa-plus"></i> Thêm mới bác sĩ
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('tim_kiem_bac_si') }}">
+                    <i class="fas fa-search"></i> Tìm kiếm bác sĩ
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('bac_si_page') }}">
+                    <i class="fas fa-list"></i> Danh sách bác sĩ
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-title">
+            <a href="{{ url_for('phieu_kham_list') }}" style="text-decoration: none; color: inherit;">
+                <i class="fas fa-chart-line"></i> Quản lý phiếu khám
+            </a>
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_phieu_kham') }}">
+                    <i class="fas fa-plus"></i> Tạo phiếu khám
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('tim_kiem_phieu_kham') }}">
+                    <i class="fas fa-search"></i> Tìm kiếm phiếu khám
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('phieu_kham_list') }}">
+                    <i class="fas fa-list"></i> Danh sách phiếu khám
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-title">
+            <i class="fas fa-calendar-check"></i> Quản lý lịch hẹn
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_lich_hen') }}">
+                    <i class="fas fa-plus"></i> Đặt lịch hẹn
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('tim_kiem_lich_hen') }}">
+                    <i class="fas fa-search"></i> Tìm kiếm lịch hẹn
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('lich_hen_list') }}">
+                    <i class="fas fa-list"></i> Danh sách lịch hẹn
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <div class="content-header">
+            <h2>Chỉnh sửa lịch hẹn</h2>
+        </div>
+        
+        <div class="form-container">
+            <form action="{{ url_for('chinh_sua_lich_hen', ma_lh=lich_hen.MaLH) }}" method="POST">
+                <div class="form-group">
+                    <label for="ma_lich_hen">Mã lịch hẹn:</label>
+                    <input type="text" id="ma_lich_hen" name="ma_lich_hen" value="{{ lich_hen.MaLH }}" readonly>
+                    <small>Mã lịch hẹn không thể thay đổi</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="ma_benh_nhan">Bệnh nhân:</label>
+                    <select id="ma_benh_nhan" name="ma_benh_nhan" required>
+                        <option value="">-- Chọn bệnh nhân --</option>
+                        {% for bn in benh_nhan_list %}
+                            <option value="{{ bn.MaBN }}" {% if bn.MaBN == lich_hen.MaBN %}selected{% endif %}>
+                                {{ bn.MaBN }} - {{ bn.HoTen }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="ngay_hen">Ngày hẹn:</label>
+                    <input type="datetime-local" id="ngay_hen" name="ngay_hen" value="{{ lich_hen.NgayHen|replace(' ', 'T') }}" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="trang_thai">Trạng thái:</label>
+                    <select id="trang_thai" name="trang_thai">
+                        <option value="Chưa khám" {% if lich_hen.TrangThai == 'Chưa khám' %}selected{% endif %}>Chưa khám</option>
+                        <option value="Đã khám" {% if lich_hen.TrangThai == 'Đã khám' %}selected{% endif %}>Đã khám</option>
+                        <option value="Đã huỷ" {% if lich_hen.TrangThai == 'Đã huỷ' %}selected{% endif %}>Đã huỷ</option>
+                    </select>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Lưu thay đổi
+                    </button>
+                    <a href="{{ url_for('chi_tiet_lich_hen', ma_lh=lich_hen.MaLH) }}" class="btn btn-secondary">
+                        <i class="fas fa-times"></i> Hủy
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .form-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+    
+    .form-group small {
+        display: block;
+        margin-top: 5px;
+        color: #666;
+        font-size: 0.85em;
+    }
+    
+    .form-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 30px;
+    }
+    
+    .btn-primary {
+        background-color: var(--primary-color);
+        color: white;
+    }
+    
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+    }
+</style>
+{% endblock %}

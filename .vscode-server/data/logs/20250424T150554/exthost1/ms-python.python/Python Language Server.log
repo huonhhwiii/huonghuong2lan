@@ -1,0 +1,34 @@
+2025-04-24 15:22:57.434 [info] (Client) Pylance async client (2025.4.1) started with python extension (2025.4.0)
+2025-04-24 15:22:59.185 [info] [Info  - 15:22:59] (5070) Server root directory: file:///home/huong/.vscode-server/extensions/ms-python.vscode-pylance-2025.4.1/dist
+2025-04-24 15:22:59.187 [info] [Info  - 15:22:59] (5070) Pylance language server 2025.4.1 (pyright version 1.1.398, commit 4f24eccc) starting
+2025-04-24 15:22:59.187 [info] [Info  - 15:22:59] (5070) Starting service instance "huong" for workspace "/home/huong"
+2025-04-24 15:22:59.403 [info] [Info  - 15:22:59] (5070) Setting environmentName for service "huong": "3.12.3 (global)"
+2025-04-24 15:22:59.403 [info] [Info  - 15:22:59] (5070) Setting pythonPath for service "huong": "/usr/bin/python3"
+2025-04-24 15:22:59.404 [info] [Info  - 15:22:59] (5070) No include entries specified; assuming /home/huong
+2025-04-24 15:22:59.407 [info] [Info  - 15:22:59] (5070) Auto-excluding **/node_modules
+2025-04-24 15:22:59.408 [info] [Info  - 15:22:59] (5070) Auto-excluding **/__pycache__
+2025-04-24 15:22:59.409 [info] [Info  - 15:22:59] (5070) Auto-excluding **/.*
+2025-04-24 15:22:59.450 [info] [Info  - 15:22:59] (5070) Assuming Python version 3.12.3.final.0
+2025-04-24 15:22:59.971 [info] [Info  - 15:22:59] (5070) Found 24 source files
+2025-04-24 15:23:00.123 [info] [Info  - 15:23:00] (5070) Setting environmentName for service "huong": "3.12.3 (global)"
+2025-04-24 15:23:00.124 [info] [Info  - 15:23:00] (5070) Setting pythonPath for service "huong": "/usr/bin/python3"
+2025-04-24 15:23:00.126 [info] [Info  - 15:23:00] (5070) No include entries specified; assuming /home/huong
+2025-04-24 15:23:00.127 [info] [Info  - 15:23:00] (5070) Auto-excluding **/node_modules
+2025-04-24 15:23:00.128 [info] [Info  - 15:23:00] (5070) Auto-excluding **/__pycache__
+2025-04-24 15:23:00.128 [info] [Info  - 15:23:00] (5070) Auto-excluding **/.*
+2025-04-24 15:23:00.226 [info] [Info  - 15:23:00] (5070) Assuming Python version 3.12.3.final.0
+2025-04-24 15:23:00.661 [info] [Info  - 15:23:00] (5070) Found 24 source files
+2025-04-24 15:23:01.573 [info] [Info  - 15:23:01] (5070) BG: Priority queue background worker(2) root directory: file:///home/huong/.vscode-server/extensions/ms-python.vscode-pylance-2025.4.1/dist
+2025-04-24 15:23:01.573 [info] [Info  - 15:23:01] (5070) BG: Priority queue background worker(2) started
+2025-04-24 15:23:03.216 [info] [Info  - 15:23:03] (5070) BG: Indexer background runner(3) root directory: file:///home/huong/.vscode-server/extensions/ms-python.vscode-pylance-2025.4.1/dist (index)
+2025-04-24 15:23:03.217 [info] [Info  - 15:23:03] (5070) BG: Indexing(3) started
+2025-04-24 15:23:06.024 [info] [Info  - 15:23:06] (5070) BG: [IDX(3)] Long operation: scan packages file:///home/huong (2382ms)
+2025-04-24 15:23:06.024 [info] [Info  - 15:23:06] (5070) BG: scanned(3) 108 files over 1 exec env
+2025-04-24 15:23:07.211 [info] [Info  - 15:23:07] (5070) BG: indexed(3) 108 files over 1 exec env
+2025-04-24 15:23:07.374 [info] [Info  - 15:23:07] (5070) BG: Indexing finished(3).
+2025-04-24 15:23:08.657 [info] [Info  - 15:23:08] (5070) BG: [BG(1)] Long operation: checking: file:///home/huong/nhakhoaso/app.py (3574ms)
+2025-04-24 15:23:08.660 [info] [Info  - 15:23:08] (5070) BG: [BG(1)] Long operation: analyzing: file:///home/huong/nhakhoaso/app.py (3647ms)
+2025-04-24 15:29:02.043 [info] [Info  - 15:29:02] (5070) BG: [BG(1)] Long operation: checking: file:///home/huong/nhakhoaso/app.py (2095ms)
+2025-04-24 15:29:02.043 [info] [Info  - 15:29:02] (5070) BG: [BG(1)] Long operation: analyzing: file:///home/huong/nhakhoaso/app.py (2095ms)
+2025-04-24 15:50:43.375 [info] [Info  - 15:50:43] (5070) BG: [BG(1)] Long operation: checking: file:///home/huong/nhakhoaso/app.py (2999ms)
+2025-04-24 15:50:43.425 [info] [Info  - 15:50:43] (5070) BG: [BG(1)] Long operation: analyzing: file:///home/huong/nhakhoaso/app.py (3001ms)

@@ -1,0 +1,164 @@
+{% extends 'layout.html' %}
+
+{% block title %}Chỉnh sửa bệnh nhân - NHAKHOASO{% endblock %}
+
+{% block content %}
+<div class="section-title">
+    <h2>QUẢN LÝ BỆNH NHÂN</h2>
+</div>
+
+<!-- Flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+                <div class="flash-message {{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<div class="page-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-title">
+            <i class="fas fa-user-injured"></i> Quản lý bệnh nhân
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_benh_nhan') }}">
+                    <i class="fas fa-plus"></i> Thêm mới bệnh nhân
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('tim_kiem_benh_nhan') }}">
+                    <i class="fas fa-plus"></i> Tìm kiếm bệnh nhân
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('benh_nhan_list') }}">
+                    <i class="fas fa-plus"></i> Danh sách bệnh nhân
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-title">
+            <i class="fas fa-clipboard-list"></i> Quản lý bác sĩ
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="#">
+                    <i class="fas fa-plus"></i> Thêm mới bác sĩ
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-plus"></i> Tìm kiếm bác sĩ
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('bac_si') }}">
+                    <i class="fas fa-plus"></i> Danh sách bác sĩ
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-title">
+            <i class="fas fa-chart-line"></i> Quản lý phiếu khám
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="#">
+                    <i class="fas fa-plus"></i> Tạo phiếu khám
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-plus"></i> Tìm kiếm phiếu khám
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-plus"></i> Danh sách phiếu khám
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-title">
+            <i class="fas fa-calendar-check"></i> Quản lý lịch hẹn
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="#">
+                    <i class="fas fa-plus"></i> Đặt lịch hẹn
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-plus"></i> Tìm kiếm lịch hẹn
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-plus"></i> Danh sách lịch hẹn
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <div class="content-header">
+            <h2>Chỉnh sửa thông tin bệnh nhân</h2>
+        </div>
+
+        <form action="{{ url_for('chinh_sua_benh_nhan', ma_bn=benh_nhan.MaBN) }}" method="POST">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="ma_benh_nhan">Mã Bệnh Nhân</label>
+                    <input type="text" id="ma_benh_nhan" name="ma_benh_nhan" class="form-control" value="{{ benh_nhan.MaBN }}" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="ho_ten">Họ và tên <span class="required">*</span></label>
+                    <input type="text" id="ho_ten" name="ho_ten" class="form-control" value="{{ benh_nhan.HoTen }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="so_dien_thoai">Số điện thoại <span class="required">*</span></label>
+                    <input type="tel" id="so_dien_thoai" name="so_dien_thoai" class="form-control" value="{{ benh_nhan.Sdt }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gioi_tinh">Giới tính</label>
+                    <select id="gioi_tinh" name="gioi_tinh" class="form-control">
+                        <option value="">-- Chọn giới tính --</option>
+                        <option value="Nam" {% if benh_nhan.GioiTinh == 'Nam' %}selected{% endif %}>Nam</option>
+                        <option value="Nữ" {% if benh_nhan.GioiTinh == 'Nữ' %}selected{% endif %}>Nữ</option>
+                        <option value="Khác" {% if benh_nhan.GioiTinh == 'Khác' %}selected{% endif %}>Khác</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="ngay_sinh">Ngày sinh</label>
+                    <input type="date" id="ngay_sinh" name="ngay_sinh" class="form-control" value="{{ benh_nhan.NgaySinh.strftime('%Y-%m-%d') if benh_nhan.NgaySinh else '' }}">
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-save">Lưu thay đổi</button>
+                <div class="action-icons">
+                    <a href="{{ url_for('chi_tiet_benh_nhan', ma_bn=benh_nhan.MaBN) }}" class="action-icon" title="Quay lại">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                    <a href="{{ url_for('benh_nhan_list') }}" class="action-icon" title="Về danh sách">
+                        <i class="fas fa-list"></i>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

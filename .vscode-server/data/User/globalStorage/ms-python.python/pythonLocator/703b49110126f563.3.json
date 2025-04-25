@@ -1,0 +1,14 @@
+{
+  "environment": {
+    "executable": "/home/huong/venv/bin/python",
+    "prefix": "/home/huong/venv",
+    "version": "3.12.3.final.0",
+    "is64Bit": true,
+    "symlinks": [
+      "/home/huong/venv/bin/python",
+      "/home/huong/venv/bin/python3",
+      "/home/huong/venv/bin/python3.12"
+    ]
+  },
+  "symlinks": []
+}

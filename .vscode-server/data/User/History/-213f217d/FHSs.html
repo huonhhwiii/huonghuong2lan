@@ -1,0 +1,338 @@
+{% extends 'layout.html' %}
+
+{% block title %}Chi tiết phiếu khám - NHAKHOASO{% endblock %}
+
+{% block content %}
+<div class="section-title">
+    <h2>QUẢN LÝ PHIẾU KHÁM</h2>
+</div>
+
+<!-- Flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+                <div class="flash-message {{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<div class="page-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-title">
+            <i class="fas fa-user-injured"></i> Quản lý bệnh nhân
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_benh_nhan') }}">
+                    <i class="fas fa-plus"></i> Thêm mới bệnh nhân
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('tim_kiem_benh_nhan') }}">
+                    <i class="fas fa-search"></i> Tìm kiếm bệnh nhân
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('benh_nhan_list') }}">
+                    <i class="fas fa-list"></i> Danh sách bệnh nhân
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-title">
+            <i class="fas fa-clipboard-list"></i> Quản lý bác sĩ
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_bac_si') }}">
+                    <i class="fas fa-plus"></i> Thêm mới bác sĩ
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('tim_kiem_bac_si') }}">
+                    <i class="fas fa-search"></i> Tìm kiếm bác sĩ
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('bac_si_page') }}">
+                    <i class="fas fa-list"></i> Danh sách bác sĩ
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-title">
+            <i class="fas fa-chart-line"></i> Quản lý phiếu khám
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_phieu_kham') }}">
+                    <i class="fas fa-plus"></i> Tạo phiếu khám
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('tim_kiem_phieu_kham') }}">
+                    <i class="fas fa-search"></i> Tìm kiếm phiếu khám
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('phieu_kham_list') }}">
+                    <i class="fas fa-list"></i> Danh sách phiếu khám
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-title">
+            <i class="fas fa-calendar-check"></i> Quản lý lịch hẹn
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="#">
+                    <i class="fas fa-plus"></i> Đặt lịch hẹn
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-search"></i> Tìm kiếm lịch hẹn
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-list"></i> Danh sách lịch hẹn
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <div class="content-header">
+            <h2>Chi tiết phiếu khám</h2>
+        </div>
+
+        <div class="detail-container">
+            <div class="detail-header">
+                <div class="detail-title">
+                    <h3>Phiếu khám #{{ phieu_kham.MaPK }}</h3>
+                    <span class="detail-date">Ngày khám: {{ phieu_kham.NgayKham }}</span>
+                </div>
+                <div class="detail-actions">
+                    <a href="{{ url_for('chinh_sua_phieu_kham', ma_pk=phieu_kham.MaPK) }}" class="btn btn-edit">
+                        <i class="fas fa-edit"></i> Chỉnh sửa
+                    </a>
+                    <a href="#" class="btn btn-delete" onclick="deletePhieuKham('{{ phieu_kham.MaPK }}')">
+                        <i class="fas fa-trash"></i> Xóa
+                    </a>
+                </div>
+            </div>
+
+            <div class="detail-content">
+                <div class="detail-section">
+                    <h4>Thông tin phiếu khám</h4>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <span class="detail-label">Mã phiếu khám:</span>
+                            <span class="detail-value">{{ phieu_kham.MaPK }}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Ngày khám:</span>
+                            <span class="detail-value">{{ phieu_kham.NgayKham }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h4>Thông tin liên kết</h4>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <span class="detail-label">Mã bệnh nhân:</span>
+                            <span class="detail-value">{{ phieu_kham.MaBN }}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Mã bác sĩ:</span>
+                            <span class="detail-value">{{ phieu_kham.MaBS }}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Mã dịch vụ:</span>
+                            <span class="detail-value">{{ phieu_kham.MaDV }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h4>Chẩn đoán và ghi chú</h4>
+                    <div class="detail-grid full-width">
+                        <div class="detail-item">
+                            <span class="detail-label">Chẩn đoán:</span>
+                            <span class="detail-value">{{ phieu_kham.ChanDoan or 'Chưa có chẩn đoán' }}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Ghi chú:</span>
+                            <span class="detail-value">{{ phieu_kham.GhiChu or 'Không có ghi chú' }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-footer">
+                <a href="{{ url_for('phieu_kham_list') }}" class="btn btn-back">
+                    <i class="fas fa-arrow-left"></i> Quay lại danh sách
+                </a>
+                <a href="{{ url_for('them_moi_phieu_kham') }}" class="btn btn-add">
+                    <i class="fas fa-plus"></i> Tạo phiếu khám mới
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .detail-container {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+    
+    .detail-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 1px solid var(--border-color);
+        background-color: var(--secondary-color);
+    }
+    
+    .detail-title h3 {
+        margin: 0;
+        color: var(--primary-color);
+        font-size: 20px;
+    }
+    
+    .detail-date {
+        color: #666;
+        font-size: 14px;
+    }
+    
+    .detail-actions {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .detail-content {
+        padding: 20px;
+    }
+    
+    .detail-section {
+        margin-bottom: 25px;
+    }
+    
+    .detail-section h4 {
+        margin: 0 0 15px 0;
+        color: var(--text-color);
+        font-size: 16px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 8px;
+    }
+    
+    .detail-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .detail-grid.full-width {
+        grid-template-columns: 1fr;
+    }
+    
+    .detail-item {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .detail-label {
+        font-weight: bold;
+        color: #666;
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+    
+    .detail-value {
+        color: var(--text-color);
+    }
+    
+    .detail-footer {
+        padding: 20px;
+        border-top: 1px solid var(--border-color);
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 16px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+    
+    .btn i {
+        margin-right: 8px;
+    }
+    
+    .btn-edit {
+        background-color: #4caf50;
+        color: white;
+    }
+    
+    .btn-delete {
+        background-color: #f44336;
+        color: white;
+    }
+    
+    .btn-back {
+        background-color: #607d8b;
+        color: white;
+    }
+    
+    .btn-add {
+        background-color: var(--primary-color);
+        color: white;
+    }
+</style>
+
+{% block extra_js %}
+<script>
+    // Hàm xóa phiếu khám
+    function deletePhieuKham(maPK) {
+        if (confirm('Bạn có chắc chắn muốn xóa phiếu khám này?')) {
+            // Gọi API xóa phiếu khám
+            fetch(`/api/phieu-kham/${maPK}`, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Xóa phiếu khám thành công!');
+                    window.location.href = "{{ url_for('phieu_kham_list') }}";
+                } else {
+                    alert('Lỗi: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Đã xảy ra lỗi khi xóa phiếu khám');
+            });
+        }
+    }
+</script>
+{% endblock %}
+
+{% endblock %}

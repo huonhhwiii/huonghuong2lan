@@ -1,0 +1,27 @@
+2025-04-24 15:22:55.562 [info] Experiment 'pythonaa' is active
+2025-04-24 15:22:55.562 [info] Experiment 'pythonRecommendTensorboardExt' is active
+2025-04-24 15:22:55.562 [info] Experiment 'pythonTerminalEnvVarActivation' is active
+2025-04-24 15:22:55.562 [info] Native locator: Refresh started
+2025-04-24 15:22:55.562 [info] Native locator: Refresh started
+2025-04-24 15:22:55.594 [info] > pyenv which python
+2025-04-24 15:22:55.594 [info] cwd: .
+2025-04-24 15:22:55.808 [info] Python interpreter path: /bin/python3
+2025-04-24 15:22:59.234 [info] Starting Pylance language server.
+2025-04-24 15:22:59.386 [info] Native locator: Refresh finished in 6273 ms
+2025-04-24 15:28:59.257 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/database/dich_vu.py
+2025-04-24 15:29:00.041 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/app.py
+2025-04-24 15:29:01.989 [info] Python interpreter path: /usr/bin/python3
+2025-04-24 15:42:55.136 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/app.py
+2025-04-24 15:42:56.694 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/database/dich_vu.py
+2025-04-24 15:50:38.526 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/app.py
+2025-04-24 15:50:40.742 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/database/dich_vu.py
+2025-04-24 15:56:15.484 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/app.py
+2025-04-24 15:57:14.092 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/__init__.py
+2025-04-24 15:58:14.204 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/app.py
+2025-04-24 16:01:11.227 [info] Discover tests for workspace name: huong - uri: /home/huong/__init__.py
+2025-04-24 17:06:23.140 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/app.py
+2025-04-24 17:09:41.446 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/app.py
+2025-04-24 17:19:49.296 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/app.py
+2025-04-24 17:37:35.501 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/app.py
+2025-04-24 17:37:37.359 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/database/phieu_kham.py
+2025-04-24 17:43:16.978 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/database/phieu_kham.py

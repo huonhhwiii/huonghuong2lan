@@ -1,0 +1,13 @@
+2025-04-25 12:49:06.934 [info] 
+
+
+
+
+2025-04-25 12:49:06.984 [info] Extension host agent started.
+2025-04-25 12:49:07.444 [info] [127.0.0.1][018b85af][ManagementConnection] New connection established.
+2025-04-25 12:49:08.074 [info] [127.0.0.1][fa60473d][ExtensionHostConnection] New connection established.
+2025-04-25 12:49:08.202 [info] [127.0.0.1][fa60473d][ExtensionHostConnection] <637> Launched Extension Host Process.
+2025-04-25 12:49:22.612 [error] [File Watcher] Unexpected error: inotify_add_watch on '/home/huong/.vscode-server/data/logs/20250422T093235/exthost1/ms-python.python' failed: No such file or directory (EUNKNOWN) (path: /home/huong)
+2025-04-25 12:49:22.613 [error] [File Watcher (universal)] inotify_add_watch on '/home/huong/.vscode-server/data/logs/20250422T093235/exthost1/ms-python.python' failed: No such file or directory
+2025-04-25 13:02:33.077 [info] [127.0.0.1][018b85af][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+2025-04-25 13:02:33.470 [info] [127.0.0.1][fa60473d][ExtensionHostConnection] <637> Extension Host Process exited with code: 0, signal: null.

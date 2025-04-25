@@ -1,0 +1,218 @@
+{% extends 'layout.html' %}
+
+{% block title %}Danh sách hóa đơn - NHAKHOASO{% endblock %}
+
+{% block content %}
+<div class="section-title">
+    <h2>QUẢN LÝ THANH TOÁN</h2>
+</div>
+
+<!-- Flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+                <div class="flash-message {{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<div class="page-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-title">
+            <i class="fas fa-file-invoice-dollar"></i> Quản lý thanh toán
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_hoa_don') }}">
+                    <i class="fas fa-plus"></i> Tạo hóa đơn
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('tim_kiem_hoa_don') }}">
+                    <i class="fas fa-search"></i> Tìm kiếm hóa đơn
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('hoa_don_list') }}" class="active">
+                    <i class="fas fa-list"></i> Danh sách hóa đơn
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-title">
+            <i class="fas fa-user-injured"></i> Quản lý bệnh nhân
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_benh_nhan') }}">
+                    <i class="fas fa-plus"></i> Thêm mới bệnh nhân
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('tim_kiem_benh_nhan') }}">
+                    <i class="fas fa-search"></i> Tìm kiếm bệnh nhân
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('benh_nhan_list') }}">
+                    <i class="fas fa-list"></i> Danh sách bệnh nhân
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-title">
+            <a href="{{ url_for('phieu_kham_list') }}" style="text-decoration: none; color: inherit;">
+                <i class="fas fa-chart-line"></i> Quản lý phiếu khám
+            </a>
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_phieu_kham') }}">
+                    <i class="fas fa-plus"></i> Tạo phiếu khám
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('tim_kiem_phieu_kham') }}">
+                    <i class="fas fa-search"></i> Tìm kiếm phiếu khám
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('phieu_kham_list') }}">
+                    <i class="fas fa-list"></i> Danh sách phiếu khám
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <div class="content-header">
+            <h2>Danh sách hóa đơn</h2>
+        </div>
+        
+        <div class="module-actions">
+            <a href="{{ url_for('them_moi_hoa_don') }}" class="btn"><i class="fas fa-plus"></i> Tạo hóa đơn mới</a>
+            <div class="search-box">
+                <input type="text" placeholder="Tìm kiếm hóa đơn...">
+                <button class="btn" onclick="window.location.href='{{ url_for('tim_kiem_hoa_don') }}'"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+
+        <div class="module-content">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Mã hóa đơn</th>
+                        <th>Mã phiếu khám</th>
+                        <th>Bệnh nhân</th>
+                        <th>Ngày lập</th>
+                        <th>Tổng tiền</th>
+                        <th>Phương thức thanh toán</th>
+                        <th>Trạng thái</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if hoa_don_list %}
+                        {% for hd in hoa_don_list %}
+                            <tr id="hoa-don-{{ hd.MaHD }}">
+                                <td>{{ hd.MaHD }}</td>
+                                <td>{{ hd.MaPK }}</td>
+                                <td>{{ hd.TenBenhNhan }}</td>
+                                <td>{{ hd.NgayLap }}</td>
+                                <td>{{ "{:,.0f}".format(hd.TongTien) }} VNĐ</td>
+                                <td>{{ hd.PhuongThucThanhToan }}</td>
+                                <td>{{ hd.TrangThai }}</td>
+                                <td>
+                                    <a 
+                                        href="{{ url_for('chi_tiet_hoa_don', ma_hd=hd.MaHD) }}" 
+                                        class="action-btn view-btn" 
+                                        title="Xem chi tiết">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a 
+                                        href="#" 
+                                        class="action-btn delete-btn" 
+                                        title="Xóa" 
+                                        onclick="deleteInvoice('{{ hd.MaHD }}')">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="8" class="text-center">
+                                <div class="no-data">
+                                    <i class="fas fa-database"></i>
+                                    <p>Chưa có dữ liệu hóa đơn</p>
+                                    <a href="{{ url_for('them_moi_hoa_don') }}" class="btn">
+                                        <i class="fas fa-plus"></i> Tạo hóa đơn mới
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination">
+            <a href="#" class="page-link">&laquo;</a>
+            <a href="#" class="page-link active">1</a>
+            <a href="#" class="page-link">2</a>
+            <a href="#" class="page-link">3</a>
+            <a href="#" class="page-link">&raquo;</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Hàm xóa hóa đơn
+    function deleteInvoice(maHD) {
+        if (confirm('Bạn có chắc chắn muốn xóa hóa đơn này?')) {
+            // Gọi API xóa hóa đơn
+            fetch(`/api/hoa-don/${maHD}`, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Xóa dòng khỏi bảng
+                    document.getElementById(`hoa-don-${maHD}`).remove();
+                    alert('Xóa hóa đơn thành công!');
+                    
+                    // Kiểm tra nếu không còn hóa đơn nào, hiển thị thông báo
+                    const tbody = document.querySelector('.data-table tbody');
+                    if (tbody.children.length === 0) {
+                        tbody.innerHTML = `
+                        <tr>
+                            <td colspan="8" class="text-center">
+                                <div class="no-data">
+                                    <i class="fas fa-database"></i>
+                                    <p>Chưa có dữ liệu hóa đơn</p>
+                                    <a href="{{ url_for('them_moi_hoa_don') }}" class="btn">
+                                        <i class="fas fa-plus"></i> Tạo hóa đơn mới
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        `;
+                    }
+                } else {
+                    alert('Lỗi: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Đã xảy ra lỗi khi xóa hóa đơn');
+            });
+        }
+    }
+</script>
+{% endblock %}

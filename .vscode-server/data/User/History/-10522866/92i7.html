@@ -1,0 +1,283 @@
+{% extends 'layout.html' %}
+
+{% block title %}Thêm mới bệnh nhân - NHAKHOASO{% endblock %}
+
+{% block extra_css %}
+<style>
+    .patient-management {
+        display: flex;
+        gap: 30px;
+        margin-top: 20px;
+    }
+
+    /* Sidebar styles */
+    .sidebar {
+        width: 250px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+
+    .sidebar-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar-menu li {
+        margin-bottom: 10px;
+    }
+
+    .sidebar-menu a {
+        display: flex;
+        align-items: center;
+        padding: 12px 15px;
+        border-radius: 5px;
+        color: var(--text-color);
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+    .sidebar-menu a:hover {
+        background-color: var(--secondary-color);
+    }
+
+    .sidebar-menu a.active {
+        background-color: white;
+        color: var(--primary-color);
+        font-weight: 500;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar-menu i {
+        margin-right: 10px;
+        width: 20px;
+        text-align: center;
+    }
+
+    /* Main content styles */
+    .main-content {
+        flex: 1;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+    }
+
+    .content-header {
+        margin-bottom: 30px;
+    }
+
+    .content-header h2 {
+        font-size: 24px;
+        color: var(--text-color);
+        margin: 0 0 10px 0;
+    }
+
+    /* Form styles */
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: var(--text-color);
+    }
+
+    .form-group label .required {
+        color: #dc3545;
+        margin-left: 3px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        font-size: 14px;
+        transition: border-color 0.3s;
+    }
+
+    .form-control:focus {
+        border-color: var(--primary-color);
+        outline: none;
+    }
+
+    .form-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+    .btn-save {
+        padding: 12px 24px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .btn-save:hover {
+        background-color: var(--hover-color);
+    }
+
+    .action-icons {
+        display: flex;
+        gap: 15px;
+    }
+
+    .action-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--secondary-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+    .action-icon:hover {
+        background-color: var(--border-color);
+    }
+
+    /* Flash messages */
+    .flash-messages {
+        margin-bottom: 20px;
+    }
+
+    .flash-message {
+        padding: 12px 15px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .flash-message.success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+
+    .flash-message.error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="section-title">
+    <h2>QUẢN LÝ BỆNH NHÂN</h2>
+</div>
+
+<!-- Flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+                <div class="flash-message {{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<div class="patient-management">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_benh_nhan') }}" class="active">
+                    <i class="fas fa-plus"></i> Thêm mới bệnh nhân
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-search"></i> Tìm kiếm bệnh nhân
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('benh_nhan') }}">
+                    <i class="fas fa-list"></i> Danh sách bệnh nhân
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <div class="content-header">
+            <h2>Thêm mới bệnh nhân</h2>
+        </div>
+
+        <form action="{{ url_for('them_moi_benh_nhan') }}" method="POST">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="ma_benh_nhan">Mã Bệnh Nhân <span class="required">*</span></label>
+                    <input type="text" id="ma_benh_nhan" name="ma_benh_nhan" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ho_ten">Họ và tên <span class="required">*</span></label>
+                    <input type="text" id="ho_ten" name="ho_ten" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="so_dien_thoai">Số điện thoại <span class="required">*</span></label>
+                    <input type="tel" id="so_dien_thoai" name="so_dien_thoai" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gioi_tinh">Giới tính</label>
+                    <select id="gioi_tinh" name="gioi_tinh" class="form-control">
+                        <option value="">-- Chọn giới tính --</option>
+                        <option value="Nam">Nam</option>
+                        <option value="Nữ">Nữ</option>
+                        <option value="Khác">Khác</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="ngay_sinh">Ngày sinh</label>
+                    <input type="date" id="ngay_sinh" name="ngay_sinh" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="dia_chi">Địa chỉ</label>
+                    <input type="text" id="dia_chi" name="dia_chi" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-save">Lưu thông tin</button>
+                <div class="action-icons">
+                    <a href="{{ url_for('them_moi_benh_nhan') }}" class="action-icon" title="Làm mới">
+                        <i class="fas fa-sync-alt"></i>
+                    </a>
+                    <a href="{{ url_for('index') }}" class="action-icon" title="Về trang chủ">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

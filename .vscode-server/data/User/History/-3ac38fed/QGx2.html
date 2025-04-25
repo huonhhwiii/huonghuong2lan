@@ -1,0 +1,25 @@
+<!-- ... (phần đầu giữ nguyên) ... -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}">Trang chủ</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                        Quản lý hồ sơ
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ url_for('them_moi_benh_nhan') }}">Thêm mới bệnh nhân</a></li>
+                        <li><a class="dropdown-item" href="#">Tìm kiếm bệnh nhân</a></li>
+                        <li><a class="dropdown-item" href="#">Sửa thông tin bệnh nhân</a></li>
+                        <li><a class="dropdown-item" href="#">Danh sách bệnh nhân</a></li>
+                        <li><a class="dropdown-item" href="#">Xóa bệnh nhân</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- ... (phần sau giữ nguyên) ... -->

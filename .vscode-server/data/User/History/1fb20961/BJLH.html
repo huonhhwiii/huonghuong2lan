@@ -1,0 +1,183 @@
+{% extends 'layout.html' %}
+
+{% block title %}Quản lý bệnh nhân - NHAKHOASO{% endblock %}
+
+{% block content %}
+<div class="section-title">
+    <h2>QUẢN LÝ BỆNH NHÂN</h2>
+</div>
+
+<div class="module-container">
+    <div class="module-actions">
+        <a href="#" class="btn"><i class="fas fa-plus"></i> Thêm bệnh nhân mới</a>
+        <div class="search-box">
+            <input type="text" placeholder="Tìm kiếm bệnh nhân...">
+            <button class="btn"><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+
+    <div class="module-content">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Mã BN</th>
+                    <th>Họ và tên</th>
+                    <th>Ngày sinh</th>
+                    <th>Giới tính</th>
+                    <th>Số điện thoại</th>
+                    <th>Địa chỉ</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>BN001</td>
+                    <td>Nguyễn Văn A</td>
+                    <td>01/01/1990</td>
+                    <td>Nam</td>
+                    <td>0901234567</td>
+                    <td>123 Đường ABC, Quận 1, TP.HCM</td>
+                    <td>
+                        <a href="#" class="action-btn view-btn" title="Xem chi tiết"><i class="fas fa-eye"></i></a>
+                        <a href="#" class="action-btn edit-btn" title="Chỉnh sửa"><i class="fas fa-edit"></i></a>
+                        <a href="#" class="action-btn delete-btn" title="Xóa"><i class="fas fa-trash"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>BN002</td>
+                    <td>Trần Thị B</td>
+                    <td>15/05/1985</td>
+                    <td>Nữ</td>
+                    <td>0909876543</td>
+                    <td>456 Đường XYZ, Quận 2, TP.HCM</td>
+                    <td>
+                        <a href="#" class="action-btn view-btn" title="Xem chi tiết"><i class="fas fa-eye"></i></a>
+                        <a href="#" class="action-btn edit-btn" title="Chỉnh sửa"><i class="fas fa-edit"></i></a>
+                        <a href="#" class="action-btn delete-btn" title="Xóa"><i class="fas fa-trash"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>BN003</td>
+                    <td>Lê Văn C</td>
+                    <td>22/12/1995</td>
+                    <td>Nam</td>
+                    <td>0912345678</td>
+                    <td>789 Đường DEF, Quận 3, TP.HCM</td>
+                    <td>
+                        <a href="#" class="action-btn view-btn" title="Xem chi tiết"><i class="fas fa-eye"></i></a>
+                        <a href="#" class="action-btn edit-btn" title="Chỉnh sửa"><i class="fas fa-edit"></i></a>
+                        <a href="#" class="action-btn delete-btn" title="Xóa"><i class="fas fa-trash"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pagination">
+        <a href="#" class="page-link">&laquo;</a>
+        <a href="#" class="page-link active">1</a>
+        <a href="#" class="page-link">2</a>
+        <a href="#" class="page-link">3</a>
+        <a href="#" class="page-link">&raquo;</a>
+    </div>
+</div>
+
+<style>
+    .module-container {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+
+    .module-actions {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .search-box {
+        display: flex;
+    }
+
+    .search-box input {
+        padding: 10px;
+        border: 1px solid var(--border-color);
+        border-radius: 5px 0 0 5px;
+        width: 250px;
+    }
+
+    .search-box button {
+        border-radius: 0 5px 5px 0;
+    }
+
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .data-table th, .data-table td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .data-table th {
+        background-color: var(--secondary-color);
+        font-weight: 600;
+    }
+
+    .data-table tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    .action-btn {
+        display: inline-block;
+        padding: 5px;
+        margin: 0 3px;
+        color: var(--primary-color);
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .view-btn:hover {
+        color: #17a2b8;
+    }
+
+    .edit-btn:hover {
+        color: #ffc107;
+    }
+
+    .delete-btn:hover {
+        color: #dc3545;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .page-link {
+        display: inline-block;
+        padding: 8px 12px;
+        margin: 0 5px;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+
+    .page-link.active {
+        background-color: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+    }
+
+    .page-link:hover:not(.active) {
+        background-color: var(--secondary-color);
+    }
+</style>
+{% endblock %}

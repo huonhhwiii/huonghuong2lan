@@ -1,0 +1,79 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="section-title">
+    <h2>SERVICES</h2>
+</div>
+
+<div class="services-grid">
+    <!-- Quản lý bệnh nhân -->
+    <div class="service-card" data-link="{{ url_for('benh_nhan_list') }}">
+        <div class="service-icon">
+            <i class="fas fa-user-injured"></i>
+        </div>
+        <h3 class="service-title">Quản lý bệnh nhân</h3>
+        <p class="service-description">Theo dõi thông tin cá nhân, lịch sử điều trị, hồ sơ bệnh án của bệnh nhân.</p>
+        <a href="{{ url_for('benh_nhan_list') }}" class="btn">Xem chi tiết</a>
+    </div>
+
+    <!-- Quản lý bác sĩ -->
+    <div class="service-card" data-link="{{ url_for('bac_si_page') }}">
+        <div class="service-icon">
+            <i class="fas fa-clipboard-list"></i>
+        </div>
+        <h3 class="service-title">Quản lý bác sĩ</h3>
+        <p class="service-description">Quản lý thông tin cá nhân, lịch làm việc và chuyên môn của các bác sĩ.</p>
+        <a href="{{ url_for('bac_si_page') }}" class="btn">Xem chi tiết</a>
+    </div>
+
+    <!-- Quản lý phiếu khám -->
+    <div class="service-card" data-link="{{ url_for('phieu_kham') }}">
+        <div class="service-icon">
+            <i class="fas fa-chart-line"></i>
+        </div>
+        <h3 class="service-title">Quản lý phiếu khám</h3>
+        <p class="service-description">Tạo và quản lý phiếu khám, lưu trữ nội dung khám bệnh.</p>
+        <a href="{{ url_for('phieu_kham') }}" class="btn">Xem chi tiết</a>
+    </div>
+
+    <!-- Quản lý lịch hẹn -->
+    <div class="service-card" data-link="{{ url_for('lich_hen') }}">
+        <div class="service-icon">
+            <i class="fas fa-calendar-check"></i>
+        </div>
+        <h3 class="service-title">Quản lý lịch hẹn</h3>
+        <p class="service-description">Đặt lịch hẹn khám, nhắc lịch, điều phối thời gian giữa bệnh nhân và bác sĩ.</p>
+        <a href="{{ url_for('lich_hen') }}" class="btn">Xem chi tiết</a>
+    </div>
+
+    <!-- Quản lý dịch vụ -->
+    <div class="service-card" data-link="{{ url_for('dich_vu') }}">
+        <div class="service-icon">
+            <i class="fas fa-hand-holding-heart"></i>
+        </div>
+        <h3 class="service-title">Quản lý dịch vụ</h3>
+        <p class="service-description">Quản lý các loại dịch vụ nha khoa như nhổ răng, trám răng, tẩy trắng...</p>
+        <a href="{{ url_for('dich_vu') }}" class="btn">Xem chi tiết</a>
+    </div>
+
+    <!-- Quản lý thanh toán -->
+    <div class="service-card" data-link="{{ url_for('thanh_toan') }}">
+        <div class="service-icon">
+            <i class="fas fa-sync-alt"></i>
+        </div>
+        <h3 class="service-title">Quản lý thanh toán</h3>
+        <p class="service-description">Quản lý hóa đơn, thanh toán, báo giá dịch vụ.</p>
+        <a href="{{ url_for('thanh_toan') }}" class="btn">Xem chi tiết</a>
+    </div>
+
+    <!-- Báo cáo và thống kê -->
+    <div class="service-card" data-link="{{ url_for('bao_cao') }}">
+        <div class="service-icon">
+            <i class="fas fa-hospital"></i>
+        </div>
+        <h3 class="service-title">Báo cáo và thống kê</h3>
+        <p class="service-description">Tổng hợp báo cáo hoạt động, thống kê lượt khám, doanh thu...</p>
+        <a href="{{ url_for('bao_cao') }}" class="btn">Xem chi tiết</a>
+    </div>
+</div>
+{% endblock %}

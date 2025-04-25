@@ -1,0 +1,3267 @@
+2025-04-24 10:03:26.194 [error] MCP: Error dispatching message: {}
+2025-04-24 10:04:04.623 [error] MCP: Error dispatching message: {}
+2025-04-24 10:04:52.477 [error] MCP: Error dispatching message: {}
+2025-04-24 10:07:09.017 [error] MCP: Error dispatching message: {}
+2025-04-24 10:14:19.824 [error] MCP: Error dispatching message: {}
+2025-04-24 10:15:14.530 [info] [error] {
+  "name": "Error"
+} [
+  {
+    "type": "Error",
+    "value": "MCP: Error dispatching message: {}",
+    "stacktrace": {
+      "frames": [
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x507dd5.withScope",
+          "lineno": 1,
+          "colno": 2555882,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2557518,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2727968,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2725918,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2728354,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4b6ef6.<computed> [as handleCallbackErrors]",
+          "lineno": 1,
+          "colno": 2845898,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x3811ef.<computed>._0x1048d",
+          "lineno": 1,
+          "colno": 2728359,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 5084083,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x561e56.execute",
+          "lineno": 1,
+          "colno": 5077140,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2c9859.startSpan",
+          "lineno": 8,
+          "colno": 264813,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xdb4d12.<computed> [as startSpan]",
+          "lineno": 1,
+          "colno": 2727914,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2034a1.<computed> [as withScope]",
+          "lineno": 1,
+          "colno": 2578915,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "Object._0x523236 [as withSetScope]",
+          "lineno": 1,
+          "colno": 2557462,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x507dd5.withScope",
+          "lineno": 1,
+          "colno": 2555882,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2557518,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2727968,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2725918,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2728354,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4b6ef6.<computed> [as handleCallbackErrors]",
+          "lineno": 1,
+          "colno": 2845898,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x3811ef.<computed>._0x1048d",
+          "lineno": 1,
+          "colno": 2728359,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 5077302,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x250763",
+          "lineno": 51,
+          "colno": 1626575,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "<anonymous>",
+          "module": "<anonymous>",
+          "function": "new Promise",
+          "in_app": false
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 51,
+          "colno": 1626608,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x321eb1",
+          "lineno": 51,
+          "colno": 1627410,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xa4c622",
+          "lineno": 51,
+          "colno": 1614980,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 51,
+          "colno": 1614049,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4991b0",
+          "lineno": 51,
+          "colno": 1617741,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x130b52",
+          "lineno": 51,
+          "colno": 1618560,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "Object.mcp",
+          "lineno": 1,
+          "colno": 5079232,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x550e1d.dispatch",
+          "lineno": 8,
+          "colno": 283315,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xbdfc15.<computed>.<computed> [as error]",
+          "lineno": 51,
+          "colno": 379010,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x58fab7.<computed> [as write]",
+          "lineno": 1,
+          "colno": 4604067,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 4603973,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2c4f94",
+          "lineno": 1,
+          "colno": 4597109,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4d8b6f.<computed> [as _write]",
+          "lineno": 1,
+          "colno": 4591196,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4d8b6f.<computed>.<computed> [as _read]",
+          "lineno": 1,
+          "colno": 4591510,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xbdfc15._transform",
+          "lineno": 51,
+          "colno": 389381,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4d8b6f.push",
+          "lineno": 1,
+          "colno": 4590543,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2d53f6.<computed> [as push]",
+          "lineno": 1,
+          "colno": 4569399,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x1fdaca",
+          "lineno": 1,
+          "colno": 4567595,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x543691",
+          "lineno": 1,
+          "colno": 4568107,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "node:events",
+          "module": "node:events",
+          "function": "_0xbdfc15.emit",
+          "lineno": 530,
+          "colno": 35,
+          "in_app": false
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xbdfc15._0x5a6d7b",
+          "lineno": 1,
+          "colno": 4579899,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x58fab7.<computed> [as write]",
+          "lineno": 1,
+          "colno": 4604067,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 4603973,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2c4f94",
+          "lineno": 1,
+          "colno": 4597109,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x1fa1aa.<computed>.<computed> [as _write]",
+          "lineno": 51,
+          "colno": 370614,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x3a601b.log",
+          "lineno": 8,
+          "colno": 260865,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x201a45.<computed>",
+          "lineno": 8,
+          "colno": 254723,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        }
+      ]
+    },
+    "mechanism": {
+      "type": "generic",
+      "handled": true
+    }
+  }
+]
+2025-04-24 10:15:14.530 [error] MCP: Error dispatching message: {}
+2025-04-24 10:16:39.929 [error] MCP: Error dispatching message: {}
+2025-04-24 10:23:00.755 [error] MCP: Error dispatching message: {}
+2025-04-24 10:26:22.111 [error] MCP: Error dispatching message: {}
+2025-04-24 10:26:36.368 [info] [error] {
+  "name": "Error"
+} [
+  {
+    "type": "Error",
+    "value": "MCP: Error dispatching message: {}",
+    "stacktrace": {
+      "frames": [
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x507dd5.withScope",
+          "lineno": 1,
+          "colno": 2555882,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2557518,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2727968,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2725918,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2728354,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4b6ef6.<computed> [as handleCallbackErrors]",
+          "lineno": 1,
+          "colno": 2845898,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x3811ef.<computed>._0x1048d",
+          "lineno": 1,
+          "colno": 2728359,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 5084083,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x561e56.execute",
+          "lineno": 1,
+          "colno": 5077140,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2c9859.startSpan",
+          "lineno": 8,
+          "colno": 264813,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xdb4d12.<computed> [as startSpan]",
+          "lineno": 1,
+          "colno": 2727914,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2034a1.<computed> [as withScope]",
+          "lineno": 1,
+          "colno": 2578915,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "Object._0x523236 [as withSetScope]",
+          "lineno": 1,
+          "colno": 2557462,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x507dd5.withScope",
+          "lineno": 1,
+          "colno": 2555882,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2557518,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2727968,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2725918,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2728354,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4b6ef6.<computed> [as handleCallbackErrors]",
+          "lineno": 1,
+          "colno": 2845898,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x3811ef.<computed>._0x1048d",
+          "lineno": 1,
+          "colno": 2728359,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 5077302,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x250763",
+          "lineno": 51,
+          "colno": 1626575,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "<anonymous>",
+          "module": "<anonymous>",
+          "function": "new Promise",
+          "in_app": false
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 51,
+          "colno": 1626608,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x321eb1",
+          "lineno": 51,
+          "colno": 1627410,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xa4c622",
+          "lineno": 51,
+          "colno": 1614980,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 51,
+          "colno": 1614049,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4991b0",
+          "lineno": 51,
+          "colno": 1617741,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x130b52",
+          "lineno": 51,
+          "colno": 1618560,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "Object.mcp",
+          "lineno": 1,
+          "colno": 5079232,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x550e1d.dispatch",
+          "lineno": 8,
+          "colno": 283315,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xbdfc15.<computed>.<computed> [as error]",
+          "lineno": 51,
+          "colno": 379010,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x58fab7.<computed> [as write]",
+          "lineno": 1,
+          "colno": 4604067,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 4603973,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2c4f94",
+          "lineno": 1,
+          "colno": 4597109,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4d8b6f.<computed> [as _write]",
+          "lineno": 1,
+          "colno": 4591196,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4d8b6f.<computed>.<computed> [as _read]",
+          "lineno": 1,
+          "colno": 4591510,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xbdfc15._transform",
+          "lineno": 51,
+          "colno": 389381,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4d8b6f.push",
+          "lineno": 1,
+          "colno": 4590543,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2d53f6.<computed> [as push]",
+          "lineno": 1,
+          "colno": 4569399,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x1fdaca",
+          "lineno": 1,
+          "colno": 4567595,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x543691",
+          "lineno": 1,
+          "colno": 4568107,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "node:events",
+          "module": "node:events",
+          "function": "_0xbdfc15.emit",
+          "lineno": 530,
+          "colno": 35,
+          "in_app": false
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xbdfc15._0x5a6d7b",
+          "lineno": 1,
+          "colno": 4579899,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x58fab7.<computed> [as write]",
+          "lineno": 1,
+          "colno": 4604067,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 4603973,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2c4f94",
+          "lineno": 1,
+          "colno": 4597109,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x1fa1aa.<computed>.<computed> [as _write]",
+          "lineno": 51,
+          "colno": 370614,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x3a601b.log",
+          "lineno": 8,
+          "colno": 260865,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x201a45.<computed>",
+          "lineno": 8,
+          "colno": 254723,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        }
+      ]
+    },
+    "mechanism": {
+      "type": "generic",
+      "handled": true
+    }
+  }
+]
+2025-04-24 10:26:36.368 [error] MCP: Error dispatching message: {}
+2025-04-24 10:26:48.644 [info] [error] {
+  "name": "Error"
+} [
+  {
+    "type": "Error",
+    "value": "MCP: Error dispatching message: {}",
+    "stacktrace": {
+      "frames": [
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x507dd5.withScope",
+          "lineno": 1,
+          "colno": 2555882,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2557518,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2727968,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2725918,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2728354,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4b6ef6.<computed> [as handleCallbackErrors]",
+          "lineno": 1,
+          "colno": 2845898,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x3811ef.<computed>._0x1048d",
+          "lineno": 1,
+          "colno": 2728359,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 5084083,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x561e56.execute",
+          "lineno": 1,
+          "colno": 5077140,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2c9859.startSpan",
+          "lineno": 8,
+          "colno": 264813,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xdb4d12.<computed> [as startSpan]",
+          "lineno": 1,
+          "colno": 2727914,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2034a1.<computed> [as withScope]",
+          "lineno": 1,
+          "colno": 2578915,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "Object._0x523236 [as withSetScope]",
+          "lineno": 1,
+          "colno": 2557462,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x507dd5.withScope",
+          "lineno": 1,
+          "colno": 2555882,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2557518,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2727968,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2725918,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2728354,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4b6ef6.<computed> [as handleCallbackErrors]",
+          "lineno": 1,
+          "colno": 2845898,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x3811ef.<computed>._0x1048d",
+          "lineno": 1,
+          "colno": 2728359,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 5077302,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x250763",
+          "lineno": 51,
+          "colno": 1626575,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "<anonymous>",
+          "module": "<anonymous>",
+          "function": "new Promise",
+          "in_app": false
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 51,
+          "colno": 1626608,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x321eb1",
+          "lineno": 51,
+          "colno": 1627410,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xa4c622",
+          "lineno": 51,
+          "colno": 1614980,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 51,
+          "colno": 1614049,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4991b0",
+          "lineno": 51,
+          "colno": 1617741,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x130b52",
+          "lineno": 51,
+          "colno": 1618560,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "Object.mcp",
+          "lineno": 1,
+          "colno": 5079232,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x550e1d.dispatch",
+          "lineno": 8,
+          "colno": 283315,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xbdfc15.<computed>.<computed> [as error]",
+          "lineno": 51,
+          "colno": 379010,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x58fab7.<computed> [as write]",
+          "lineno": 1,
+          "colno": 4604067,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 4603973,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2c4f94",
+          "lineno": 1,
+          "colno": 4597109,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4d8b6f.<computed> [as _write]",
+          "lineno": 1,
+          "colno": 4591196,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4d8b6f.<computed>.<computed> [as _read]",
+          "lineno": 1,
+          "colno": 4591510,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xbdfc15._transform",
+          "lineno": 51,
+          "colno": 389381,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4d8b6f.push",
+          "lineno": 1,
+          "colno": 4590543,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2d53f6.<computed> [as push]",
+          "lineno": 1,
+          "colno": 4569399,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x1fdaca",
+          "lineno": 1,
+          "colno": 4567595,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x543691",
+          "lineno": 1,
+          "colno": 4568107,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "node:events",
+          "module": "node:events",
+          "function": "_0xbdfc15.emit",
+          "lineno": 530,
+          "colno": 35,
+          "in_app": false
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xbdfc15._0x5a6d7b",
+          "lineno": 1,
+          "colno": 4579899,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x58fab7.<computed> [as write]",
+          "lineno": 1,
+          "colno": 4604067,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 4603973,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2c4f94",
+          "lineno": 1,
+          "colno": 4597109,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x1fa1aa.<computed>.<computed> [as _write]",
+          "lineno": 51,
+          "colno": 370614,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x3a601b.log",
+          "lineno": 8,
+          "colno": 260865,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x201a45.<computed>",
+          "lineno": 8,
+          "colno": 254723,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        }
+      ]
+    },
+    "mechanism": {
+      "type": "generic",
+      "handled": true
+    }
+  }
+]
+2025-04-24 10:26:48.644 [error] MCP: Error dispatching message: {}
+2025-04-24 10:27:10.192 [error] MCP: Error dispatching message: {}
+2025-04-24 10:33:00.151 [error] MCP: Error dispatching message: {}
+2025-04-24 10:50:42.717 [error] MCP: Error dispatching message: {}
+2025-04-24 10:51:02.808 [info] [error] {
+  "name": "Error"
+} [
+  {
+    "type": "Error",
+    "value": "MCP: Error dispatching message: {}",
+    "stacktrace": {
+      "frames": [
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x507dd5.withScope",
+          "lineno": 1,
+          "colno": 2555882,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2557518,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2727968,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2725918,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2728354,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4b6ef6.<computed> [as handleCallbackErrors]",
+          "lineno": 1,
+          "colno": 2845898,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x3811ef.<computed>._0x1048d",
+          "lineno": 1,
+          "colno": 2728359,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 5084083,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x561e56.execute",
+          "lineno": 1,
+          "colno": 5077140,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2c9859.startSpan",
+          "lineno": 8,
+          "colno": 264813,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xdb4d12.<computed> [as startSpan]",
+          "lineno": 1,
+          "colno": 2727914,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2034a1.<computed> [as withScope]",
+          "lineno": 1,
+          "colno": 2578915,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "Object._0x523236 [as withSetScope]",
+          "lineno": 1,
+          "colno": 2557462,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x507dd5.withScope",
+          "lineno": 1,
+          "colno": 2555882,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2557518,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2727968,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2725918,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2728354,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4b6ef6.<computed> [as handleCallbackErrors]",
+          "lineno": 1,
+          "colno": 2845898,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x3811ef.<computed>._0x1048d",
+          "lineno": 1,
+          "colno": 2728359,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 5077302,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x250763",
+          "lineno": 51,
+          "colno": 1626575,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "<anonymous>",
+          "module": "<anonymous>",
+          "function": "new Promise",
+          "in_app": false
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 51,
+          "colno": 1626608,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x321eb1",
+          "lineno": 51,
+          "colno": 1627410,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xa4c622",
+          "lineno": 51,
+          "colno": 1614980,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 51,
+          "colno": 1614049,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4991b0",
+          "lineno": 51,
+          "colno": 1617741,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x130b52",
+          "lineno": 51,
+          "colno": 1618560,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "Object.mcp",
+          "lineno": 1,
+          "colno": 5079232,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x550e1d.dispatch",
+          "lineno": 8,
+          "colno": 283315,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xbdfc15.<computed>.<computed> [as error]",
+          "lineno": 51,
+          "colno": 379010,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x58fab7.<computed> [as write]",
+          "lineno": 1,
+          "colno": 4604067,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 4603973,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2c4f94",
+          "lineno": 1,
+          "colno": 4597109,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4d8b6f.<computed> [as _write]",
+          "lineno": 1,
+          "colno": 4591196,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4d8b6f.<computed>.<computed> [as _read]",
+          "lineno": 1,
+          "colno": 4591510,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xbdfc15._transform",
+          "lineno": 51,
+          "colno": 389381,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4d8b6f.push",
+          "lineno": 1,
+          "colno": 4590543,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2d53f6.<computed> [as push]",
+          "lineno": 1,
+          "colno": 4569399,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x1fdaca",
+          "lineno": 1,
+          "colno": 4567595,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x543691",
+          "lineno": 1,
+          "colno": 4568107,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "node:events",
+          "module": "node:events",
+          "function": "_0xbdfc15.emit",
+          "lineno": 530,
+          "colno": 35,
+          "in_app": false
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xbdfc15._0x5a6d7b",
+          "lineno": 1,
+          "colno": 4579899,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x58fab7.<computed> [as write]",
+          "lineno": 1,
+          "colno": 4604067,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 4603973,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2c4f94",
+          "lineno": 1,
+          "colno": 4597109,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x1fa1aa.<computed>.<computed> [as _write]",
+          "lineno": 51,
+          "colno": 370614,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x3a601b.log",
+          "lineno": 8,
+          "colno": 260865,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x201a45.<computed>",
+          "lineno": 8,
+          "colno": 254723,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        }
+      ]
+    },
+    "mechanism": {
+      "type": "generic",
+      "handled": true
+    }
+  }
+]
+2025-04-24 10:51:02.809 [error] MCP: Error dispatching message: {}
+2025-04-24 10:51:17.460 [error] MCP: Error dispatching message: {}
+2025-04-24 10:52:05.807 [error] MCP: Error dispatching message: {}
+2025-04-24 10:55:11.600 [info] [error] {
+  "name": "Error"
+} [
+  {
+    "type": "Error",
+    "value": "MCP: Error dispatching message: {}",
+    "stacktrace": {
+      "frames": [
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x507dd5.withScope",
+          "lineno": 1,
+          "colno": 2555882,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2557518,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2727968,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2725918,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2728354,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4b6ef6.<computed> [as handleCallbackErrors]",
+          "lineno": 1,
+          "colno": 2845898,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x3811ef.<computed>._0x1048d",
+          "lineno": 1,
+          "colno": 2728359,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 5084083,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x561e56.execute",
+          "lineno": 1,
+          "colno": 5077140,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2c9859.startSpan",
+          "lineno": 8,
+          "colno": 264813,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xdb4d12.<computed> [as startSpan]",
+          "lineno": 1,
+          "colno": 2727914,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2034a1.<computed> [as withScope]",
+          "lineno": 1,
+          "colno": 2578915,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "Object._0x523236 [as withSetScope]",
+          "lineno": 1,
+          "colno": 2557462,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x507dd5.withScope",
+          "lineno": 1,
+          "colno": 2555882,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2557518,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2727968,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2725918,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2728354,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4b6ef6.<computed> [as handleCallbackErrors]",
+          "lineno": 1,
+          "colno": 2845898,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x3811ef.<computed>._0x1048d",
+          "lineno": 1,
+          "colno": 2728359,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 5077302,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x250763",
+          "lineno": 51,
+          "colno": 1626575,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "<anonymous>",
+          "module": "<anonymous>",
+          "function": "new Promise",
+          "in_app": false
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 51,
+          "colno": 1626608,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x321eb1",
+          "lineno": 51,
+          "colno": 1627410,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xa4c622",
+          "lineno": 51,
+          "colno": 1614980,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 51,
+          "colno": 1614049,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4991b0",
+          "lineno": 51,
+          "colno": 1617741,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x130b52",
+          "lineno": 51,
+          "colno": 1618560,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "Object.mcp",
+          "lineno": 1,
+          "colno": 5079232,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x550e1d.dispatch",
+          "lineno": 8,
+          "colno": 283315,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xbdfc15.<computed>.<computed> [as error]",
+          "lineno": 51,
+          "colno": 379010,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x58fab7.<computed> [as write]",
+          "lineno": 1,
+          "colno": 4604067,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 4603973,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2c4f94",
+          "lineno": 1,
+          "colno": 4597109,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4d8b6f.<computed> [as _write]",
+          "lineno": 1,
+          "colno": 4591196,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4d8b6f.<computed>.<computed> [as _read]",
+          "lineno": 1,
+          "colno": 4591510,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xbdfc15._transform",
+          "lineno": 51,
+          "colno": 389381,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4d8b6f.push",
+          "lineno": 1,
+          "colno": 4590543,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2d53f6.<computed> [as push]",
+          "lineno": 1,
+          "colno": 4569399,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x1fdaca",
+          "lineno": 1,
+          "colno": 4567595,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x543691",
+          "lineno": 1,
+          "colno": 4568107,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "node:events",
+          "module": "node:events",
+          "function": "_0xbdfc15.emit",
+          "lineno": 530,
+          "colno": 35,
+          "in_app": false
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xbdfc15._0x5a6d7b",
+          "lineno": 1,
+          "colno": 4579899,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x58fab7.<computed> [as write]",
+          "lineno": 1,
+          "colno": 4604067,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 4603973,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2c4f94",
+          "lineno": 1,
+          "colno": 4597109,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x1fa1aa.<computed>.<computed> [as _write]",
+          "lineno": 51,
+          "colno": 370614,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x3a601b.log",
+          "lineno": 8,
+          "colno": 260865,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x201a45.<computed>",
+          "lineno": 8,
+          "colno": 254723,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        }
+      ]
+    },
+    "mechanism": {
+      "type": "generic",
+      "handled": true
+    }
+  }
+]
+2025-04-24 10:55:11.600 [error] MCP: Error dispatching message: {}
+2025-04-24 11:01:51.074 [error] MCP: Error dispatching message: {}
+2025-04-24 11:04:58.465 [error] MCP: Error dispatching message: {}
+2025-04-24 11:05:12.288 [info] [error] {
+  "name": "Error"
+} [
+  {
+    "type": "Error",
+    "value": "MCP: Error dispatching message: {}",
+    "stacktrace": {
+      "frames": [
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x507dd5.withScope",
+          "lineno": 1,
+          "colno": 2555882,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2557518,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2727968,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2725918,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2728354,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4b6ef6.<computed> [as handleCallbackErrors]",
+          "lineno": 1,
+          "colno": 2845898,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x3811ef.<computed>._0x1048d",
+          "lineno": 1,
+          "colno": 2728359,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 5084083,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x561e56.execute",
+          "lineno": 1,
+          "colno": 5077140,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2c9859.startSpan",
+          "lineno": 8,
+          "colno": 264813,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xdb4d12.<computed> [as startSpan]",
+          "lineno": 1,
+          "colno": 2727914,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2034a1.<computed> [as withScope]",
+          "lineno": 1,
+          "colno": 2578915,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "Object._0x523236 [as withSetScope]",
+          "lineno": 1,
+          "colno": 2557462,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x507dd5.withScope",
+          "lineno": 1,
+          "colno": 2555882,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2557518,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2727968,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2725918,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2728354,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4b6ef6.<computed> [as handleCallbackErrors]",
+          "lineno": 1,
+          "colno": 2845898,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x3811ef.<computed>._0x1048d",
+          "lineno": 1,
+          "colno": 2728359,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 5077302,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x250763",
+          "lineno": 51,
+          "colno": 1626575,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "<anonymous>",
+          "module": "<anonymous>",
+          "function": "new Promise",
+          "in_app": false
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 51,
+          "colno": 1626608,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x321eb1",
+          "lineno": 51,
+          "colno": 1627410,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xa4c622",
+          "lineno": 51,
+          "colno": 1614980,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 51,
+          "colno": 1614049,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4991b0",
+          "lineno": 51,
+          "colno": 1617741,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x130b52",
+          "lineno": 51,
+          "colno": 1618560,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "Object.mcp",
+          "lineno": 1,
+          "colno": 5079232,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x550e1d.dispatch",
+          "lineno": 8,
+          "colno": 283315,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xbdfc15.<computed>.<computed> [as error]",
+          "lineno": 51,
+          "colno": 379010,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x58fab7.<computed> [as write]",
+          "lineno": 1,
+          "colno": 4604067,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 4603973,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2c4f94",
+          "lineno": 1,
+          "colno": 4597109,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4d8b6f.<computed> [as _write]",
+          "lineno": 1,
+          "colno": 4591196,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4d8b6f.<computed>.<computed> [as _read]",
+          "lineno": 1,
+          "colno": 4591510,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xbdfc15._transform",
+          "lineno": 51,
+          "colno": 389381,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4d8b6f.push",
+          "lineno": 1,
+          "colno": 4590543,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2d53f6.<computed> [as push]",
+          "lineno": 1,
+          "colno": 4569399,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x1fdaca",
+          "lineno": 1,
+          "colno": 4567595,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x543691",
+          "lineno": 1,
+          "colno": 4568107,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "node:events",
+          "module": "node:events",
+          "function": "_0xbdfc15.emit",
+          "lineno": 530,
+          "colno": 35,
+          "in_app": false
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xbdfc15._0x5a6d7b",
+          "lineno": 1,
+          "colno": 4579899,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x58fab7.<computed> [as write]",
+          "lineno": 1,
+          "colno": 4604067,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 4603973,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2c4f94",
+          "lineno": 1,
+          "colno": 4597109,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x1fa1aa.<computed>.<computed> [as _write]",
+          "lineno": 51,
+          "colno": 370614,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x3a601b.log",
+          "lineno": 8,
+          "colno": 260865,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x201a45.<computed>",
+          "lineno": 8,
+          "colno": 254723,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        }
+      ]
+    },
+    "mechanism": {
+      "type": "generic",
+      "handled": true
+    }
+  }
+]
+2025-04-24 11:05:12.289 [error] MCP: Error dispatching message: {}
+2025-04-24 11:07:08.289 [error] MCP: Error dispatching message: {}
+2025-04-24 11:11:53.778 [info] [error] {
+  "name": "Error"
+} [
+  {
+    "type": "Error",
+    "value": "MCP: Error dispatching message: {}",
+    "stacktrace": {
+      "frames": [
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x507dd5.withScope",
+          "lineno": 1,
+          "colno": 2555882,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2557518,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2727968,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2725918,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2728354,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4b6ef6.<computed> [as handleCallbackErrors]",
+          "lineno": 1,
+          "colno": 2845898,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x3811ef.<computed>._0x1048d",
+          "lineno": 1,
+          "colno": 2728359,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 5084083,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x561e56.execute",
+          "lineno": 1,
+          "colno": 5077140,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2c9859.startSpan",
+          "lineno": 8,
+          "colno": 264813,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xdb4d12.<computed> [as startSpan]",
+          "lineno": 1,
+          "colno": 2727914,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2034a1.<computed> [as withScope]",
+          "lineno": 1,
+          "colno": 2578915,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "Object._0x523236 [as withSetScope]",
+          "lineno": 1,
+          "colno": 2557462,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x507dd5.withScope",
+          "lineno": 1,
+          "colno": 2555882,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2557518,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2727968,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2725918,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 2728354,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4b6ef6.<computed> [as handleCallbackErrors]",
+          "lineno": 1,
+          "colno": 2845898,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x3811ef.<computed>._0x1048d",
+          "lineno": 1,
+          "colno": 2728359,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 5077302,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x250763",
+          "lineno": 51,
+          "colno": 1626575,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "<anonymous>",
+          "module": "<anonymous>",
+          "function": "new Promise",
+          "in_app": false
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 51,
+          "colno": 1626608,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x321eb1",
+          "lineno": 51,
+          "colno": 1627410,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xa4c622",
+          "lineno": 51,
+          "colno": 1614980,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 51,
+          "colno": 1614049,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4991b0",
+          "lineno": 51,
+          "colno": 1617741,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x130b52",
+          "lineno": 51,
+          "colno": 1618560,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "Object.mcp",
+          "lineno": 1,
+          "colno": 5079232,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x550e1d.dispatch",
+          "lineno": 8,
+          "colno": 283315,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xbdfc15.<computed>.<computed> [as error]",
+          "lineno": 51,
+          "colno": 379010,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x58fab7.<computed> [as write]",
+          "lineno": 1,
+          "colno": 4604067,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 4603973,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2c4f94",
+          "lineno": 1,
+          "colno": 4597109,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4d8b6f.<computed> [as _write]",
+          "lineno": 1,
+          "colno": 4591196,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4d8b6f.<computed>.<computed> [as _read]",
+          "lineno": 1,
+          "colno": 4591510,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xbdfc15._transform",
+          "lineno": 51,
+          "colno": 389381,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x4d8b6f.push",
+          "lineno": 1,
+          "colno": 4590543,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2d53f6.<computed> [as push]",
+          "lineno": 1,
+          "colno": 4569399,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x1fdaca",
+          "lineno": 1,
+          "colno": 4567595,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x543691",
+          "lineno": 1,
+          "colno": 4568107,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "node:events",
+          "module": "node:events",
+          "function": "_0xbdfc15.emit",
+          "lineno": 530,
+          "colno": 35,
+          "in_app": false
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0xbdfc15._0x5a6d7b",
+          "lineno": 1,
+          "colno": 4579899,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x58fab7.<computed> [as write]",
+          "lineno": 1,
+          "colno": 4604067,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "?",
+          "lineno": 1,
+          "colno": 4603973,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x2c4f94",
+          "lineno": 1,
+          "colno": 4597109,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x1fa1aa.<computed>.<computed> [as _write]",
+          "lineno": 51,
+          "colno": 370614,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x3a601b.log",
+          "lineno": 8,
+          "colno": 260865,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        },
+        {
+          "filename": "/home/huong/.vscode-server/extensions/zencoderai.zencoder-1.26.1/out/extension.js",
+          "module": "extension",
+          "function": "_0x201a45.<computed>",
+          "lineno": 8,
+          "colno": 254723,
+          "in_app": true,
+          "debug_id": "25399f9d-d547-4d19-812c-10e404dd37c9"
+        }
+      ]
+    },
+    "mechanism": {
+      "type": "generic",
+      "handled": true
+    }
+  }
+]
+2025-04-24 11:11:53.779 [error] MCP: Error dispatching message: {}
+2025-04-24 11:17:09.359 [error] Failed to save document /home/huong/nhakhoaso/templates/bao_cao_doanh_thu.html.
+2025-04-24 11:17:17.762 [error] MCP: Error dispatching message: {}
+2025-04-24 11:21:15.995 [error] MCP: Error dispatching message: {}
+2025-04-24 11:22:41.253 [error] MCP: Error dispatching message: {}
+2025-04-24 11:27:22.615 [error] MCP: Error dispatching message: {}
+2025-04-24 11:31:32.161 [error] MCP: Error dispatching message: {}
+2025-04-24 11:39:04.138 [error] MCP: Error dispatching message: {}
+2025-04-24 11:45:24.382 [error] MCP: Error dispatching message: {}
+2025-04-24 11:45:53.366 [error] MCP: Error dispatching message: {}
+2025-04-24 11:57:26.187 [error] MCP: Error dispatching message: {}

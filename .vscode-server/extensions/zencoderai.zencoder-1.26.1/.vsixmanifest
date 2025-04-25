@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+		<Metadata>
+			<Identity Language="en-US" Id="zencoder" Version="1.26.1" Publisher="ZencoderAI" />
+			<DisplayName>Zencoder: AI Coding Agent and Chat for Python, Javascript, Typescript, Java, Go, and more</DisplayName>
+			<Description xml:space="preserve">Embedded AI agents for code, unit testing, and docstring generation</Description>
+			<Tags>ai,autocomplete,bash,c,c++,chat,chatgpt,code completion,copilot,cpp,css,go,golang,html,intellicode,intellisense,java,javascript,jupyter,keybindings,kotlin,node,nodejs,php,python,react,ruby,rust,swift,typescript,chatbot,codegen,Documentation,docstring,llm,model,refactor,Test,assistant,bot,coding assistant,code acceleration,developer tools,productivity,machine learning,automation,coding efficiency,error detection,intelligent coding,jsonc</Tags>
+			<Categories>Programming Languages,Snippets,Machine Learning,Education,Debuggers</Categories>
+			<GalleryFlags>Public</GalleryFlags>
+			
+			<Properties>
+				<Property Id="Microsoft.VisualStudio.Code.Engine" Value="^1.90.2" />
+				<Property Id="Microsoft.VisualStudio.Code.ExtensionDependencies" Value="" />
+				<Property Id="Microsoft.VisualStudio.Code.ExtensionPack" Value="" />
+				<Property Id="Microsoft.VisualStudio.Code.ExtensionKind" Value="workspace" />
+				<Property Id="Microsoft.VisualStudio.Code.LocalizedLanguages" Value="" />
+				<Property Id="Microsoft.VisualStudio.Code.EnabledApiProposals" Value="" />
+				
+				<Property Id="Microsoft.VisualStudio.Code.ExecutesCode" Value="true" />
+				
+				<Property Id="Microsoft.VisualStudio.Services.Links.Source" Value="https://github.com/forgoodaigithub/zencoder-vscode-plugin.git" />
+				<Property Id="Microsoft.VisualStudio.Services.Links.Getstarted" Value="https://github.com/forgoodaigithub/zencoder-vscode-plugin.git" />
+				<Property Id="Microsoft.VisualStudio.Services.Links.GitHub" Value="https://github.com/forgoodaigithub/zencoder-vscode-plugin.git" />
+				<Property Id="Microsoft.VisualStudio.Services.Links.Support" Value="https://github.com/forgoodaigithub/zencoder-vscode-plugin/issues" />
+				<Property Id="Microsoft.VisualStudio.Services.Links.Learn" Value="https://zencoder.ai/" />
+				
+				
+				<Property Id="Microsoft.VisualStudio.Services.GitHubFlavoredMarkdown" Value="true" />
+				<Property Id="Microsoft.VisualStudio.Services.Content.Pricing" Value="Free"/>
+
+				
+				
+			</Properties>
+			<License>extension/LICENSE.md</License>
+			<Icon>extension/out/zencoder_logo_128.png</Icon>
+		</Metadata>
+		<Installation>
+			<InstallationTarget Id="Microsoft.VisualStudio.Code"/>
+		</Installation>
+		<Dependencies/>
+		<Assets>
+			<Asset Type="Microsoft.VisualStudio.Code.Manifest" Path="extension/package.json" Addressable="true" />
+			<Asset Type="Microsoft.VisualStudio.Services.Content.Details" Path="extension/README.md" Addressable="true" />
+<Asset Type="Microsoft.VisualStudio.Services.Content.Changelog" Path="extension/CHANGELOG.md" Addressable="true" />
+<Asset Type="Microsoft.VisualStudio.Services.Content.License" Path="extension/LICENSE.md" Addressable="true" />
+<Asset Type="Microsoft.VisualStudio.Services.Icons.Default" Path="extension/out/zencoder_logo_128.png" Addressable="true" />
+		</Assets>
+	</PackageManifest>

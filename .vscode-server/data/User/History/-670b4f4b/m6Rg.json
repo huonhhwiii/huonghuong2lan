@@ -1,0 +1,11 @@
+{
+    "workbench.editor.empty.hint": "hidden",
+    "mssql.connectionGroups": [
+        {
+            "name": "ROOT",
+            "id": "E2AEE4EF-9F1E-43CF-898D-A5B6CD112504"
+        }
+    ],
+    "mssql.connections": [],
+    "terminal.integrated.fontFamily": "'DejaVu Sans Mono', 'Fira Code', 'Courier New', monospace"
+}

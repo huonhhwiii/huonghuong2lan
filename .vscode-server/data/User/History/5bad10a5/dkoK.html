@@ -1,0 +1,343 @@
+{% extends 'layout.html' %}
+
+{% block title %}Tạo hóa đơn - NHAKHOASO{% endblock %}
+
+{% block content %}
+<div class="section-title">
+    <h2>QUẢN LÝ THANH TOÁN</h2>
+</div>
+
+<!-- Flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+                <div class="flash-message {{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<div class="page-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-title">
+            <i class="fas fa-file-invoice-dollar"></i> Quản lý thanh toán
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_hoa_don') }}" class="active">
+                    <i class="fas fa-plus"></i> Tạo hóa đơn
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('tim_kiem_hoa_don') }}">
+                    <i class="fas fa-search"></i> Tìm kiếm hóa đơn
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('hoa_don_list') }}">
+                    <i class="fas fa-list"></i> Danh sách hóa đơn
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-title">
+            <i class="fas fa-user-injured"></i> Quản lý bệnh nhân
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_benh_nhan') }}">
+                    <i class="fas fa-plus"></i> Thêm mới bệnh nhân
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('tim_kiem_benh_nhan') }}">
+                    <i class="fas fa-search"></i> Tìm kiếm bệnh nhân
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('benh_nhan_list') }}">
+                    <i class="fas fa-list"></i> Danh sách bệnh nhân
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-title">
+            <a href="{{ url_for('phieu_kham_list') }}" style="text-decoration: none; color: inherit;">
+                <i class="fas fa-chart-line"></i> Quản lý phiếu khám
+            </a>
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_phieu_kham') }}">
+                    <i class="fas fa-plus"></i> Tạo phiếu khám
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('tim_kiem_phieu_kham') }}">
+                    <i class="fas fa-search"></i> Tìm kiếm phiếu khám
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('phieu_kham_list') }}">
+                    <i class="fas fa-list"></i> Danh sách phiếu khám
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <div class="content-header">
+            <h2>Tạo hóa đơn</h2>
+        </div>
+        
+        <div class="form-container">
+            <h3>Thông tin hóa đơn</h3>
+
+            <form method="POST" action="{{ url_for('them_moi_hoa_don') }}" id="hoadonForm" class="standard-form">
+                <div class="form-group">
+                    <label for="ma_hoa_don">Mã hóa đơn <span class="required">*</span></label>
+                    <input type="text" id="ma_hoa_don" name="ma_hoa_don" value="{{ ma_hoa_don }}" readonly>
+                    <small>Mã hóa đơn được tạo tự động</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="ma_phieu_kham">Mã phiếu khám <span class="required">*</span></label>
+                    <select id="ma_phieu_kham" name="ma_phieu_kham" required>
+                        <option value="">-- Chọn phiếu khám --</option>
+                        {% for pk in phieu_kham_list %}
+                            <option value="{{ pk.MaPK }}" data-benh-nhan="{{ pk.TenBenhNhan }}" data-bac-si="{{ pk.TenBacSi }}" data-dich-vu="{{ pk.TenDV }}" data-gia="{{ pk.Gia }}">
+                                {{ pk.MaPK }} - {{ pk.TenBenhNhan }} - {{ pk.NgayKham }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="ngay_lap">Ngày lập <span class="required">*</span></label>
+                    <input type="datetime-local" id="ngay_lap" name="ngay_lap" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="benh_nhan">Bệnh nhân</label>
+                    <input type="text" id="benh_nhan" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="bac_si">Bác sĩ khám</label>
+                    <input type="text" id="bac_si" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="dich_vu">Dịch vụ</label>
+                    <input type="text" id="dich_vu" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="gia_dich_vu">Giá dịch vụ</label>
+                    <input type="text" id="gia_dich_vu" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="phuong_thuc_thanh_toan">Phương thức thanh toán <span class="required">*</span></label>
+                    <select id="phuong_thuc_thanh_toan" name="phuong_thuc_thanh_toan" required>
+                        <option value="">-- Chọn phương thức thanh toán --</option>
+                        <option value="Tiền mặt">Tiền mặt</option>
+                        <option value="Chuyển khoản">Chuyển khoản</option>
+                        <option value="Thẻ tín dụng">Thẻ tín dụng</option>
+                        <option value="Ví điện tử">Ví điện tử</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="tong_tien">Tổng tiền</label>
+                    <input type="text" id="tong_tien" readonly>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='{{ url_for('hoa_don_list') }}'">
+                        <i class="fas fa-arrow-left"></i> Quay lại
+                    </button>
+                    <button type="button" class="btn btn-light" id="printBtn" disabled>
+                        <i class="fas fa-print"></i> In
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Lưu thông tin
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Thiết lập ngày hiện tại cho trường ngày lập
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        
+        document.getElementById('ngay_lap').value = `${year}-${month}-${day}T${hours}:${minutes}`;
+        
+        // Xử lý sự kiện khi chọn phiếu khám
+        const phieuKhamSelect = document.getElementById('ma_phieu_kham');
+        phieuKhamSelect.addEventListener('change', function() {
+            const selectedOption = this.options[this.selectedIndex];
+            
+            if (selectedOption.value) {
+                // Lấy thông tin từ data attributes
+                const benhNhan = selectedOption.getAttribute('data-benh-nhan');
+                const bacSi = selectedOption.getAttribute('data-bac-si');
+                const dichVu = selectedOption.getAttribute('data-dich-vu');
+                const gia = selectedOption.getAttribute('data-gia');
+                
+                // Cập nhật các trường thông tin
+                document.getElementById('benh_nhan').value = benhNhan;
+                document.getElementById('bac_si').value = bacSi;
+                document.getElementById('dich_vu').value = dichVu;
+                document.getElementById('gia_dich_vu').value = formatCurrency(gia);
+                document.getElementById('tong_tien').value = formatCurrency(gia);
+                
+                // Kích hoạt nút in
+                document.getElementById('printBtn').disabled = false;
+            } else {
+                // Xóa các trường thông tin nếu không chọn phiếu khám
+                document.getElementById('benh_nhan').value = '';
+                document.getElementById('bac_si').value = '';
+                document.getElementById('dich_vu').value = '';
+                document.getElementById('gia_dich_vu').value = '';
+                document.getElementById('tong_tien').value = '';
+                
+                // Vô hiệu hóa nút in
+                document.getElementById('printBtn').disabled = true;
+            }
+        });
+        
+        // Xử lý sự kiện nút in
+        document.getElementById('printBtn').addEventListener('click', function() {
+            // Mở cửa sổ in
+            window.print();
+        });
+        
+        // Hàm định dạng tiền tệ
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+        }
+    });
+</script>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .form-container {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        padding: 20px;
+        margin-top: 20px;
+    }
+    
+    .standard-form .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .standard-form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+    
+    .standard-form input,
+    .standard-form select {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+    
+    .standard-form input[readonly] {
+        background-color: #f9f9f9;
+    }
+    
+    .form-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 30px;
+    }
+    
+    .required {
+        color: #e74c3c;
+    }
+    
+    small {
+        display: block;
+        margin-top: 5px;
+        color: #777;
+        font-size: 12px;
+    }
+    
+    /* Định dạng cho chế độ in */
+    @media print {
+        .sidebar, .section-title, .content-header, .form-actions {
+            display: none;
+        }
+        
+        .page-container {
+            display: block;
+        }
+        
+        .main-content {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .form-container {
+            border: none;
+            box-shadow: none;
+        }
+        
+        .form-group {
+            margin-bottom: 10px;
+        }
+        
+        input, select {
+            border: none !important;
+            background: transparent !important;
+        }
+        
+        h3 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        /* Thêm thông tin phòng khám khi in */
+        .form-container::before {
+            content: "PHÒNG KHÁM NHA KHOA NHAKHOASO";
+            display: block;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .form-container::after {
+            content: "Cảm ơn quý khách đã sử dụng dịch vụ!";
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            font-style: italic;
+        }
+    }
+</style>
+{% endblock %}

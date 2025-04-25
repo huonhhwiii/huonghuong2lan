@@ -1,0 +1,193 @@
+{% extends 'layout.html' %}
+
+{% block title %}Tìm kiếm dịch vụ - NHAKHOASO{% endblock %}
+
+{% block content %}
+<div class="section-title">
+    <h2>QUẢN LÝ DỊCH VỤ</h2>
+</div>
+
+<!-- Flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}<div class="flash-messages">
+            {% for category, message in messages %}<div class="flash-message {{ category }}">
+                    {{ message }}</div>
+            {% endfor %}</div>
+    {% endif %}
+{% endwith %}<div class="content-header">
+            <h2>Tìm kiếm dịch vụ</h2></div><div class="search-container">
+            <form action="{{ url_for('tim_kiem_dich_vu') }}" method="POST" class="search-form"><div class="search-input-group">
+                    <input type="text" name="tu_khoa" class="form-control" placeholder="Nhập mã dịch vụ, tên dịch vụ hoặc giá..." value="{{ request.form.get('tu_khoa', '') }}">
+                    <button type="submit" class="btn-search">
+                        <i class="fas fa-search"></i> Tìm kiếm
+                    </button></div><div class="search-options">
+                    <label class="search-option">
+                        <input type="radio" name="loai_tim_kiem" value="ma_dv" checked> Mã dịch vụ
+                    </label>
+                    <label class="search-option">
+                        <input type="radio" name="loai_tim_kiem" value="ten_dv"> Tên dịch vụ
+                    </label>
+                    <label class="search-option">
+                        <input type="radio" name="loai_tim_kiem" value="gia"> Giá dịch vụ
+                    </label></div>
+            </form></div><div class="search-results">
+            {% if request.method == 'POST' or (request.method == 'GET' and request.args.get('tu_khoa')) %}
+                {% if ket_qua %}<div class="result-header">
+                        <h3>Kết quả tìm kiếm</h3>
+                        <p>Tìm thấy {{ ket_qua|length }} dịch vụ</p></div><table class="data-table"><thead><tr><th>Mã DV</th><th>Tên dịch vụ</th><th>Giá (VNĐ)</th><th>Thao tác</th></tr></thead><tbody>
+                            {% for dv in ket_qua %}<tr id="dich-vu-{{ dv.MaDV }}"><td>{{ dv.MaDV }}</td><td>{{ dv.TenDV }}</td><td>{{ "{:,.0f}".format(dv.Gia|float) }}</td><td>
+                                        <a href="{{ url_for('chi_tiet_dich_vu', ma_dv=dv.MaDV) }}" class="action-btn view-btn" title="Xem chi tiết"><i class="fas fa-eye"></i></a>
+                                        <a href="{{ url_for('chinh_sua_dich_vu', ma_dv=dv.MaDV) }}" class="action-btn edit-btn" title="Chỉnh sửa"><i class="fas fa-edit"></i></a>
+                                        <a href="#" class="action-btn delete-btn" title="Xóa" onclick="deleteDichVu('{{ dv.MaDV }}')"><i class="fas fa-trash"></i></a></td></tr>
+                            {% endfor %}</tbody></table>
+                {% else %}<div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <p>Không tìm thấy dịch vụ nào phù hợp với từ khóa tìm kiếm.</p>
+                        <p>Vui lòng thử lại với từ khóa khác hoặc <a href="{{ url_for('them_moi_dich_vu') }}">thêm dịch vụ mới</a>.</p></div>
+                {% endif %}
+            {% endif %}</div>
+    
+<style>
+    .search-container {
+        background-color: var(--secondary-color);
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+    }
+    
+    .search-form {
+        width: 100%;
+    }
+    
+    .search-input-group {
+        display: flex;
+        margin-bottom: 15px;
+    }
+    
+    .search-input-group input {
+        flex: 1;
+        padding: 12px 15px;
+        border: 1px solid var(--border-color);
+        border-radius: 5px 0 0 5px;
+        font-size: 16px;
+    }
+    
+    .btn-search {
+        padding: 0 20px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .btn-search i {
+        margin-right: 8px;
+    }
+    
+    .search-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .search-option {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    
+    .search-option input {
+        margin-right: 5px;
+    }
+    
+    .result-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    
+    .result-header h3 {
+        margin: 0;
+        font-size: 18px;
+    }
+    
+    .result-header p {
+        margin: 0;
+        color: var(--text-muted);
+    }
+    
+    .no-results {
+        text-align: center;
+        padding: 40px 20px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+    }
+    
+    .no-results i {
+        font-size: 48px;
+        color: #adb5bd;
+        margin-bottom: 15px;
+    }
+    
+    .no-results p {
+        margin: 10px 0;
+        color: #6c757d;
+    }
+    
+    .no-results a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+    }
+</style>
+
+{% block extra_js %}
+<script>
+    // Hàm xóa dịch vụ
+    function deleteDichVu(maDV) {
+        if (confirm('Bạn có chắc chắn muốn xóa dịch vụ này?')) {
+            // Gọi API xóa dịch vụ
+            fetch(`/api/dich-vu/${maDV}`, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    // Xóa dòng khỏi bảng
+                    document.getElementById(`dich-vu-${maDV}`).remove();
+                    alert(data.message);
+                    
+                    // Kiểm tra nếu không còn kết quả nào
+                    const tbody = document.querySelector('.data-table tbody');
+                    if (tbody && tbody.children.length === 0) {
+                        // Thay thế bảng bằng thông báo không có kết quả
+                        const resultContainer = document.querySelector('.search-results');
+                        resultContainer.innerHTML = `
+                        <div class="no-results">
+                            <i class="fas fa-search"></i>
+                            <p>Không còn dịch vụ nào phù hợp với từ khóa tìm kiếm.</p>
+                            <p>Vui lòng thử lại với từ khóa khác hoặc <a href="{{ url_for('them_moi_dich_vu') }}">thêm dịch vụ mới</a>.</p>
+                        </div>`;
+                    }
+                } else {
+                    alert('Lỗi: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Đã xảy ra lỗi khi xóa dịch vụ: ' + error.message);
+            });
+        }
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <h2 class="mb-4">Thêm mới bệnh nhân</h2>
+        
+        <form method="POST" action="{{ url_for('them_moi_benh_nhan') }}">
+            <div class="mb-3">
+                <label for="ma_benh_nhan" class="form-label">Mã Bệnh Nhân *</label>
+                <input type="text" class="form-control" id="ma_benh_nhan" name="ma_benh_nhan" required 
+                       placeholder="Nhập mã bệnh nhân">
+            </div>
+            
+            <div class="mb-3">
+                <label for="ho_ten" class="form-label">Họ và tên *</label>
+                <input type="text" class="form-control" id="ho_ten" name="ho_ten" required 
+                       placeholder="Nhập tên bệnh nhân">
+            </div>
+            
+            <div class="mb-3">
+                <label for="ngay_sinh" class="form-label">Ngày sinh</label>
+                <input type="date" class="form-control" id="ngay_sinh" name="ngay_sinh">
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Giới tính</label>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gioi_tinh" id="gioi_tinh_nam" value="Nam">
+                        <label class="form-check-label" for="gioi_tinh_nam">Nam</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gioi_tinh" id="gioi_tinh_nu" value="Nữ">
+                        <label class="form-check-label" for="gioi_tinh_nu">Nữ</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="so_dien_thoai" class="form-label">Số điện thoại *</label>
+                <input type="tel" class="form-control" id="so_dien_thoai" name="so_dien_thoai" required 
+                       placeholder="Nhập số điện thoại">
+            </div>
+            
+            <div class="mb-3">
+                <label for="dia_chi" class="form-label">Địa chỉ</label>
+                <textarea class="form-control" id="dia_chi" name="dia_chi" rows="3"></textarea>
+            </div>
+            
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Lưu thông tin</button>
+                <button type="reset" class="btn btn-secondary">Nhập lại</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

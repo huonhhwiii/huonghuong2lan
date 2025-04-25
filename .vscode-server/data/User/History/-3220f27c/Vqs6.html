@@ -1,0 +1,346 @@
+{% extends 'layout.html' %}
+
+{% block title %}Tìm kiếm lịch hẹn - NHAKHOASO{% endblock %}
+
+{% block content %}
+<div class="section-title">
+    <h2>QUẢN LÝ LỊCH HẸN</h2>
+</div>
+
+<!-- Flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+                <div class="flash-message {{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<div class="page-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-title">
+            <i class="fas fa-user-injured"></i> Quản lý bệnh nhân
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_benh_nhan') }}">
+                    <i class="fas fa-plus"></i> Thêm mới bệnh nhân
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('tim_kiem_benh_nhan') }}">
+                    <i class="fas fa-search"></i> Tìm kiếm bệnh nhân
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('benh_nhan_list') }}">
+                    <i class="fas fa-list"></i> Danh sách bệnh nhân
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-title">
+            <i class="fas fa-clipboard-list"></i> Quản lý bác sĩ
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_bac_si') }}">
+                    <i class="fas fa-plus"></i> Thêm mới bác sĩ
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('tim_kiem_bac_si') }}">
+                    <i class="fas fa-search"></i> Tìm kiếm bác sĩ
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('bac_si_page') }}">
+                    <i class="fas fa-list"></i> Danh sách bác sĩ
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-title">
+            <a href="{{ url_for('phieu_kham_list') }}" style="text-decoration: none; color: inherit;">
+                <i class="fas fa-chart-line"></i> Quản lý phiếu khám
+            </a>
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_phieu_kham') }}">
+                    <i class="fas fa-plus"></i> Tạo phiếu khám
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('tim_kiem_phieu_kham') }}">
+                    <i class="fas fa-search"></i> Tìm kiếm phiếu khám
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('phieu_kham_list') }}">
+                    <i class="fas fa-list"></i> Danh sách phiếu khám
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-title">
+            <i class="fas fa-calendar-check"></i> Quản lý lịch hẹn
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_lich_hen') }}">
+                    <i class="fas fa-plus"></i> Đặt lịch hẹn
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('tim_kiem_lich_hen') }}" class="active">
+                    <i class="fas fa-search"></i> Tìm kiếm lịch hẹn
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('lich_hen_list') }}">
+                    <i class="fas fa-list"></i> Danh sách lịch hẹn
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <div class="content-header">
+            <h2>Tìm kiếm lịch hẹn</h2>
+        </div>
+        
+        <div class="search-container">
+            <form action="{{ url_for('tim_kiem_lich_hen') }}" method="POST" class="search-form">
+                <div class="search-input-group">
+                    <input type="text" name="tu_khoa" class="form-control" placeholder="Nhập mã lịch hẹn, mã bệnh nhân hoặc trạng thái..." value="{{ request.form.get('tu_khoa', '') }}">
+                    <button type="submit" class="btn-search">
+                        <i class="fas fa-search"></i> Tìm kiếm
+                    </button>
+                </div>
+                <div class="search-options">
+                    <label class="search-option">
+                        <input type="radio" name="loai_tim_kiem" value="ma_lich_hen" checked> Mã lịch hẹn
+                    </label>
+                    <label class="search-option">
+                        <input type="radio" name="loai_tim_kiem" value="ma_benh_nhan"> Mã bệnh nhân
+                    </label>
+                    <label class="search-option">
+                        <input type="radio" name="loai_tim_kiem" value="trang_thai"> Trạng thái
+                    </label>
+                </div>
+            </form>
+        </div>
+        
+        <div class="search-results">
+            {% if request.method == 'POST' %}
+                {% if ket_qua %}
+                    <div class="result-header">
+                        <h3>Kết quả tìm kiếm</h3>
+                        <p>Tìm thấy {{ ket_qua|length }} lịch hẹn</p>
+                    </div>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Mã LH</th>
+                                <th>Mã BN</th>
+                                <th>Tên bệnh nhân</th>
+                                <th>Ngày hẹn</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for lh in ket_qua %}
+                                <tr id="lich-hen-{{ lh.MaLH }}">
+                                    <td>{{ lh.MaLH }}</td>
+                                    <td>{{ lh.MaBN }}</td>
+                                    <td>{{ lh.TenBenhNhan }}</td>
+                                    <td>{{ lh.NgayHen }}</td>
+                                    <td>
+                                        <span class="status-badge 
+                                            {% if lh.TrangThai == 'Chưa khám' %}status-pending
+                                            {% elif lh.TrangThai == 'Đã khám' %}status-completed
+                                            {% elif lh.TrangThai == 'Đã huỷ' %}status-cancelled
+                                            {% endif %}">
+                                            {{ lh.TrangThai }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a href="{{ url_for('chi_tiet_lich_hen', ma_lh=lh.MaLH) }}" class="action-btn view-btn" title="Xem chi tiết"><i class="fas fa-eye"></i></a>
+                                        <a href="{{ url_for('chinh_sua_lich_hen', ma_lh=lh.MaLH) }}" class="action-btn edit-btn" title="Chỉnh sửa"><i class="fas fa-edit"></i></a>
+                                        <a href="#" class="action-btn delete-btn" title="Xóa" onclick="deleteLichHen('{{ lh.MaLH }}')"><i class="fas fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <p>Không tìm thấy lịch hẹn nào phù hợp với từ khóa tìm kiếm.</p>
+                        <p>Vui lòng thử lại với từ khóa khác hoặc <a href="{{ url_for('them_moi_lich_hen') }}">đặt lịch hẹn mới</a>.</p>
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+    .search-container {
+        background-color: var(--secondary-color);
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+    }
+    
+    .search-form {
+        width: 100%;
+    }
+    
+    .search-input-group {
+        display: flex;
+        margin-bottom: 15px;
+    }
+    
+    .search-input-group input {
+        flex: 1;
+        padding: 12px 15px;
+        border: 1px solid var(--border-color);
+        border-radius: 5px 0 0 5px;
+        font-size: 16px;
+    }
+    
+    .btn-search {
+        padding: 0 20px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .btn-search i {
+        margin-right: 8px;
+    }
+    
+    .search-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .search-option {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    
+    .search-option input {
+        margin-right: 5px;
+    }
+    
+    .result-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    
+    .result-header h3 {
+        margin: 0;
+        font-size: 18px;
+    }
+    
+    .result-header p {
+        margin: 0;
+        color: var(--text-muted);
+    }
+    
+    .no-results {
+        text-align: center;
+        padding: 40px 20px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+    }
+    
+    .no-results i {
+        font-size: 48px;
+        color: #adb5bd;
+        margin-bottom: 15px;
+    }
+    
+    .no-results p {
+        margin: 10px 0;
+        color: #6c757d;
+    }
+    
+    .no-results a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+    }
+    
+    .status-badge {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.85em;
+        font-weight: 500;
+    }
+    
+    .status-pending {
+        background-color: #ffeeba;
+        color: #856404;
+    }
+    
+    .status-completed {
+        background-color: #d4edda;
+        color: #155724;
+    }
+    
+    .status-cancelled {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+</style>
+
+{% block extra_js %}
+<script>
+    // Hàm xóa lịch hẹn
+    function deleteLichHen(maLH) {
+        if (confirm('Bạn có chắc chắn muốn xóa lịch hẹn này?')) {
+            // Gọi API xóa lịch hẹn
+            fetch(`/api/lich-hen/${maLH}`, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Xóa dòng khỏi bảng
+                    document.getElementById(`lich-hen-${maLH}`).remove();
+                    alert('Xóa lịch hẹn thành công!');
+                } else {
+                    alert('Lỗi: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Đã xảy ra lỗi khi xóa lịch hẹn');
+            });
+        }
+    }
+</script>
+{% endblock %}
+{% endblock %}

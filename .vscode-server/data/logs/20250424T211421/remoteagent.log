@@ -1,0 +1,13 @@
+2025-04-24 21:14:21.823 [info] 
+
+
+
+
+2025-04-24 21:14:21.868 [info] Extension host agent started.
+2025-04-24 21:14:22.090 [info] [127.0.0.1][79930c96][ManagementConnection] New connection established.
+2025-04-24 21:14:22.482 [info] [127.0.0.1][de33cce0][ExtensionHostConnection] New connection established.
+2025-04-24 21:14:22.716 [info] [127.0.0.1][de33cce0][ExtensionHostConnection] <629> Launched Extension Host Process.
+2025-04-24 21:14:35.185 [error] [File Watcher] Unexpected error: inotify_add_watch on '/home/huong/.vscode-server/data/logs/20250421T163650/exthost1/ZencoderAI.zencoder' failed: No such file or directory (EUNKNOWN) (path: /home/huong)
+2025-04-24 21:14:35.186 [error] [File Watcher (universal)] inotify_add_watch on '/home/huong/.vscode-server/data/logs/20250421T163650/exthost1/ZencoderAI.zencoder' failed: No such file or directory
+2025-04-24 22:41:25.556 [info] [127.0.0.1][79930c96][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+2025-04-24 22:41:26.546 [info] [127.0.0.1][de33cce0][ExtensionHostConnection] <629> Extension Host Process exited with code: 0, signal: null.

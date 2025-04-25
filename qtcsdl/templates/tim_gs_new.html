@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+
+{% block title %}N7 SOFTWARE EDU - Tìm kiếm gia sư{% endblock %}
+
+{% block page_icon %}<i class="fas fa-search"></i>{% endblock %}
+{% block page_title %}Tìm kiếm gia sư{% endblock %}
+{% block page_subtitle %}Tìm kiếm thông tin gia sư trong hệ thống{% endblock %}
+
+{% block content %}
+<div class="content-card">
+    <h2 class="card-title"><i class="fas fa-search"></i> Tìm kiếm gia sư</h2>
+    
+    <form action="{{ url_for('tim_gs') }}" method="get" id="searchForm">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="keyword">Từ khóa</label>
+                <input type="text" id="keyword" name="keyword" class="form-control" value="{{ request.args.get('keyword', '') }}" placeholder="Nhập tên, số điện thoại, bằng cấp hoặc môn dạy...">
+            </div>
+            <div class="form-group">
+                <label for="field">Tìm theo</label>
+                <select id="field" name="field" class="form-control">
+                    <option value="all" {% if request.args.get('field') == 'all' %}selected{% endif %}>Tất cả</option>
+                    <option value="HoTen" {% if request.args.get('field') == 'HoTen' %}selected{% endif %}>Họ tên</option>
+                    <option value="SoDT" {% if request.args.get('field') == 'SoDT' %}selected{% endif %}>Số điện thoại</option>
+                    <option value="BangCap" {% if request.args.get('field') == 'BangCap' %}selected{% endif %}>Bằng cấp</option>
+                    <option value="MonDay" {% if request.args.get('field') == 'MonDay' %}selected{% endif %}>Môn dạy</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group" style="width: 100%;">
+                <label>&nbsp;</label>
+                <div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-search"></i> Tìm kiếm
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% if results %}
+<div class="content-card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2 class="card-title"><i class="fas fa-list"></i> Kết quả tìm kiếm ({{ results|length }} gia sư)</h2>
+        <a href="{{ url_for('them_gs') }}" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Thêm gia sư mới
+        </a>
+    </div>
+    
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Mã gia sư</th>
+                    <th>Họ tên</th>
+                    <th>Số điện thoại</th>
+                    <th>Bằng cấp</th>
+                    <th>Môn dạy</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for gs in results %}
+                <tr>
+                    <td>{{ gs.MaGS }}</td>
+                    <td>{{ gs.HoTen }}</td>
+                    <td>{{ gs.SoDT }}</td>
+                    <td>{{ gs.BangCap }}</td>
+                    <td>{{ gs.MonDay }}</td>
+                    <td>
+                        <div class="action-buttons">
+                            <a href="{{ url_for('xem_gs', ma_gs=gs.MaGS) }}" class="btn btn-sm btn-secondary">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="{{ url_for('sua_gs', ma_gs=gs.MaGS) }}" class="btn btn-sm btn-primary">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <button class="btn btn-sm btn-danger delete-btn" data-id="{{ gs.MaGS }}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal xác nhận xóa -->
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Xác nhận xóa</h3>
+            <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <p>Bạn có chắc chắn muốn xóa gia sư này không?</p>
+            <p>Hành động này không thể hoàn tác.</p>
+        </div>
+        <div class="modal-footer">
+            <button id="cancelDelete" class="btn btn-secondary">Hủy</button>
+            <button id="confirmDelete" class="btn btn-danger">Xóa</button>
+        </div>
+    </div>
+</div>
+{% elif request.args.get('keyword') %}
+<div class="content-card">
+    <div class="alert alert-warning" style="margin-bottom: 0;">
+        <i class="fas fa-exclamation-triangle"></i>
+        Không tìm thấy gia sư nào phù hợp với từ khóa "{{ request.args.get('keyword') }}".
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Modal styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    .modal-content {
+        background-color: white;
+        margin: 15% auto;
+        padding: 0;
+        border-radius: 8px;
+        width: 400px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        animation: modalFadeIn 0.3s;
+    }
+    
+    @keyframes modalFadeIn {
+        from {opacity: 0; transform: translateY(-20px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+    
+    .modal-header {
+        padding: 15px 20px;
+        border-bottom: 1px solid #e2e8f0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .modal-header h3 {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--text-dark);
+    }
+    
+    .close {
+        color: #94a3b8;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    
+    .close:hover {
+        color: var(--text-dark);
+    }
+    
+    .modal-body {
+        padding: 20px;
+    }
+    
+    .modal-footer {
+        padding: 15px 20px;
+        border-top: 1px solid #e2e8f0;
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Xử lý modal xóa
+        const modal = document.getElementById('deleteModal');
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+        const closeBtn = document.querySelector('.close');
+        const cancelBtn = document.getElementById('cancelDelete');
+        const confirmBtn = document.getElementById('confirmDelete');
+        
+        let currentDeleteId = null;
+        
+        if (deleteButtons) {
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    currentDeleteId = this.getAttribute('data-id');
+                    modal.style.display = 'block';
+                });
+            });
+        }
+        
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+        }
+        
+        if (cancelBtn) {
+            cancelBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+        }
+        
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        if (confirmBtn) {
+            confirmBtn.addEventListener('click', function() {
+                if (currentDeleteId) {
+                    window.location.href = `/xoa_gs/${currentDeleteId}`;
+                }
+            });
+        }
+        
+        // Form validation
+        const searchForm = document.getElementById('searchForm');
+        searchForm.addEventListener('submit', function(event) {
+            const keyword = document.getElementById('keyword').value.trim();
+            
+            if (!keyword) {
+                event.preventDefault();
+                alert('Vui lòng nhập từ khóa tìm kiếm!');
+            }
+        });
+    });
+</script>
+{% endblock %}

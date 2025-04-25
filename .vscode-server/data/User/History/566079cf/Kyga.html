@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}N7 SOFTWARE EDU - Sửa thông tin giao dịch{% endblock %}
+
+{% block page_icon %}<i class="fas fa-edit"></i>{% endblock %}
+{% block page_title %}Sửa thông tin giao dịch{% endblock %}
+{% block page_subtitle %}Chỉnh sửa thông tin giao dịch trong hệ thống{% endblock %}
+
+{% block content %}
+<div class="content-card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2 class="card-title"><i class="fas fa-edit"></i> Chỉnh sửa thông tin giao dịch</h2>
+        <div class="btn-group">
+            <a href="{{ url_for('qlgd') }}" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Quay lại
+            </a>
+        </div>
+    </div>
+    
+    <form action="{{ url_for('sua_gd', ma_gd=gd.MaGD) }}" method="post">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="maGD">Mã giao dịch</label>
+                <input type="text" id="maGD" class="form-control" value="{{ gd.MaGD }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="ngayGD" class="required">Ngày giao dịch</label>
+                <input type="date" id="ngayGD" name="ngayGD" class="form-control" value="{{ gd.NgayGD.strftime('%Y-%m-%d') if gd.NgayGD else '' }}" required>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="maPH" class="required">Mã phụ huynh</label>
+                <input type="text" id="maPH" name="maPH" class="form-control" value="{{ gd.MaPH }}" required>
+            </div>
+            <div class="form-group">
+                <label for="maGS" class="required">Mã gia sư</label>
+                <input type="text" id="maGS" name="maGS" class="form-control" value="{{ gd.MaGS }}" required>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="phiPH" class="required">Phí phụ huynh (VNĐ)</label>
+                <input type="number" id="phiPH" name="phiPH" class="form-control" value="{{ gd.PhiPH }}" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="phiGS" class="required">Phí gia sư (VNĐ)</label>
+                <input type="number" id="phiGS" name="phiGS" class="form-control" value="{{ gd.PhiGS }}" min="0" required>
+            </div>
+        </div>
+        
+        <div class="form-group" style="margin-top: 30px;">
+            <div class="btn-group">
+                <a href="{{ url_for('xem_gd', ma_gd=gd.MaGD) }}" class="btn btn-secondary">
+                    <i class="fas fa-times"></i> Hủy
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Lưu thay đổi
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+    }
+    
+    input[readonly] {
+        background-color: #f8fafc;
+        cursor: not-allowed;
+    }
+    
+    .required:after {
+        content: " *";
+        color: red;
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Form validation
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(event) {
+            const ngayGD = document.getElementById('ngayGD').value.trim();
+            const maPH = document.getElementById('maPH').value.trim();
+            const maGS = document.getElementById('maGS').value.trim();
+            const phiPH = parseFloat(document.getElementById('phiPH').value);
+            const phiGS = parseFloat(document.getElementById('phiGS').value);
+            
+            if (!ngayGD || !maPH || !maGS) {
+                event.preventDefault();
+                alert('Vui lòng điền đầy đủ thông tin bắt buộc!');
+                return;
+            }
+            
+            if (phiPH < phiGS) {
+                event.preventDefault();
+                alert('Phí phụ huynh không được nhỏ hơn phí gia sư!');
+                return;
+            }
+        });
+    });
+</script>
+{% endblock %}

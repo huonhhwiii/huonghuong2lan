@@ -1,0 +1,206 @@
+{% extends 'layout.html' %}
+
+{% block title %}Tìm kiếm phiếu khám - NHAKHOASO{% endblock %}
+
+{% block content %}
+<div class="section-title">
+    <h2>QUẢN LÝ PHIẾU KHÁM</h2>
+</div>
+
+<!-- Flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}<div class="flash-messages">
+            {% for category, message in messages %}<div class="flash-message {{ category }}">
+                    {{ message }}</div>
+            {% endfor %}</div>
+    {% endif %}
+{% endwith %}<div class="content-header">
+            <h2>Tìm kiếm phiếu khám</h2></div><div class="search-container">
+            <form action="{{ url_for('tim_kiem_phieu_kham') }}" method="POST" class="search-form"><div class="search-input-group">
+                    <input type="text" name="tu_khoa" class="form-control" placeholder="Nhập mã phiếu khám, mã bệnh nhân, mã bác sĩ hoặc chẩn đoán..." value="{{ request.form.get('tu_khoa', '') }}">
+                    <button type="submit" class="btn-search">
+                        <i class="fas fa-search"></i> Tìm kiếm
+                    </button></div><div class="search-options">
+                    <label class="search-option">
+                        <input type="radio" name="loai_tim_kiem" value="ma_phieu_kham" checked> Mã phiếu khám
+                    </label>
+                    <label class="search-option">
+                        <input type="radio" name="loai_tim_kiem" value="ma_benh_nhan"> Mã bệnh nhân
+                    </label>
+                    <label class="search-option">
+                        <input type="radio" name="loai_tim_kiem" value="ma_bac_si"> Mã bác sĩ
+                    </label>
+                    <label class="search-option">
+                        <input type="radio" name="loai_tim_kiem" value="chan_doan"> Chẩn đoán
+                    </label></div>
+            </form></div><div class="search-results">
+            {% if request.method == 'POST' %}
+                {% if ket_qua %}<div class="result-header">
+                        <h3>Kết quả tìm kiếm</h3>
+                        <p>Tìm thấy {{ ket_qua|length }} phiếu khám</p></div><table class="data-table"><thead><tr><th>Mã PK</th><th>Mã BN</th><th>Mã BS</th><th>Mã DV</th><th>Ngày khám</th><th>Chẩn đoán</th><th>Ghi chú</th><th>Thao tác</th></tr></thead><tbody>
+                            {% for pk in ket_qua %}<tr id="phieu-kham-{{ pk.MaPK }}"><td>{{ pk.MaPK }}</td><td>{{ pk.MaBN }}</td><td>{{ pk.MaBS }}</td><td>{{ pk.MaDV }}</td><td>{{ pk.NgayKham }}</td><td>{{ pk.ChanDoan }}</td><td>{{ pk.GhiChu }}</td><td>
+                                        <a href="{{ url_for('chi_tiet_phieu_kham', ma_pk=pk.MaPK) }}" class="action-btn view-btn" title="Xem chi tiết"><i class="fas fa-eye"></i></a>
+                                        <a href="{{ url_for('chinh_sua_phieu_kham', ma_pk=pk.MaPK) }}" class="action-btn edit-btn" title="Chỉnh sửa"><i class="fas fa-edit"></i></a>
+                                        <a href="#" class="action-btn delete-btn" title="Xóa" onclick="deletePhieuKham('{{ pk.MaPK }}')"><i class="fas fa-trash"></i></a></td></tr>
+                            {% endfor %}</tbody></table>
+                {% else %}<div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <p>Không tìm thấy phiếu khám nào phù hợp với từ khóa tìm kiếm.</p>
+                        <p>Vui lòng thử lại với từ khóa khác hoặc <a href="{{ url_for('them_moi_phieu_kham') }}">tạo phiếu khám mới</a>.</p></div>
+                {% endif %}
+            {% endif %}</div>
+    
+<style>
+    .search-container {
+        background-color: var(--secondary-color);
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+    }
+    
+    .search-form {
+        width: 100%;
+    }
+    
+    .search-input-group {
+        display: flex;
+        margin-bottom: 15px;
+    }
+    
+    .search-input-group input {
+        flex: 1;
+        padding: 12px 15px;
+        border: 1px solid var(--border-color);
+        border-radius: 5px 0 0 5px;
+        font-size: 16px;
+    }
+    
+    .btn-search {
+        padding: 0 20px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .btn-search i {
+        margin-right: 8px;
+    }
+    
+    .search-options {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .search-option {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    
+    .search-option input {
+        margin-right: 8px;
+    }
+    
+    .result-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .result-header h3 {
+        margin: 0;
+        font-size: 18px;
+        color: var(--text-color);
+    }
+    
+    .result-header p {
+        margin: 0;
+        color: #666;
+    }
+    
+    .no-results {
+        text-align: center;
+        padding: 40px 0;
+        color: #666;
+    }
+    
+    .no-results i {
+        font-size: 48px;
+        color: var(--border-color);
+        margin-bottom: 15px;
+    }
+    
+    .no-results p {
+        margin: 5px 0;
+    }
+    
+    .no-results a {
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+    
+    .no-results a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+{% block extra_js %}
+<script>
+    // Hàm xóa phiếu khám
+    function deletePhieuKham(maPK) {
+        if (confirm('Bạn có chắc chắn muốn xóa phiếu khám này?')) {
+            // Gọi API xóa phiếu khám
+            fetch(`/api/phieu-kham/${maPK}`, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Xóa dòng khỏi bảng
+                    document.getElementById(`phieu-kham-${maPK}`).remove();
+                    alert('Xóa phiếu khám thành công!');
+                    
+                    // Kiểm tra nếu không còn phiếu khám nào, hiển thị thông báo
+                    const tbody = document.querySelector('.data-table tbody');
+                    if (tbody && tbody.children.length === 0) {
+                        document.querySelector('.search-results').innerHTML = `<div class="no-results">
+                            <i class="fas fa-search"></i>
+                            <p>Không tìm thấy phiếu khám nào phù hợp với từ khóa tìm kiếm.</p>
+                            <p>Vui lòng thử lại với từ khóa khác hoặc <a href="{{ url_for('them_moi_phieu_kham') }}">tạo phiếu khám mới</a>.</p></div>
+                        `;
+                    }
+                } else {
+                    alert('Lỗi: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Đã xảy ra lỗi khi xóa phiếu khám');
+            });
+        }
+    }
+    
+    // Đảm bảo radio button được chọn đúng theo giá trị từ form
+    document.addEventListener('DOMContentLoaded', function() {
+        const loaiTimKiem = "{{ request.form.get('loai_tim_kiem', 'ma_phieu_kham') }}";
+        const radioButtons = document.querySelectorAll('input[name="loai_tim_kiem"]');
+        
+        radioButtons.forEach(radio => {
+            if (radio.value === loaiTimKiem) {
+                radio.checked = true;
+            }
+        });
+    });
+</script>
+{% endblock %}
+
+{% endblock %}

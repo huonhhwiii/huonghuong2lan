@@ -1,0 +1,377 @@
+{% extends 'layout.html' %}
+
+{% block title %}Chi tiết hóa đơn - NHAKHOASO{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Chi tiết hóa đơn</h2>
+    <div class="breadcrumb">
+        <a href="{{ url_for('index') }}">Trang chủ</a> / 
+        <a href="{{ url_for('thanh_toan') }}">Quản lý thanh toán</a> / 
+        <a href="{{ url_for('hoa_don_list') }}">Danh sách hóa đơn</a> / 
+        <span>Chi tiết hóa đơn</span>
+    </div>
+</div>
+
+<div class="dashboard-container">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3>Chức năng</h3>
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_hoa_don') }}">
+                    <i class="fas fa-plus-circle"></i> Tạo hóa đơn
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('hoa_don_list') }}">
+                    <i class="fas fa-list"></i> Danh sách hóa đơn
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="detail-container">
+            <div class="detail-header">
+                <h3>Thông tin hóa đơn</h3>
+                <div class="detail-actions">
+                    <button class="btn btn-light" id="printBtn">
+                        <i class="fas fa-print"></i> In hóa đơn
+                    </button>
+                </div>
+            </div>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <div class="invoice-container" id="invoiceContent">
+                <div class="invoice-header">
+                    <div class="invoice-logo">
+                        <img src="{{ url_for('static', filename='images/tooth-logo.png') }}" alt="Logo NHAKHOASO" onerror="this.src='https://via.placeholder.com/50x50?text=🦷'">
+                        <h2>PHÒNG KHÁM NHA KHOA NHAKHOASO</h2>
+                    </div>
+                    <div class="invoice-title">
+                        <h1>HÓA ĐƠN THANH TOÁN</h1>
+                        <p>Mã hóa đơn: <strong>{{ hoa_don.MaHD }}</strong></p>
+                        <p>Ngày lập: <strong>{{ hoa_don.NgayLap }}</strong></p>
+                    </div>
+                </div>
+
+                <div class="invoice-info">
+                    <div class="info-group">
+                        <h4>Thông tin bệnh nhân</h4>
+                        <p><strong>Họ tên:</strong> {{ hoa_don.TenBenhNhan }}</p>
+                        <p><strong>Mã bệnh nhân:</strong> {{ hoa_don.MaBN }}</p>
+                    </div>
+
+                    <div class="info-group">
+                        <h4>Thông tin khám</h4>
+                        <p><strong>Mã phiếu khám:</strong> {{ hoa_don.MaPK }}</p>
+                        <p><strong>Ngày khám:</strong> {{ hoa_don.NgayKham }}</p>
+                        <p><strong>Bác sĩ khám:</strong> {{ hoa_don.TenBacSi }}</p>
+                    </div>
+                </div>
+
+                <div class="invoice-details">
+                    <h4>Chi tiết dịch vụ</h4>
+                    <table class="invoice-table">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Dịch vụ</th>
+                                <th>Đơn giá</th>
+                                <th>Số lượng</th>
+                                <th>Thành tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>{{ hoa_don.TenDV }}</td>
+                                <td>{{ "{:,.0f}".format(hoa_don.Gia) }} VNĐ</td>
+                                <td>1</td>
+                                <td>{{ "{:,.0f}".format(hoa_don.Gia) }} VNĐ</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="4" class="text-right"><strong>Tổng cộng:</strong></td>
+                                <td><strong>{{ "{:,.0f}".format(hoa_don.TongTien) }} VNĐ</strong></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <div class="invoice-payment">
+                    <p><strong>Phương thức thanh toán:</strong> {{ hoa_don.PhuongThucThanhToan }}</p>
+                    <p><strong>Trạng thái:</strong> {{ hoa_don.TrangThai }}</p>
+                </div>
+
+                <div class="invoice-footer">
+                    <div class="signature">
+                        <p>Người lập hóa đơn</p>
+                        <div class="signature-line"></div>
+                    </div>
+                    <div class="signature">
+                        <p>Người thanh toán</p>
+                        <div class="signature-line"></div>
+                    </div>
+                </div>
+
+                <div class="invoice-note">
+                    <p>Cảm ơn quý khách đã sử dụng dịch vụ của chúng tôi!</p>
+                </div>
+            </div>
+
+            <div class="detail-actions bottom">
+                <a href="{{ url_for('hoa_don_list') }}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Quay lại danh sách
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="floating-buttons">
+    <a href="{{ url_for('hoa_don_list') }}" class="floating-btn" title="Quay lại">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+    <a href="{{ url_for('index') }}" class="floating-btn" title="Về trang chủ">
+        <i class="fas fa-home"></i>
+    </a>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Xử lý sự kiện nút in
+        document.getElementById('printBtn').addEventListener('click', function() {
+            window.print();
+        });
+    });
+</script>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .detail-container {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        padding: 20px;
+    }
+    
+    .detail-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .invoice-container {
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+    
+    .invoice-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #4a90e2;
+    }
+    
+    .invoice-logo {
+        display: flex;
+        align-items: center;
+    }
+    
+    .invoice-logo img {
+        width: 50px;
+        height: 50px;
+        margin-right: 15px;
+    }
+    
+    .invoice-logo h2 {
+        font-size: 18px;
+        margin: 0;
+        color: #333;
+    }
+    
+    .invoice-title h1 {
+        font-size: 24px;
+        color: #4a90e2;
+        margin: 0 0 10px 0;
+    }
+    
+    .invoice-title p {
+        margin: 5px 0;
+        font-size: 14px;
+    }
+    
+    .invoice-info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+    }
+    
+    .info-group {
+        flex: 1;
+    }
+    
+    .info-group h4 {
+        color: #4a90e2;
+        margin-bottom: 10px;
+        font-size: 16px;
+    }
+    
+    .info-group p {
+        margin: 5px 0;
+        font-size: 14px;
+    }
+    
+    .invoice-details {
+        margin-bottom: 30px;
+    }
+    
+    .invoice-details h4 {
+        color: #4a90e2;
+        margin-bottom: 15px;
+        font-size: 16px;
+    }
+    
+    .invoice-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .invoice-table th, .invoice-table td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .invoice-table th {
+        background-color: #f5f5f5;
+        font-weight: 600;
+    }
+    
+    .invoice-table tfoot td {
+        font-weight: bold;
+        border-top: 2px solid #ddd;
+    }
+    
+    .text-right {
+        text-align: right;
+    }
+    
+    .invoice-payment {
+        margin-bottom: 30px;
+    }
+    
+    .invoice-footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+    
+    .signature {
+        text-align: center;
+        width: 200px;
+    }
+    
+    .signature p {
+        margin-bottom: 50px;
+    }
+    
+    .signature-line {
+        border-top: 1px solid #000;
+    }
+    
+    .invoice-note {
+        text-align: center;
+        font-style: italic;
+        margin-top: 30px;
+        color: #666;
+    }
+    
+    .detail-actions.bottom {
+        margin-top: 20px;
+        text-align: right;
+    }
+    
+    .floating-buttons {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .floating-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #4a90e2;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .floating-btn:hover {
+        transform: scale(1.1);
+        background-color: #3a7bc8;
+    }
+    
+    /* Định dạng cho chế độ in */
+    @media print {
+        .sidebar, .page-header, .detail-actions, .floating-buttons {
+            display: none;
+        }
+        
+        .dashboard-container {
+            display: block;
+        }
+        
+        .main-content {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .detail-container {
+            border: none;
+            box-shadow: none;
+            padding: 0;
+        }
+        
+        .detail-header {
+            display: none;
+        }
+        
+        .invoice-container {
+            border: none;
+        }
+    }
+</style>
+{% endblock %}

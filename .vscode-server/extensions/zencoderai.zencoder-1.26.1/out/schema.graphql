@@ -1,0 +1,149 @@
+scalar JSONObject
+
+type SourceFile {
+  path: String!
+  fsPath: String!
+  content: String!
+  language: String
+}
+
+type AstNode {
+  path: String!
+  name: String!
+  kind: AstNodeKind!
+  offset: Int!
+  body: String
+  children: [AstNode!]!
+}
+
+enum AstNodeKind {
+  Class
+  Function
+  Method
+  Property
+  Unknown
+}
+
+type ChatMessage {
+  messageId: String
+  content: String!
+  role: String!
+  attachments: [SourceFile!]
+  codebaseEnabled: Boolean
+}
+
+type Context {
+  projectInfo: ProjectInfo
+  chatHistory: [ChatMessage!]!
+  currentFile: SourceFile
+  repoId: String
+  chatId: String
+  tabs: [Tab!]!
+}
+
+type Tab {
+  index: Int!
+  focused: Boolean!
+  content: SourceFile!
+}
+
+type FileMetadata {
+  path: String!
+  isDirectory: Boolean!
+}
+
+type ProjectInfo {
+  rootDir: String
+  shellName: String
+  ideName: String
+  ideVersion: String
+  osName: String
+  osVersion: String
+}
+
+input InputFilePath {
+  path: String!
+}
+
+input MessageContext {
+  usedFilePaths: [InputFilePath!]
+}
+
+input AstNodeFilter {
+  path: String!
+  offset: Int
+}
+
+input DiagnosticsFile {
+  path: String!
+  content: String!
+  language: String
+  range: DiagnosticsRange
+}
+
+input DiagnosticsRequest {
+  files: [DiagnosticsFile!]!
+}
+
+input DiagnosticsRange {
+  startLine: Int!
+  endLine: Int!
+}
+
+type DiagnosticsResult {
+  path: String!
+  severity: String!
+  source: String
+  message: String!
+  language: String
+  range: DiagnosticsResultRange!
+}
+
+type DiagnosticsResultRange {
+  startLine: Int!
+  startCharacter: Int!
+  endLine: Int!
+  endCharacter: Int!
+}
+
+input FileContent {
+  path: String!
+  content: String!
+}
+
+type FileOperationResult {
+  path: String!
+  success: Boolean!
+  errorMessage: String
+}
+
+type Query {
+  context(operationId: String!): Context
+  findFiles(pattern: String!): [SourceFile!]!
+  files(paths: [String!]!): [SourceFile!]!
+  astNodes(astNodeFilters: [AstNodeFilter!]!): [AstNode!]!
+  diagnostics(diagnosticsRequest: DiagnosticsRequest!): [DiagnosticsResult!]!
+  fileMetadata(path: String!): FileMetadata
+  listFiles(directoryPath: String!, depth: Int!): [FileMetadata!]
+  listTools: [String!]!
+  mcp(request: String!): String!
+}
+
+type Mutation {
+  createMessage(operationId: String!, message: String!, messageContext: MessageContext): String!
+  updateMessage(operationId: String!, messageId: String!, message: String!): String!
+  updateMessageContext(
+    operationId: String!
+    messageId: String!
+    messageContext: MessageContext!
+  ): String!
+  renderComponent(operationId: String!, componentName: String!, props: JSONObject!): String!
+  updateComponent(
+    operationId: String!
+    messageId: String!
+    componentName: String!
+    props: JSONObject!
+  ): String!
+  createOrUpdateFiles(files: [FileContent!]!): [FileOperationResult!]!
+  endOperation(operationId: String!, errorMessage: String): Boolean!
+}

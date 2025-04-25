@@ -1,0 +1,180 @@
+{% extends 'layout.html' %}
+
+{% block title %}Quản lý bệnh nhân - NHAKHOASO{% endblock %}
+
+{% block content %}
+<div class="section-title">
+    <h2>QUẢN LÝ BỆNH NHÂN</h2>
+</div>
+
+<div class="page-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-title">
+            <i class="fas fa-user-injured"></i> Quản lý bệnh nhân
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('them_moi_benh_nhan') }}">
+                    <i class="fas fa-plus"></i> Thêm mới bệnh nhân
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-plus"></i> Tìm kiếm bệnh nhân
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('benh_nhan') }}" class="active">
+                    <i class="fas fa-plus"></i> Danh sách bệnh nhân
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-title">
+            <i class="fas fa-clipboard-list"></i> Quản lý bác sĩ
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="#">
+                    <i class="fas fa-plus"></i> Thêm mới bác sĩ
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-plus"></i> Tìm kiếm bác sĩ
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('bac_si') }}">
+                    <i class="fas fa-plus"></i> Danh sách bác sĩ
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-title">
+            <i class="fas fa-chart-line"></i> Quản lý phiếu khám
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="#">
+                    <i class="fas fa-plus"></i> Tạo phiếu khám
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-plus"></i> Tìm kiếm phiếu khám
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-plus"></i> Danh sách phiếu khám
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-title">
+            <i class="fas fa-calendar-check"></i> Quản lý lịch hẹn
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="#">
+                    <i class="fas fa-plus"></i> Đặt lịch hẹn
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-plus"></i> Tìm kiếm lịch hẹn
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-plus"></i> Danh sách lịch hẹn
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <div class="content-header">
+            <h2>Danh sách bệnh nhân</h2>
+        </div>
+        
+        <div class="module-actions">
+            <a href="{{ url_for('them_moi_benh_nhan') }}" class="btn"><i class="fas fa-plus"></i> Thêm bệnh nhân mới</a>
+            <div class="search-box">
+                <input type="text" placeholder="Tìm kiếm bệnh nhân...">
+                <button class="btn"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+
+        <div class="module-content">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Mã BN</th>
+                        <th>Họ và tên</th>
+                        <th>Ngày sinh</th>
+                        <th>Giới tính</th>
+                        <th>Số điện thoại</th>
+                        <th>Địa chỉ</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>BN001</td>
+                        <td>Nguyễn Văn A</td>
+                        <td>01/01/1990</td>
+                        <td>Nam</td>
+                        <td>0901234567</td>
+                        <td>123 Đường ABC, Quận 1, TP.HCM</td>
+                        <td>
+                            <a href="#" class="action-btn view-btn" title="Xem chi tiết"><i class="fas fa-eye"></i></a>
+                            <a href="#" class="action-btn edit-btn" title="Chỉnh sửa"><i class="fas fa-edit"></i></a>
+                            <a href="#" class="action-btn delete-btn" title="Xóa"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>BN002</td>
+                        <td>Trần Thị B</td>
+                        <td>15/05/1985</td>
+                        <td>Nữ</td>
+                        <td>0909876543</td>
+                        <td>456 Đường XYZ, Quận 2, TP.HCM</td>
+                        <td>
+                            <a href="#" class="action-btn view-btn" title="Xem chi tiết"><i class="fas fa-eye"></i></a>
+                            <a href="#" class="action-btn edit-btn" title="Chỉnh sửa"><i class="fas fa-edit"></i></a>
+                            <a href="#" class="action-btn delete-btn" title="Xóa"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>BN003</td>
+                        <td>Lê Văn C</td>
+                        <td>22/12/1995</td>
+                        <td>Nam</td>
+                        <td>0912345678</td>
+                        <td>789 Đường DEF, Quận 3, TP.HCM</td>
+                        <td>
+                            <a href="#" class="action-btn view-btn" title="Xem chi tiết"><i class="fas fa-eye"></i></a>
+                            <a href="#" class="action-btn edit-btn" title="Chỉnh sửa"><i class="fas fa-edit"></i></a>
+                            <a href="#" class="action-btn delete-btn" title="Xóa"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination">
+            <a href="#" class="page-link">&laquo;</a>
+            <a href="#" class="page-link active">1</a>
+            <a href="#" class="page-link">2</a>
+            <a href="#" class="page-link">3</a>
+            <a href="#" class="page-link">&raquo;</a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
