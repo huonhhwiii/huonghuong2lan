@@ -1,0 +1,29 @@
+2025-04-26 09:05:57.611 [info] Can't use the Electron fetcher in this environment.
+2025-04-26 09:05:57.611 [info] Using the Node fetch fetcher.
+2025-04-26 09:05:57.611 [info] Initializing Git extension service.
+2025-04-26 09:05:57.611 [info] Successfully activated the vscode.git extension.
+2025-04-26 09:05:57.611 [info] Enablement state of the vscode.git extension: true.
+2025-04-26 09:05:57.611 [info] Successfully registered Git commit message provider.
+2025-04-26 09:06:00.356 [info] Logged in as huonhhwiii
+2025-04-26 09:06:12.019 [info] Got Copilot token for huonhhwiii
+2025-04-26 09:06:12.707 [info] copilot token chat_enabled: true, sku: free_limited_copilot
+2025-04-26 09:06:12.707 [info] GitHub.vscode-pull-request-github extension is not yet activated.
+2025-04-26 09:06:12.741 [info] Registering default platform agent...
+2025-04-26 09:06:14.239 [info] Fetched model metadata in 2193ms 6dd999bd-0adb-40a2-95f1-0ca3fe4bd9eb
+2025-04-26 09:06:14.309 [info] activationBlocker from 'languageModelAccess' took for 13087ms
+2025-04-26 09:22:11.081 [info] Fetched model metadata in 3064ms d2be6034-8c19-4aef-993b-42a099ce9fac
+2025-04-26 09:38:09.651 [info] Logged in as huonhhwiii
+2025-04-26 09:38:11.282 [info] Got Copilot token for huonhhwiii
+2025-04-26 09:38:11.591 [info] copilot token chat_enabled: true, sku: free_limited_copilot
+2025-04-26 09:54:15.811 [info] Fetched model metadata in 1241ms 6e400748-4eb6-4f79-a9b2-74b52570cc3c
+2025-04-26 10:10:21.443 [info] Logged in as huonhhwiii
+2025-04-26 10:10:23.318 [info] Got Copilot token for huonhhwiii
+2025-04-26 10:10:23.748 [info] copilot token chat_enabled: true, sku: free_limited_copilot
+2025-04-26 10:10:24.595 [info] Fetched model metadata in 1265ms 91b7e722-c318-43bd-8c66-035070ff399d
+2025-04-26 10:42:44.027 [info] Logged in as huonhhwiii
+2025-04-26 10:42:47.677 [info] Got Copilot token for huonhhwiii
+2025-04-26 10:42:48.171 [info] copilot token chat_enabled: true, sku: free_limited_copilot
+2025-04-26 10:42:49.309 [info] Fetched model metadata in 1600ms 276912b9-9581-473f-8a7c-5ce83a083a63
+2025-04-26 11:14:34.830 [info] Logged in as huonhhwiii
+2025-04-26 11:14:36.283 [info] Got Copilot token for huonhhwiii
+2025-04-26 11:14:36.537 [info] copilot token chat_enabled: true, sku: free_limited_copilot

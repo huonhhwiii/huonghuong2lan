@@ -1,0 +1,343 @@
+{% extends 'layout.html' %}
+
+{% block title %}Thống kê lượt khám - NHAKHOASO{% endblock %}
+
+{% block content %}
+<div class="section-title">
+    <h2>THỐNG KÊ LƯỢT KHÁM</h2>
+</div>
+
+<!-- Flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+                <div class="flash-message {{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<div class="content-header">
+    <h2>Thống kê số lượt khám từ bảng PHIEUKHAM theo thời gian</h2>
+    <div class="filter-form">
+        <form method="POST" action="{{ url_for('bao_cao_luot_kham') }}">
+            <div class="form-group">
+                <label for="tu_ngay">Từ ngày:</label>
+                <input type="date" id="tu_ngay" name="tu_ngay" value="{{ tu_ngay }}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="den_ngay">Đến ngày:</label>
+                <input type="date" id="den_ngay" name="den_ngay" value="{{ den_ngay }}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="loai_bao_cao">Loại báo cáo:</label>
+                <select id="loai_bao_cao" name="loai_bao_cao" class="form-control">
+                    <option value="day" {% if loai_bao_cao == 'day' %}selected{% endif %}>Theo ngày</option>
+                    <option value="week" {% if loai_bao_cao == 'week' %}selected{% endif %}>Theo tuần</option>
+                    <option value="month" {% if loai_bao_cao == 'month' %}selected{% endif %}>Theo tháng</option>
+                </select>
+            </div>
+            <button type="submit" class="btn">Lọc dữ liệu</button>
+        </form>
+    </div>
+</div>
+
+<div class="dashboard-stats">
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-clipboard-list"></i>
+        </div>
+        <div class="stat-info">
+            <h3>{{ tong_luot_kham }}</h3>
+            <p>Tổng số lượt khám</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-calculator"></i>
+        </div>
+        <div class="stat-info">
+            <h3>{{ "%.1f"|format(luot_kham_trung_binh) }}</h3>
+            <p>Lượt khám trung bình/ngày</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-calendar-day"></i>
+        </div>
+        <div class="stat-info">
+            <h3>{{ ngay_nhieu_nhat }}</h3>
+            <p>Ngày có nhiều lượt khám nhất</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-chart-line"></i>
+        </div>
+        <div class="stat-info">
+            <h3>{{ so_luot_nhieu_nhat }}</h3>
+            <p>Số lượt khám cao nhất/ngày</p>
+        </div>
+    </div>
+</div>
+
+<div class="report-cards">
+    <div class="report-card full-width">
+        <div class="report-header">
+            <h3>Biểu đồ thống kê số lượt khám theo thời gian</h3>
+        </div>
+        <div class="report-content">
+            <div class="chart-container">
+                <canvas id="visitTimeChart"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <div class="report-card">
+        <div class="report-header">
+            <h3>Số lượt khám theo bác sĩ</h3>
+        </div>
+        <div class="report-content">
+            <div class="chart-container">
+                <canvas id="doctorVisitChart"></canvas>
+            </div>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Mã BS</th>
+                            <th>Tên bác sĩ</th>
+                            <th>Số lượt khám</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for bs in luot_kham_theo_bac_si %}
+                        <tr>
+                            <td>{{ bs.MaBS }}</td>
+                            <td>{{ bs.HoTen }}</td>
+                            <td>{{ bs.SoLuot }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="report-card">
+        <div class="report-header">
+            <h3>Số lượt khám theo dịch vụ</h3>
+        </div>
+        <div class="report-content">
+            <div class="chart-container">
+                <canvas id="serviceVisitChart"></canvas>
+            </div>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Mã DV</th>
+                            <th>Tên dịch vụ</th>
+                            <th>Số lượt khám</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for dv in luot_kham_theo_dich_vu %}
+                        <tr>
+                            <td>{{ dv.MaDV }}</td>
+                            <td>{{ dv.TenDV }}</td>
+                            <td>{{ dv.SoLuot }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="report-cards">
+    <div class="report-card full-width">
+        <div class="report-header">
+            <h3>Chi tiết thống kê số lượt khám theo thời gian</h3>
+        </div>
+        <div class="report-content">
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Thời gian</th>
+                            <th>Số lượt khám</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in luot_kham_theo_thoi_gian %}
+                        <tr>
+                            <td>{{ item.ThoiGian }}</td>
+                            <td>{{ item.SoLuot }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Biểu đồ số lượt khám theo thời gian
+        const visitTimeCtx = document.getElementById('visitTimeChart').getContext('2d');
+        const visitTimeChart = new Chart(visitTimeCtx, {
+            type: 'line',
+            data: {
+                labels: {{ thoi_gian_labels|safe }},
+                datasets: [{
+                    label: 'Số lượt khám',
+                    data: {{ luot_kham_data|safe }},
+                    fill: false,
+                    borderColor: '#e74a3b',
+                    backgroundColor: '#e74a3b',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            precision: 0
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Biểu đồ số lượt khám theo bác sĩ
+        const doctorVisitCtx = document.getElementById('doctorVisitChart').getContext('2d');
+        const doctorVisitChart = new Chart(doctorVisitCtx, {
+            type: 'bar',
+            data: {
+                labels: {{ bac_si_labels|safe }},
+                datasets: [{
+                    label: 'Số lượt khám',
+                    data: {{ bac_si_data|safe }},
+                    backgroundColor: '#4e73df',
+                    borderColor: '#4e73df',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            precision: 0
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Biểu đồ số lượt khám theo dịch vụ
+        const serviceVisitCtx = document.getElementById('serviceVisitChart').getContext('2d');
+        const serviceVisitChart = new Chart(serviceVisitCtx, {
+            type: 'pie',
+            data: {
+                labels: {{ dich_vu_labels|safe }},
+                datasets: [{
+                    data: {{ dich_vu_data|safe }},
+                    backgroundColor: [
+                        '#4e73df', '#1cc88a', '#36b9cc', '#f6c23e', '#e74a3b',
+                        '#5a5c69', '#858796', '#6610f2', '#fd7e14', '#20c9a6'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                    }
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .filter-form {
+        background-color: #f8f9fc;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .filter-form .form-group {
+        flex: 1;
+        min-width: 200px;
+    }
+    
+    .filter-form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+    }
+    
+    .filter-form .form-control {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #d1d3e2;
+        border-radius: 4px;
+    }
+    
+    .filter-form button {
+        margin-top: 24px;
+        height: 40px;
+    }
+    
+    .full-width {
+        grid-column: 1 / -1;
+    }
+    
+    .table-container {
+        margin-top: 20px;
+        overflow-x: auto;
+    }
+    
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .data-table th, .data-table td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #e3e6f0;
+    }
+    
+    .data-table th {
+        background-color: var(--secondary-color);
+        color: var(--primary-color);
+        font-weight: 600;
+    }
+    
+    .data-table tr:hover {
+        background-color: #f8f9fc;
+    }
+</style>
+{% endblock %}

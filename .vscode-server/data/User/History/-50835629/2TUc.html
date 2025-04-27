@@ -1,0 +1,362 @@
+{% extends 'layout.html' %}
+
+{% block title %}Báo cáo lịch hẹn | NHAKHOASO{% endblock %}
+
+{% block extra_css %}
+<style>
+    .filter-form {
+        background-color: #f5f5f5;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        align-items: flex-end;
+    }
+    
+    .filter-form .form-group {
+        flex: 1;
+        min-width: 200px;
+    }
+    
+    .filter-form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+    
+    .filter-form select, .filter-form input[type="date"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    
+    .filter-form button {
+        padding: 8px 15px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    .filter-form button:hover {
+        background-color: #45a049;
+    }
+    
+    .report-summary {
+        background-color: #e9f7ef;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    
+    .summary-item {
+        text-align: center;
+        padding: 10px;
+    }
+    
+    .summary-item .value {
+        font-size: 24px;
+        font-weight: bold;
+        color: #2E7D32;
+    }
+    
+    .summary-item .label {
+        font-size: 14px;
+        color: #555;
+    }
+    
+    .status-chart-container {
+        margin-top: 20px;
+        margin-bottom: 30px;
+        height: 300px;
+    }
+    
+    .report-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    
+    .report-table th, .report-table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+    
+    .report-table th {
+        background-color: #4CAF50;
+        color: white;
+    }
+    
+    .report-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    
+    .report-table tr:hover {
+        background-color: #e9f7ef;
+    }
+    
+    .status-badge {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 12px;
+        font-weight: 500;
+    }
+    
+    .status-badge.chua-kham {
+        background-color: #FFC107;
+        color: #333;
+    }
+    
+    .status-badge.da-kham {
+        background-color: #4CAF50;
+        color: white;
+    }
+    
+    .status-badge.huy {
+        background-color: #F44336;
+        color: white;
+    }
+    
+    .no-data {
+        text-align: center;
+        padding: 30px;
+        color: #777;
+        font-style: italic;
+    }
+    
+    .export-buttons {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+    }
+    
+    .export-buttons button {
+        padding: 8px 15px;
+        background-color: #2196F3;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    
+    .export-buttons button:hover {
+        background-color: #0b7dda;
+    }
+    
+    @media print {
+        .filter-form, .export-buttons, .sidebar, .header, .footer {
+            display: none;
+        }
+        
+        .main-content {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="report-container">
+<div class="section-title">
+    <h2>BÁO CÁO LỊCH HẸN</h2>
+</div>
+
+<!-- Form lọc báo cáo -->
+<form class="filter-form" method="GET" action="{{ url_for('bao_cao_lich_hen') }}">
+    <div class="form-group">
+        <label for="trang_thai">Trạng thái:</label>
+        <select id="trang_thai" name="trang_thai">
+            <option value="">Tất cả trạng thái</option>
+            <option value="Chưa khám" {% if trang_thai == 'Chưa khám' %}selected{% endif %}>Chưa khám</option>
+            <option value="Đã khám" {% if trang_thai == 'Đã khám' %}selected{% endif %}>Đã khám</option>
+            <option value="Đã hủy" {% if trang_thai == 'Đã hủy' %}selected{% endif %}>Đã hủy</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="tu_ngay">Từ ngày:</label>
+        <input type="date" id="tu_ngay" name="tu_ngay" value="{{ tu_ngay }}">
+    </div>
+    
+    <div class="form-group">
+        <label for="den_ngay">Đến ngày:</label>
+        <input type="date" id="den_ngay" name="den_ngay" value="{{ den_ngay }}">
+    </div>
+    
+    <button type="submit">
+        <i class="fas fa-filter"></i> Lọc báo cáo
+    </button>
+</form>
+
+<!-- Tóm tắt báo cáo -->
+<div class="report-summary">
+    <div class="summary-item">
+        <div class="value">{{ tong_so_lich_hen }}</div>
+        <div class="label">Tổng số lịch hẹn</div>
+    </div>
+    
+    {% for item in thong_ke_trang_thai %}
+    <div class="summary-item">
+        <div class="value">{{ item.so_luong }}</div>
+        <div class="label">{{ item.trang_thai }}</div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Biểu đồ trạng thái -->
+<div class="status-chart-container">
+    <canvas id="statusChart"></canvas>
+</div>
+
+<!-- Bảng báo cáo -->
+{% if lich_hen_list %}
+<div class="table-responsive">
+    <table class="report-table">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Mã lịch hẹn</th>
+                <th>Bệnh nhân</th>
+                <th>Ngày hẹn</th>
+                <th>Trạng thái</th>
+                <th>Bác sĩ phụ trách</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for lh in lich_hen_list %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ lh.MaLH }}</td>
+                <td>{{ lh.TenBenhNhan }} ({{ lh.MaBN }})</td>
+                <td>{{ lh.NgayHen }}</td>
+                <td>
+                    {% if lh.TrangThai == 'Chưa khám' %}
+                    <span class="status-badge chua-kham">{{ lh.TrangThai }}</span>
+                    {% elif lh.TrangThai == 'Đã khám' %}
+                    <span class="status-badge da-kham">{{ lh.TrangThai }}</span>
+                    {% elif lh.TrangThai == 'Đã hủy' %}
+                    <span class="status-badge huy">{{ lh.TrangThai }}</span>
+                    {% else %}
+                    {{ lh.TrangThai }}
+                    {% endif %}
+                </td>
+                <td>{{ lh.TenBacSi if lh.TenBacSi else 'Chưa phân công' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Nút xuất báo cáo -->
+<div class="export-buttons">
+    <button onclick="window.print()">
+        <i class="fas fa-print"></i> In báo cáo
+    </button>
+    <button id="exportExcel">
+        <i class="fas fa-file-excel"></i> Xuất Excel
+    </button>
+    <button id="exportPDF">
+        <i class="fas fa-file-pdf"></i> Xuất PDF
+    </button>
+</div>
+{% else %}
+<div class="no-data">
+    <p>Không có dữ liệu báo cáo trong khoảng thời gian đã chọn</p>
+</div>
+{% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        {% if thong_ke_trang_thai %}
+        // Dữ liệu cho biểu đồ trạng thái
+        const labels = [{% for item in thong_ke_trang_thai %}'{{ item.trang_thai }}',{% endfor %}];
+        const data = [{% for item in thong_ke_trang_thai %}{{ item.so_luong }},{% endfor %}];
+        
+        // Màu cho các trạng thái
+        const backgroundColors = [];
+        for (let i = 0; i < labels.length; i++) {
+            if (labels[i] === 'Chưa khám') {
+                backgroundColors.push('rgba(255, 193, 7, 0.7)');  // Màu vàng cho Chưa khám
+            } else if (labels[i] === 'Đã khám') {
+                backgroundColors.push('rgba(76, 175, 80, 0.7)');  // Màu xanh lá cho Đã khám
+            } else if (labels[i] === 'Đã hủy') {
+                backgroundColors.push('rgba(244, 67, 54, 0.7)');  // Màu đỏ cho Đã hủy
+            } else {
+                backgroundColors.push('rgba(158, 158, 158, 0.7)'); // Màu xám cho các trạng thái khác
+            }
+        }
+        
+        // Tạo biểu đồ
+        const ctx = document.getElementById('statusChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: data,
+                    backgroundColor: backgroundColors,
+                    borderColor: backgroundColors.map(color => color.replace('0.7', '1')),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Phân bố lịch hẹn theo trạng thái',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'right'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.raw || 0;
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = Math.round((value / total) * 100);
+                                return `${label}: ${value} (${percentage}%)`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Xử lý xuất Excel và PDF (giả lập)
+        document.getElementById('exportExcel').addEventListener('click', function() {
+            alert('Chức năng xuất Excel đang được phát triển');
+        });
+        
+        document.getElementById('exportPDF').addEventListener('click', function() {
+            alert('Chức năng xuất PDF đang được phát triển');
+        });
+        {% endif %}
+    });
+</script>
+{% endblock %}

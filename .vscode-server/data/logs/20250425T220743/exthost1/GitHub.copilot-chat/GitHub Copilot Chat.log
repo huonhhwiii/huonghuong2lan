@@ -1,0 +1,28 @@
+2025-04-26 00:36:47.410 [info] Can't use the Electron fetcher in this environment.
+2025-04-26 00:36:47.410 [info] Using the Node fetch fetcher.
+2025-04-26 00:36:47.410 [info] Initializing Git extension service.
+2025-04-26 00:36:47.410 [info] Successfully activated the vscode.git extension.
+2025-04-26 00:36:47.410 [info] Enablement state of the vscode.git extension: true.
+2025-04-26 00:36:47.410 [info] Successfully registered Git commit message provider.
+2025-04-26 00:36:59.784 [info] Logged in as huonhhwiii
+2025-04-26 00:37:09.967 [info] Got Copilot token for huonhhwiii
+2025-04-26 00:37:15.869 [info] copilot token chat_enabled: true, sku: free_limited_copilot
+2025-04-26 00:37:15.869 [info] GitHub.vscode-pull-request-github extension is not yet activated.
+2025-04-26 00:37:15.919 [info] Registering default platform agent...
+2025-04-26 00:37:19.070 [info] Fetched model metadata in 9031ms 42b24078-970a-4cdf-8acd-a875fba1ed94
+2025-04-26 00:37:19.086 [info] activationBlocker from 'languageModelAccess' took for 27831ms
+2025-04-26 00:38:18.443 [info] message 0 returned. finish reason: [stop]
+2025-04-26 00:38:18.459 [info] request done: requestId: [8d3da6d9-e234-4f03-af0e-3974baf0900b] model deployment ID: []
+2025-04-26 00:38:54.867 [info] message 0 returned. finish reason: [stop]
+2025-04-26 00:38:54.883 [info] request done: requestId: [0bb40d1d-6905-4474-8549-841b3f6c5580] model deployment ID: []
+2025-04-26 01:08:04.963 [info] Logged in as huonhhwiii
+2025-04-26 01:08:07.640 [info] Got Copilot token for huonhhwiii
+2025-04-26 01:08:07.889 [info] copilot token chat_enabled: true, sku: free_limited_copilot
+2025-04-26 01:23:31.150 [info] Fetched model metadata in 1188ms 6cf01e89-cc9b-41f7-b2db-eac3e194bc90
+2025-04-26 01:39:00.019 [info] Logged in as huonhhwiii
+2025-04-26 01:39:01.337 [info] Got Copilot token for huonhhwiii
+2025-04-26 01:39:01.585 [info] copilot token chat_enabled: true, sku: free_limited_copilot
+2025-04-26 02:10:04.654 [info] Logged in as huonhhwiii
+2025-04-26 02:10:07.827 [info] Got Copilot token for huonhhwiii
+2025-04-26 02:10:08.448 [info] copilot token chat_enabled: true, sku: free_limited_copilot
+2025-04-26 02:10:09.243 [info] Fetched model metadata in 1366ms d69a0f07-cae7-4140-b8a8-de1148acd13d

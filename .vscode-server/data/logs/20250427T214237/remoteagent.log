@@ -1,0 +1,12 @@
+2025-04-27 21:42:37.754 [info] 
+
+
+
+
+2025-04-27 21:42:37.797 [info] Extension host agent started.
+2025-04-27 21:42:38.024 [info] [127.0.0.1][0b4f7e45][ManagementConnection] New connection established.
+2025-04-27 21:42:38.280 [info] [127.0.0.1][fc0ca365][ExtensionHostConnection] New connection established.
+2025-04-27 21:42:38.688 [info] [127.0.0.1][fc0ca365][ExtensionHostConnection] <721> Launched Extension Host Process.
+2025-04-27 21:42:39.228 [info] Deleted marked for removal extension from disk github.copilot /home/huong/.vscode-server/extensions/github.copilot-1.303.0
+2025-04-27 21:42:52.192 [error] [File Watcher] Unexpected error: inotify_add_watch on '/home/huong/.vscode-server/data/logs/20250424T003243/exthost1' failed: No such file or directory (EUNKNOWN) (path: /home/huong)
+2025-04-27 21:42:52.193 [error] [File Watcher (universal)] inotify_add_watch on '/home/huong/.vscode-server/data/logs/20250424T003243/exthost1' failed: No such file or directory

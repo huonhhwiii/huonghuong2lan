@@ -31,3 +31,43 @@
 2025-04-25 13:18:54.692 [info] > git rev-parse --show-toplevel [326ms]
 2025-04-25 13:18:54.692 [info] fatal: not a git repository (or any of the parent directories): .git
 2025-04-25 13:18:54.695 [info] [Model][doInitialScan] Initial repository scan completed - repositories (0), closed repositories (0), parent repositories (0), unsafe repositories (0)
+2025-04-25 13:54:42.588 [info] > git rev-parse --show-toplevel [6ms]
+2025-04-25 13:54:42.621 [info] > git rev-parse --git-dir --git-common-dir [17ms]
+2025-04-25 13:54:42.667 [info] [Model][openRepository] Opened repository: /home/huong
+2025-04-25 13:54:42.693 [info] > git config --get commit.template [1ms]
+2025-04-25 13:54:42.718 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [11ms]
+2025-04-25 13:54:42.923 [info] > git for-each-ref --sort -committerdate --format %(refname)%00%(objectname)%00%(*objectname) [41ms]
+2025-04-25 13:54:42.988 [info] > git show --textconv :nhakhoaso/app.py [47ms]
+2025-04-25 13:54:43.005 [info] > git ls-files --stage -- nhakhoaso/app.py [45ms]
+2025-04-25 13:54:43.022 [info] > git cat-file -s da9bae0dc88c7badc3d3ffa36eddcd573fb2e37e [4ms]
+2025-04-25 13:54:43.055 [info] > git status -z -uall [267ms]
+2025-04-25 13:54:43.158 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [51ms]
+2025-04-25 13:54:43.194 [info] > git config --get commit.template [66ms]
+2025-04-25 13:54:43.211 [info] > git config --get --local branch.main.vscode-merge-base [36ms]
+2025-04-25 13:54:43.212 [warning] [Git][config] git config failed: Failed to execute git
+2025-04-25 13:54:43.618 [info] > git reflog main --grep-reflog=branch: Created from *. [395ms]
+2025-04-25 13:54:43.723 [info] > git symbolic-ref --short refs/remotes/origin/HEAD [100ms]
+2025-04-25 13:54:43.723 [info] fatal: ref refs/remotes/origin/HEAD is not a symbolic ref
+2025-04-25 13:54:43.723 [warning] [Repository][getDefaultBranch] Failed to get default branch details: Failed to execute git.
+2025-04-25 13:54:43.724 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [492ms]
+2025-04-25 13:54:43.778 [info] > git for-each-ref --sort -committerdate --format %(refname)%00%(objectname)%00%(*objectname) [3ms]
+2025-04-25 13:54:43.911 [info] > git check-ignore -v -z --stdin [219ms]
+2025-04-25 13:54:45.027 [info] > git status -z -uall [1271ms]
+2025-04-25 13:56:06.955 [info] > git check-ignore -v -z --stdin [19ms]
+2025-04-25 13:56:15.475 [info] > git show --textconv :nhakhoaso/huonghuong2lan.txt [11ms]
+2025-04-25 13:56:15.481 [info] > git ls-files --stage -- nhakhoaso/huonghuong2lan.txt [11ms]
+2025-04-25 13:56:15.494 [info] > git hash-object -t tree /dev/null [14ms]
+2025-04-25 13:56:15.494 [warning] [GitFileSystemProvider][readFile] File not found - git:/home/huong/nhakhoaso/huonghuong2lan.txt.git?%7B%22path%22%3A%22%2Fhome%2Fhuong%2Fnhakhoaso%2Fhuonghuong2lan.txt%22%2C%22ref%22%3A%22%22%7D
+2025-04-25 13:56:15.509 [info] > git hash-object -t tree /dev/null [15ms]
+2025-04-25 13:56:15.509 [warning] [GitFileSystemProvider][stat] File not found - git:/home/huong/nhakhoaso/huonghuong2lan.txt.git?%7B%22path%22%3A%22%2Fhome%2Fhuong%2Fnhakhoaso%2Fhuonghuong2lan.txt%22%2C%22ref%22%3A%22%22%7D
+2025-04-25 13:56:15.690 [info] > git check-ignore -v -z --stdin [27ms]
+2025-04-25 13:56:26.842 [info] > git blame --root --incremental 7b3b9bf08ad9cf882f5626b0eb6abeff7b723c98 -- nhakhoaso/huonghuong2lan.txt [14ms]
+2025-04-25 13:56:26.842 [info] fatal: no such path nhakhoaso/huonghuong2lan.txt in 7b3b9bf08ad9cf882f5626b0eb6abeff7b723c98
+2025-04-25 13:56:39.287 [info] > git show --textconv :nhakhoaso/app.py [70ms]
+2025-04-25 13:56:39.288 [info] > git ls-files --stage -- nhakhoaso/app.py [35ms]
+2025-04-25 13:56:39.391 [info] > git cat-file -s da9bae0dc88c7badc3d3ffa36eddcd573fb2e37e [71ms]
+2025-04-25 13:56:43.556 [info] > git check-ignore -v -z --stdin [21ms]
+2025-04-25 13:57:39.307 [info] > git config --get commit.template [13ms]
+2025-04-25 13:57:39.308 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [6ms]
+2025-04-25 13:57:39.333 [info] > git for-each-ref --sort -committerdate --format %(refname)%00%(objectname)%00%(*objectname) [9ms]
+2025-04-25 13:57:39.415 [info] > git status -z -uall [98ms]

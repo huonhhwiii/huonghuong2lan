@@ -1,0 +1,100 @@
+/* CSS cho chức năng Báo cáo-Thống kê */
+
+/* Màu xanh dương cho tiêu đề Báo cáo-Thống kê */
+.sidebar-title:has(i.fa-chart-bar) {
+    color: #0066cc !important;
+}
+
+.sidebar-title:has(i.fa-chart-bar) i {
+    color: #0066cc !important;
+}
+
+/* Màu xanh dương cho các mục con trong Báo cáo-Thống kê */
+.sidebar-title:has(i.fa-chart-bar) + .sidebar-menu a {
+    color: #0066cc !important;
+}
+
+.sidebar-title:has(i.fa-chart-bar) + .sidebar-menu a i {
+    color: #0066cc !important;
+}
+
+/* Màu nền khi hover vào các mục con */
+.sidebar-title:has(i.fa-chart-bar) + .sidebar-menu a:hover {
+    background-color: #e6f2ff !important;
+}
+
+/* Màu nền khi mục được chọn (active) */
+.sidebar-title:has(i.fa-chart-bar) + .sidebar-menu a.active {
+    background-color: #e6f2ff !important;
+    color: #0066cc !important;
+    font-weight: 600 !important;
+}
+
+/* Màu cho các biểu đồ và bảng trong trang báo cáo */
+.report-container h2,
+.report-container h3,
+.report-container .section-title h2 {
+    color: #0066cc !important;
+}
+
+/* Màu cho các bảng trong báo cáo */
+.report-container .report-table th {
+    background-color: #0066cc !important;
+    color: white !important;
+}
+
+.report-container .data-table th {
+    background-color: #0066cc !important;
+    color: white !important;
+}
+
+/* Màu cho các nút trong trang báo cáo */
+.report-container .btn,
+.report-container button[type="submit"] {
+    background-color: #0066cc !important;
+}
+
+.report-container .btn:hover,
+.report-container button[type="submit"]:hover {
+    background-color: #0052a3 !important;
+}
+
+/* Màu cho các phần tử trong báo cáo */
+.report-container .filter-form {
+    border: 1px solid #0066cc !important;
+}
+
+.report-container .export-buttons button {
+    background-color: #0066cc !important;
+}
+
+.report-container .export-buttons button:hover {
+    background-color: #0052a3 !important;
+}
+
+/* Màu cho các phần tử trong báo cáo theo tháng */
+.report-container .month-header {
+    background-color: #0066cc !important;
+}
+
+/* Màu cho các phần tử trong báo cáo theo bác sĩ */
+.report-container .doctor-header {
+    background-color: #0066cc !important;
+}
+
+/* Màu cho các phần tử tóm tắt */
+.report-container .report-summary {
+    background-color: #e6f2ff !important;
+    border: 1px solid #0066cc !important;
+}
+
+.report-container .summary-item .value {
+    color: #0066cc !important;
+}
+
+/* Màu cho các biểu đồ */
+.report-container .chart-container {
+    border: 1px solid #e6f2ff !important;
+    padding: 15px !important;
+    border-radius: 8px !important;
+}

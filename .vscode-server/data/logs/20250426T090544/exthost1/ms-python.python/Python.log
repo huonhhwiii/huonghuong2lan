@@ -1,0 +1,12 @@
+2025-04-26 09:20:26.945 [info] Experiment 'pythonaa' is active
+2025-04-26 09:20:26.946 [info] Experiment 'pythonRecommendTensorboardExt' is active
+2025-04-26 09:20:26.946 [info] Experiment 'pythonTerminalEnvVarActivation' is active
+2025-04-26 09:20:26.946 [info] Native locator: Refresh started
+2025-04-26 09:20:26.946 [info] Native locator: Refresh started
+2025-04-26 09:20:27.091 [info] > pyenv which python
+2025-04-26 09:20:27.091 [info] cwd: .
+2025-04-26 09:20:27.354 [info] Python interpreter path: /bin/python3
+2025-04-26 09:20:30.089 [info] Starting Pylance language server.
+2025-04-26 09:20:31.421 [info] Native locator: Refresh finished in 7410 ms
+2025-04-26 10:18:30.686 [info] Discover tests for workspace name: huong - uri: /home/huong/nhakhoaso/app.py
+2025-04-26 10:30:27.405 [info] Discover tests for workspace name: huong - uri: /home/huong/create_user.py

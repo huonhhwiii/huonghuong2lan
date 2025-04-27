@@ -1,0 +1,337 @@
+{% extends 'layout.html' %}
+
+{% block title %}Báo cáo dịch vụ theo bác sĩ | NHAKHOASO{% endblock %}
+
+{% block extra_css %}
+<style>
+    .filter-form {
+        background-color: #f5f5f5;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        align-items: flex-end;
+    }
+    
+    .filter-form .form-group {
+        flex: 1;
+        min-width: 200px;
+    }
+    
+    .filter-form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+    
+    .filter-form select, .filter-form input[type="date"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    
+    .filter-form button {
+        padding: 8px 15px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    .filter-form button:hover {
+        background-color: #45a049;
+    }
+    
+    .doctor-section {
+        margin-bottom: 30px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    .doctor-header {
+        background-color: #2196F3;
+        color: white;
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .doctor-title {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+    .doctor-summary {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .doctor-summary-item {
+        font-size: 14px;
+    }
+    
+    .doctor-content {
+        padding: 15px;
+    }
+    
+    .report-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .report-table th, .report-table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+    
+    .report-table th {
+        background-color: #f2f2f2;
+    }
+    
+    .report-table tr:hover {
+        background-color: #f9f9f9;
+    }
+    
+    .no-data {
+        text-align: center;
+        padding: 30px;
+        color: #777;
+        font-style: italic;
+    }
+    
+    .chart-container {
+        margin-top: 30px;
+        height: 400px;
+    }
+    
+    .export-buttons {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+    }
+    
+    .export-buttons button {
+        padding: 8px 15px;
+        background-color: #2196F3;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    
+    .export-buttons button:hover {
+        background-color: #0b7dda;
+    }
+    
+    @media print {
+        .filter-form, .export-buttons, .sidebar, .header, .footer {
+            display: none;
+        }
+        
+        .main-content {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="report-container">
+<div class="section-title">
+    <h2>BÁO CÁO DỊCH VỤ THEO BÁC SĨ</h2>
+</div>
+
+<!-- Form lọc báo cáo -->
+<form class="filter-form" method="GET" action="{{ url_for('bao_cao_dich_vu_theo_bac_si') }}">
+    <div class="form-group">
+        <label for="ma_bac_si">Bác sĩ:</label>
+        <select id="ma_bac_si" name="ma_bac_si">
+            <option value="">Tất cả bác sĩ</option>
+            {% for bs in bac_si_list %}
+            <option value="{{ bs.MaBS }}" {% if ma_bac_si == bs.MaBS %}selected{% endif %}>{{ bs.HoTen }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="tu_ngay">Từ ngày:</label>
+        <input type="date" id="tu_ngay" name="tu_ngay" value="{{ tu_ngay }}">
+    </div>
+    
+    <div class="form-group">
+        <label for="den_ngay">Đến ngày:</label>
+        <input type="date" id="den_ngay" name="den_ngay" value="{{ den_ngay }}">
+    </div>
+    
+    <button type="submit">
+        <i class="fas fa-filter"></i> Lọc báo cáo
+    </button>
+</form>
+
+<!-- Biểu đồ tổng quan -->
+<div class="chart-container">
+    <canvas id="overviewChart"></canvas>
+</div>
+
+<!-- Danh sách báo cáo theo bác sĩ -->
+{% if thong_ke_list %}
+    {% for bac_si_data in thong_ke_list %}
+    <div class="doctor-section">
+        <div class="doctor-header">
+            <div class="doctor-title">{{ bac_si_data.ten_bac_si }} ({{ bac_si_data.ma_bac_si }})</div>
+            <div class="doctor-summary">
+                <div class="doctor-summary-item">
+                    <strong>Tổng lượt sử dụng:</strong> {{ bac_si_data.tong_luot_su_dung }}
+                </div>
+                <div class="doctor-summary-item">
+                    <strong>Tổng doanh thu:</strong> {{ "{:,.0f}".format(bac_si_data.tong_tien) }} VNĐ
+                </div>
+            </div>
+        </div>
+        <div class="doctor-content">
+            <table class="report-table">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Mã dịch vụ</th>
+                        <th>Tên dịch vụ</th>
+                        <th>Số lượt sử dụng</th>
+                        <th>Tỷ lệ (%)</th>
+                        <th>Doanh thu (VNĐ)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for dv in bac_si_data.dich_vu %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ dv.MaDV }}</td>
+                        <td>{{ dv.TenDV }}</td>
+                        <td>{{ dv.SoLuotSuDung }}</td>
+                        <td>{{ "%.2f"|format(dv.SoLuotSuDung / bac_si_data.tong_luot_su_dung * 100) if bac_si_data.tong_luot_su_dung > 0 else 0 }}</td>
+                        <td>{{ "{:,.0f}".format(dv.TongTien) }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endfor %}
+
+<!-- Nút xuất báo cáo -->
+<div class="export-buttons">
+    <button onclick="window.print()">
+        <i class="fas fa-print"></i> In báo cáo
+    </button>
+    <button id="exportExcel">
+        <i class="fas fa-file-excel"></i> Xuất Excel
+    </button>
+    <button id="exportPDF">
+        <i class="fas fa-file-pdf"></i> Xuất PDF
+    </button>
+</div>
+{% else %}
+<div class="no-data">
+    <p>Không có dữ liệu báo cáo trong khoảng thời gian đã chọn</p>
+</div>
+{% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        {% if thong_ke_list %}
+        // Dữ liệu cho biểu đồ tổng quan
+        const labels = [{% for bac_si_data in thong_ke_list %}'{{ bac_si_data.ten_bac_si }}',{% endfor %}];
+        const luotSuDung = [{% for bac_si_data in thong_ke_list %}{{ bac_si_data.tong_luot_su_dung }},{% endfor %}];
+        const doanhThu = [{% for bac_si_data in thong_ke_list %}{{ bac_si_data.tong_tien }},{% endfor %}];
+        
+        // Tạo biểu đồ tổng quan
+        const ctx = document.getElementById('overviewChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Lượt sử dụng',
+                        data: luotSuDung,
+                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: 'Doanh thu (VNĐ)',
+                        data: doanhThu,
+                        backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1,
+                        type: 'line',
+                        yAxisID: 'y1'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        position: 'left',
+                        title: {
+                            display: true,
+                            text: 'Lượt sử dụng'
+                        }
+                    },
+                    y1: {
+                        beginAtZero: true,
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'Doanh thu (VNĐ)'
+                        },
+                        grid: {
+                            drawOnChartArea: false
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Thống kê dịch vụ theo bác sĩ',
+                        font: {
+                            size: 16
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Xử lý xuất Excel và PDF (giả lập)
+        document.getElementById('exportExcel').addEventListener('click', function() {
+            alert('Chức năng xuất Excel đang được phát triển');
+        });
+        
+        document.getElementById('exportPDF').addEventListener('click', function() {
+            alert('Chức năng xuất PDF đang được phát triển');
+        });
+        {% endif %}
+    });
+</script>
+{% endblock %}

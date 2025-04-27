@@ -1,0 +1,43 @@
+2025-04-27 21:42:49.022 [info] [main] Log level: Info
+2025-04-27 21:42:49.022 [info] [main] Validating found git in: "git"
+2025-04-27 21:42:49.022 [info] [main] Using git "2.43.0" from "git"
+2025-04-27 21:42:49.022 [info] [Model][doInitialScan] Initial repository scan started
+2025-04-27 21:42:50.065 [info] > git rev-parse --show-toplevel [1062ms]
+2025-04-27 21:42:51.403 [info] > git rev-parse --git-dir --git-common-dir [912ms]
+2025-04-27 21:42:51.414 [info] [Model][openRepository] Opened repository: /home/huong
+2025-04-27 21:42:51.516 [info] > git rev-parse --show-toplevel [78ms]
+2025-04-27 21:42:51.517 [info] > git config --get commit.template [83ms]
+2025-04-27 21:42:52.459 [info] > git rev-parse --show-toplevel [909ms]
+2025-04-27 21:42:53.281 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [837ms]
+2025-04-27 21:42:54.229 [info] > git check-ignore -v -z --stdin [1762ms]
+2025-04-27 21:42:54.230 [info] > git status -z -uall [931ms]
+2025-04-27 21:42:54.230 [info] > git rev-parse --show-toplevel [1747ms]
+2025-04-27 21:42:54.262 [info] > git for-each-ref --sort -committerdate --format %(refname)%00%(objectname)%00%(*objectname) [953ms]
+2025-04-27 21:42:55.205 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [883ms]
+2025-04-27 21:42:55.212 [info] > git rev-parse --show-toplevel [965ms]
+2025-04-27 21:42:55.390 [info] > git config --get --local branch.main.vscode-merge-base [178ms]
+2025-04-27 21:42:55.390 [warning] [Git][config] git config failed: Failed to execute git
+2025-04-27 21:42:55.396 [info] > git config --get commit.template [1064ms]
+2025-04-27 21:42:55.452 [info] > git rev-parse --show-toplevel [111ms]
+2025-04-27 21:42:55.756 [info] > git reflog main --grep-reflog=branch: Created from *. [360ms]
+2025-04-27 21:42:58.017 [info] > git symbolic-ref --short refs/remotes/origin/HEAD [2255ms]
+2025-04-27 21:42:58.017 [info] fatal: ref refs/remotes/origin/HEAD is not a symbolic ref
+2025-04-27 21:42:58.017 [warning] [Repository][getDefaultBranch] Failed to get default branch details: Failed to execute git.
+2025-04-27 21:42:58.018 [info] > git rev-parse --show-toplevel [2547ms]
+2025-04-27 21:42:58.018 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [2560ms]
+2025-04-27 21:42:58.102 [info] > git for-each-ref --sort -committerdate --format %(refname)%00%(objectname)%00%(*objectname) [69ms]
+2025-04-27 21:42:58.133 [info] > git rev-parse --show-toplevel [63ms]
+2025-04-27 21:42:58.594 [info] > git status -z -uall [572ms]
+2025-04-27 21:42:58.594 [info] > git rev-parse --show-toplevel [96ms]
+2025-04-27 21:42:59.089 [info] > git rev-parse --show-toplevel [469ms]
+2025-04-27 21:42:59.109 [info] > git rev-parse --show-toplevel [9ms]
+2025-04-27 21:42:59.120 [info] > git rev-parse --show-toplevel [5ms]
+2025-04-27 21:42:59.219 [info] > git rev-parse --show-toplevel [94ms]
+2025-04-27 21:42:59.222 [info] [Model][doInitialScan] Initial repository scan completed - repositories (1), closed repositories (0), parent repositories (0), unsafe repositories (0)
+2025-04-27 21:42:59.241 [info] > git config --get commit.template [4ms]
+2025-04-27 21:42:59.259 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [5ms]
+2025-04-27 21:42:59.283 [info] > git for-each-ref --sort -committerdate --format %(refname)%00%(objectname)%00%(*objectname) [14ms]
+2025-04-27 21:42:59.403 [info] > git status -z -uall [139ms]
+2025-04-27 21:43:00.192 [info] > git diff --name-status -z --diff-filter=ADMR @{upstream} [4ms]
+2025-04-27 21:43:00.192 [info] fatal: no upstream configured for branch 'main'
+2025-04-27 22:18:02.117 [info] > git check-ignore -v -z --stdin [21ms]

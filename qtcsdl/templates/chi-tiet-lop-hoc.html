@@ -1,0 +1,204 @@
+{% extends "base.html" %}
+
+{% block title %}N7 SOFTWARE EDU - Chi tiết lớp học{% endblock %}
+
+{% block page_icon %}<i class="fas fa-book-open"></i>{% endblock %}
+{% block page_title %}Chi tiết lớp học{% endblock %}
+{% block page_subtitle %}Xem thông tin chi tiết lớp học{% endblock %}
+
+{% block content %}
+<div class="content-card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2 class="card-title"><i class="fas fa-info-circle"></i> Thông tin lớp học</h2>
+        <div>
+            <a href="{{ url_for('sua_lh', ma_lh=lh.MaLop) }}" class="btn btn-primary">
+                <i class="fas fa-edit"></i> Chỉnh sửa
+            </a>
+            <a href="{{ url_for('qllh') }}" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Quay lại
+            </a>
+        </div>
+    </div>
+    
+    <div class="info-container">
+        <div class="info-section">
+            <h3 class="section-title">Thông tin cơ bản</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">Mã lớp học</div>
+                    <div class="info-value">{{ lh.MaLop }}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Môn học</div>
+                    <div class="info-value">{{ lh.MonHoc }}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Cấp học</div>
+                    <div class="info-value">{{ lh.CapHoc }}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Lịch học</div>
+                    <div class="info-value">
+                        {% if lh.LichHoc %}
+                            {{ lh.LichHoc.strftime('%d/%m/%Y') }}
+                        {% else %}
+                            Chưa cập nhật
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Địa điểm</div>
+                    <div class="info-value">{{ lh.DiaDiem }}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Mã giao dịch</div>
+                    <div class="info-value">
+                        <a href="{{ url_for('xem_gd', ma_gd=lh.MaGD) }}">{{ lh.MaGD }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        {% if gd %}
+        <div class="info-section">
+            <h3 class="section-title">Thông tin giao dịch</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">Ngày giao dịch</div>
+                    <div class="info-value">
+                        {% if gd.NgayGD %}
+                            {{ gd.NgayGD.strftime('%d/%m/%Y') }}
+                        {% else %}
+                            Chưa cập nhật
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Phí phụ huynh</div>
+                    <div class="info-value">{{ '{:,.0f}'.format(gd.PhiPH) }} VNĐ</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Phí gia sư</div>
+                    <div class="info-value">{{ '{:,.0f}'.format(gd.PhiGS) }} VNĐ</div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        
+        {% if ph %}
+        <div class="info-section">
+            <h3 class="section-title">Thông tin phụ huynh</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">Mã phụ huynh</div>
+                    <div class="info-value">
+                        <a href="{{ url_for('xem_ph', ma_ph=ph.MaPH) }}">{{ ph.MaPH }}</a>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Họ tên</div>
+                    <div class="info-value">{{ ph.HoTen }}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Số điện thoại</div>
+                    <div class="info-value">{{ ph.SoDT }}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Địa chỉ</div>
+                    <div class="info-value">{{ ph.DiaChi }}</div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        
+        {% if gs %}
+        <div class="info-section">
+            <h3 class="section-title">Thông tin gia sư</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">Mã gia sư</div>
+                    <div class="info-value">
+                        <a href="{{ url_for('xem_gs', ma_gs=gs.MaGS) }}">{{ gs.MaGS }}</a>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Họ tên</div>
+                    <div class="info-value">{{ gs.HoTen }}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Số điện thoại</div>
+                    <div class="info-value">{{ gs.SoDT }}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Bằng cấp</div>
+                    <div class="info-value">{{ gs.BangCap }}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Môn dạy</div>
+                    <div class="info-value">{{ gs.MonDay }}</div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .info-container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .info-section {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        padding: 20px;
+    }
+    
+    .section-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 15px;
+    }
+    
+    .info-item {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .info-label {
+        font-size: 14px;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    .info-value {
+        font-size: 16px;
+        color: #333;
+        font-weight: 500;
+    }
+    
+    .info-value a {
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+    
+    .info-value a:hover {
+        text-decoration: underline;
+    }
+</style>
+{% endblock %}

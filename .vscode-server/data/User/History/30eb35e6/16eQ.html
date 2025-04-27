@@ -1,0 +1,295 @@
+{% extends 'layout.html' %}
+
+{% block title %}Tìm kiếm dịch vụ - NHAKHOASO{% endblock %}
+
+{% block content %}
+<div class="section-title">
+    <h2>QUẢN LÝ DỊCH VỤ</h2>
+</div>
+
+<!-- Flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}<div class="flash-messages">
+            {% for category, message in messages %}<div class="flash-message {{ category }}">
+                    {{ message }}</div>
+            {% endfor %}</div>
+    {% endif %}
+{% endwith %}<div class="content-header">
+            <h2>Tìm kiếm dịch vụ</h2></div><div class="search-container">
+            <form action="{{ url_for('tim_kiem_dich_vu') }}" method="POST" class="search-form">
+                <div class="search-input-group">
+                    <input type="text" name="tu_khoa" class="form-control" 
+                           placeholder="Nhập mã dịch vụ, tên dịch vụ hoặc giá..." 
+                           value="{{ tu_khoa }}">
+                    <button type="submit" class="btn-search">
+                        <i class="fas fa-search"></i> Tìm kiếm
+                    </button>
+                </div>
+                <div class="search-options">
+                    <label class="search-option">
+                        <input type="radio" name="loai_tim_kiem" value="ma_dv" 
+                               {% if loai_tim_kiem == 'ma_dv' %}checked{% endif %}> Mã dịch vụ
+                    </label>
+                    <label class="search-option">
+                        <input type="radio" name="loai_tim_kiem" value="ten_dv" 
+                               {% if loai_tim_kiem == 'ten_dv' %}checked{% endif %}> Tên dịch vụ
+                    </label>
+                    <label class="search-option">
+                        <input type="radio" name="loai_tim_kiem" value="gia" 
+                               {% if loai_tim_kiem == 'gia' %}checked{% endif %}> Giá dịch vụ
+                        <small>(Nhập số hoặc khoảng giá, VD: 100000 hoặc 100000-200000)</small>
+                    </label>
+                </div>
+                <div class="search-tips">
+                    <p><i class="fas fa-info-circle"></i> Mẹo tìm kiếm:</p>
+                    <ul>
+                        <li>Tìm theo mã: Nhập một phần hoặc toàn bộ mã dịch vụ</li>
+                        <li>Tìm theo tên: Nhập một phần hoặc toàn bộ tên dịch vụ</li>
+                        <li>Tìm theo giá: Nhập một giá cụ thể (VD: 150000) hoặc khoảng giá (VD: 100000-200000)</li>
+                    </ul>
+                </div>
+            </form>
+        </div><div class="search-results">
+            {% if tu_khoa %}
+                {% if ket_qua %}
+                    <div class="result-header">
+                        <h3>Kết quả tìm kiếm</h3>
+                        <p>Tìm thấy {{ ket_qua|length }} dịch vụ với từ khóa "{{ tu_khoa }}" 
+                           ({% if loai_tim_kiem == 'ma_dv' %}Mã dịch vụ{% elif loai_tim_kiem == 'ten_dv' %}Tên dịch vụ{% else %}Giá dịch vụ{% endif %})</p>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Mã DV</th>
+                                <th>Tên dịch vụ</th>
+                                <th>Giá (VNĐ)</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for dv in ket_qua %}
+                            <tr id="dich-vu-{{ dv.MaDV }}">
+                                <td>{{ dv.MaDV }}</td>
+                                <td>{{ dv.TenDV }}</td>
+                                <td>{{ "{:,.0f}".format(dv.Gia|float if dv.Gia else 0) }}</td>
+                                <td>
+                                    <a href="{{ url_for('chi_tiet_dich_vu', ma_dv=dv.MaDV) }}" class="action-btn view-btn" title="Xem chi tiết">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="{{ url_for('chinh_sua_dich_vu', ma_dv=dv.MaDV) }}" class="action-btn edit-btn" title="Chỉnh sửa">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a href="#" class="action-btn delete-btn" title="Xóa" onclick="deleteDichVu('{{ dv.MaDV }}')">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <p>Không tìm thấy dịch vụ nào phù hợp với từ khóa "{{ tu_khoa }}".</p>
+                        <p>Vui lòng thử lại với từ khóa khác hoặc <a href="{{ url_for('them_moi_dich_vu') }}">thêm dịch vụ mới</a>.</p>
+                        
+                        <div class="search-suggestions">
+                            <h4>Gợi ý:</h4>
+                            <ul>
+                                <li>Kiểm tra lại chính tả của từ khóa</li>
+                                <li>Sử dụng từ khóa ngắn hơn hoặc chung chung hơn</li>
+                                <li>Thử tìm kiếm với loại tìm kiếm khác</li>
+                                {% if loai_tim_kiem == 'gia' %}
+                                <li>Đối với tìm kiếm theo giá, hãy đảm bảo bạn nhập số (VD: 150000) hoặc khoảng giá (VD: 100000-200000)</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .search-container {
+        background-color: var(--secondary-color);
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+    }
+    
+    .search-form {
+        width: 100%;
+    }
+    
+    .search-input-group {
+        display: flex;
+        margin-bottom: 15px;
+    }
+    
+    .search-input-group input {
+        flex: 1;
+        padding: 12px 15px;
+        border: 1px solid var(--border-color);
+        border-radius: 5px 0 0 5px;
+        font-size: 16px;
+    }
+    
+    .btn-search {
+        padding: 0 20px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .btn-search i {
+        margin-right: 8px;
+    }
+    
+    .search-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .search-option {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    
+    .search-option input {
+        margin-right: 5px;
+    }
+    
+    .search-option small {
+        display: block;
+        margin-left: 20px;
+        color: #6c757d;
+        font-size: 0.85em;
+    }
+    
+    .search-tips {
+        margin-top: 15px;
+        padding: 10px;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        font-size: 0.9em;
+    }
+    
+    .search-tips p {
+        margin: 0 0 5px 0;
+        font-weight: 500;
+        color: #495057;
+    }
+    
+    .search-tips ul {
+        margin: 0;
+        padding-left: 25px;
+    }
+    
+    .search-tips li {
+        margin-bottom: 3px;
+    }
+    
+    .result-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    
+    .result-header h3 {
+        margin: 0;
+        font-size: 18px;
+    }
+    
+    .result-header p {
+        margin: 0;
+        color: var(--text-muted);
+    }
+    
+    .no-results {
+        text-align: center;
+        padding: 40px 20px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+    }
+    
+    .no-results i {
+        font-size: 48px;
+        color: #adb5bd;
+        margin-bottom: 15px;
+    }
+    
+    .no-results p {
+        margin: 10px 0;
+        color: #6c757d;
+    }
+    
+    .no-results a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+    }
+    
+    .search-suggestions {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #e9ecef;
+        border-radius: 5px;
+        text-align: left;
+    }
+    
+    .search-suggestions h4 {
+        margin: 0 0 10px 0;
+        font-size: 16px;
+        color: #495057;
+    }
+    
+    .search-suggestions ul {
+        margin: 0;
+        padding-left: 20px;
+    }
+    
+    .search-suggestions li {
+        margin-bottom: 5px;
+        color: #6c757d;
+    }
+    
+    .action-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 4px;
+        margin-right: 5px;
+        color: white;
+        text-decoration: none;
+    }
+    
+    .view-btn {
+        background-color: #17a2b8;
+    }
+    
+    .edit-btn {
+        background-color: #ffc107;
+        color: #212529;
+    }
+    
+    .delete-btn {
+        background-color: #dc3545;
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<!-- Hàm xóa dịch vụ đã được chuyển sang file delete-confirmation.js -->
+{% endblock %}

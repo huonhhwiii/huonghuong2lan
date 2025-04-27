@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block title %}Báo cáo - Thống kê | NHAKHOASO{% endblock %}
+
+{% block content %}
+<div class="section-title">
+    <h2>BÁO CÁO - THỐNG KÊ</h2>
+</div>
+
+<div class="services-grid">
+    <!-- Báo cáo dịch vụ sử dụng -->
+    <div class="service-card" data-link="{{ url_for('bao_cao_dich_vu') }}">
+        <div class="service-icon">
+            <i class="fas fa-chart-pie"></i>
+        </div>
+        <h3 class="service-title">Báo cáo dịch vụ sử dụng</h3>
+        <p class="service-description">Thống kê các dịch vụ đã sử dụng thông qua phiếu khám, số lượt sử dụng và doanh thu.</p>
+        <a href="{{ url_for('bao_cao_dich_vu') }}" class="btn">Xem chi tiết</a>
+    </div>
+
+    <!-- Thống kê theo tháng -->
+    <div class="service-card" data-link="{{ url_for('bao_cao_dich_vu_theo_thang') }}">
+        <div class="service-icon">
+            <i class="fas fa-calendar-alt"></i>
+        </div>
+        <h3 class="service-title">Thống kê theo tháng</h3>
+        <p class="service-description">Thống kê dịch vụ sử dụng theo từng tháng trong năm, phân tích xu hướng sử dụng.</p>
+        <a href="{{ url_for('bao_cao_dich_vu_theo_thang') }}" class="btn">Xem chi tiết</a>
+    </div>
+
+    <!-- Thống kê theo bác sĩ -->
+    <div class="service-card" data-link="{{ url_for('bao_cao_dich_vu_theo_bac_si') }}">
+        <div class="service-icon">
+            <i class="fas fa-user-md"></i>
+        </div>
+        <h3 class="service-title">Thống kê theo bác sĩ</h3>
+        <p class="service-description">Thống kê dịch vụ sử dụng theo từng bác sĩ, đánh giá hiệu suất và chuyên môn.</p>
+        <a href="{{ url_for('bao_cao_dich_vu_theo_bac_si') }}" class="btn">Xem chi tiết</a>
+    </div>
+</div>
+{% endblock %}

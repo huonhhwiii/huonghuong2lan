@@ -1485,3 +1485,145 @@ flask run
 docker start mysql-container
 flaks run
 flask run
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/huonhhwiii/huonghuong2lan.git
+git push -u origin main
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/huonhhwiii/huonghuong2lan.git
+git add .
+git commit -m 'huonghuong2lan'
+git config --global user.name "huonhhwiii"
+git add .
+git commit -m 'huonghuong2lan'
+git push origin main
+cd nhakhoaso
+flask run
+(cd /home/huong && mysql -u root -e "USE qtcsdl; DESCRIBE LOPHOC;") >> /tmp/a8642a61-22a3-441d-9aae-66f9a3e3001c.log 2>&1
+(cd /home/huong && python3 qtcsdl/app.py) >> /tmp/0a5cc960-4072-40e2-951d-f483f6254d3a.log 2>&1
+(ps aux | grep python) >> /tmp/334e8862-4513-4d28-a62b-07ec7644babe.log 2>&1
+(kill 8412) >> /tmp/2da29bd2-9418-40d9-91b8-3a6c45c724ae.log 2>&1
+(sqlite3 /home/huong/nhakhoaso/nhakhoaso.db ".schema PHIEUKHAM") >> /tmp/79cbe773-8e36-490b-8018-055109b169d7.log 2>&1
+(cd /home/huong/nhakhoaso && python -c "import sqlite3; conn = sqlite3.connect('nhakhoaso.db'); cursor = conn.cursor(); cursor.execute('PRAGMA table_info(PHIEUKHAM)'); print([row for row in cursor.fetchall()])") >> /tmp/7d4c035e-ba89-4739-bf39-a1da6fac8778.log 2>&1
+(cd /home/huong/nhakhoaso && python3 -c "import sqlite3; conn = sqlite3.connect('nhakhoaso.db'); cursor = conn.cursor(); cursor.execute('PRAGMA table_info(PHIEUKHAM)'); print([row for row in cursor.fetchall()])") >> /tmp/e6cc83fa-7a18-4383-b1fe-7d7275c22e38.log 2>&1
+(cd /home/huong/nhakhoaso && python3 -c "import sqlite3; conn = sqlite3.connect('nhakhoaso.db'); cursor = conn.cursor(); cursor.execute('SELECT name FROM sqlite_master WHERE type=\"table\"'); print([row[0] for row in cursor.fetchall()])") >> /tmp/71c1eb3d-7217-463c-9ca1-76e61d8817c3.log 2>&1
+(ls -la /home/huong/nhakhoaso/) >> /tmp/5731a9eb-3c03-4c71-b396-23d29bb11a90.log 2>&1
+(cd /home/huong/nhakhoaso && python3 init_database.py) >> /tmp/8cb526aa-adca-4582-8cef-86ab09f31ab3.log 2>&1
+(cd /home/huong/nhakhoaso && python3 -c "import sqlite3; conn = sqlite3.connect('nhakhoaso.db'); cursor = conn.cursor(); cursor.execute('SELECT name FROM sqlite_master WHERE type=\"table\"'); print([row[0] for row in cursor.fetchall()])") >> /tmp/d5e6a484-b6da-4080-bad5-4b3e2bca5ae8.log 2>&1
+(cd /home/huong/nhakhoaso && rm nhakhoaso.db && python3 init_database.py) >> /tmp/697064c8-3085-47da-a94a-b559a7d54413.log 2>&1
+(ls -la /home/huong/nhakhoaso/database/) >> /tmp/f5f35162-cd89-4283-b1b3-dd768d5e84ce.log 2>&1
+(cd /home/huong/nhakhoaso && python3 -c "import sqlite3; conn = sqlite3.connect('database/nhakhoaso.db'); cursor = conn.cursor(); cursor.execute('PRAGMA table_info(PHIEUKHAM)'); print([row for row in cursor.fetchall()])") >> /tmp/0190e536-446d-47a1-bf87-54e38577490f.log 2>&1
+(cd /home/huong/nhakhoaso && python3 -c "import sqlite3; conn = sqlite3.connect('database/nhakhoaso.db'); conn.row_factory = sqlite3.Row; cursor = conn.cursor(); cursor.execute('SELECT * FROM PHIEUKHAM'); rows = cursor.fetchall(); print([dict(row) for row in rows])") >> /tmp/b918a900-9802-4f09-92af-9bff0f4a085d.log 2>&1
+(cd /home/huong/nhakhoaso && python3 -c "import sqlite3; conn = sqlite3.connect('database/nhakhoaso.db'); cursor = conn.cursor(); cursor.execute('SELECT name FROM sqlite_master WHERE type=\"table\"'); print([row[0] for row in cursor.fetchall()])") >> /tmp/0ec2106b-e5b3-4316-9114-4ad5049fcfef.log 2>&1
+(wc -l /home/huong/nhakhoaso/database/bao_cao.py) >> /tmp/8c261190-48e3-4162-b731-0c9214d9a3e1.log 2>&1
+(grep -n "bao-cao" /home/huong/nhakhoaso/app.py) >> /tmp/d04246aa-5388-4410-b96c-cf6323447a02.log 2>&1
+(grep -n "bao_cao" /home/huong/nhakhoaso/app.py) >> /tmp/7dd977b6-0722-4999-b53a-76d1acd6e940.log 2>&1
+(grep -n "luot-kham\|dich-vu\|doanh-thu\|luong-dich-vu" /home/huong/nhakhoaso/app.py) >> /tmp/1a43f1d8-3397-4fd5-906f-678d4f5b7358.log 2>&1
+(grep -n "bao-cao-" /home/huong/nhakhoaso/app.py) >> /tmp/435d12a5-a169-4f63-8c65-02bb7609c17f.log 2>&1
+(grep -A 5 -B 5 "bao_cao" /home/huong/nhakhoaso/app.py | grep -v "import") >> /tmp/c45983c8-e220-4432-812b-0361def1100f.log 2>&1
+(rm /home/huong/nhakhoaso/database/bao_cao.py) >> /tmp/2bbb6775-2491-4ea5-a432-75c1f37c2eaf.log 2>&1
+(rm /home/huong/nhakhoaso/templates/bao_cao.html /home/huong/nhakhoaso/templates/bao_cao_dich_vu.html /home/huong/nhakhoaso/templates/bao_cao_luong_dich_vu.html /home/huong/nhakhoaso/templates/bao_cao_luot_kham.html) >> /tmp/59dc2a30-9645-4266-b7e2-ab1ccc0d281e.log 2>&1
+(grep -n "bao_cao_" /home/huong/nhakhoaso/app.py) >> /tmp/485fa6eb-91b6-4791-a75a-fcb78737f9ca.log 2>&1
+cd qtcsdl
+cd nhakhoaso
+docker start mysql-container
+flask run
+flaks run
+flask run
+cd ..
+cd nhakhoaso
+flask run
+cd qtcsdl
+docker exec -it mysql-container mysql -u root -p
+docker stop mysql-container
+cd nhakhoaso
+flask run
+(cd /home/huong/nhakhoaso && python app.py) >> /tmp/2ba8df1f-aeb9-4b0a-8041-edb0a35ed0c4.log 2>&1
+(cd /home/huong/nhakhoaso && python3 app.py) >> /tmp/78635391-121d-4223-a717-346ba2b71642.log 2>&1
+(grep -r "bao_cao" /home/huong/nhakhoaso/templates/ --include="*.html") >> /tmp/b58ab6da-55a2-4ace-8f3c-aa7dfbb22230.log 2>&1
+(grep -r "báo cáo" /home/huong/nhakhoaso/templates/ --include="*.html") >> /tmp/1eaf7d3a-245d-4f76-8c33-b5d143fb3c4e.log 2>&1
+(grep -r "thống kê" /home/huong/nhakhoaso/templates/ --include="*.html") >> /tmp/e681f112-e505-433d-a8a7-0907c03d2a03.log 2>&1
+(cd /home/huong/nhakhoaso && python -c "from database.db import execute_query; print(execute_query('PRAGMA table_info(LICHHEN)', fetch=True))") >> /tmp/345fdac9-c853-48f6-afb1-8c755a40eaa6.log 2>&1
+(cd /home/huong/nhakhoaso && python3 -c "from database.db import execute_query; print(execute_query('PRAGMA table_info(LICHHEN)', fetch=True))") >> /tmp/6b1e9d1e-1a78-4312-8442-4053d52e32b3.log 2>&1
+(cd /home/huong/nhakhoaso && python3 -c "from database.db import execute_query; print(execute_query('SELECT DISTINCT TrangThai FROM LICHHEN', fetch=True))") >> /tmp/8d4cedba-32ae-4ad6-bcb4-086b868b9294.log 2>&1
+(cd /home/huong/nhakhoaso && python3 -c "from database.db import execute_query; print(execute_query('SELECT * FROM LICHHEN LIMIT 5', fetch=True))") >> /tmp/d86dfdda-65be-4471-8e64-f4c527b10c94.log 2>&1
+(cd /home/huong/nhakhoaso && python3 -c "from database.db import execute_query; print(execute_query('SELECT DISTINCT TrangThai FROM LICHHEN', fetch=True))") >> /tmp/050e88e2-45da-4ab3-8da3-abb932a61e3c.log 2>&1
+(cd /home/huong/nhakhoaso && python3 -c "from database.db import execute_query; execute_query('UPDATE LICHHEN SET TrangThai = \"Đã hủy\" WHERE MaLH IN (\"LH00006\", \"LH00007\", \"LH00008\")')") >> /tmp/c93a347a-0f0c-48cb-86a8-d2af562e49af.log 2>&1
+cd nhakhoaso
+flask run
+(cd /home/huong/nhakhoaso && sqlite3 nhakhoaso.db "DROP TABLE IF EXISTS NGUOIDUNG; CREATE TABLE NGUOIDUNG (TenDangNhap TEXT PRIMARY KEY, MatKhau TEXT, HoTen TEXT);") >> /tmp/bc367783-1f26-4881-b1d3-ec4e5c384dd9.log 2>&1
+cd qtcsdl
+docker start mysql-container
+flask run
+cd nhakhoaso
+sqlite3 nhakhoaso.db
+cd database
+sqlite3 nhakhoaso.db
+(cd /home/huong && ls -la nhakhoaso/nhakhoaso.db) >> /tmp/a16ef7d6-99bc-4a32-a81d-a0812c5fcf52.log 2>&1
+(cd /home/huong/nhakhoaso && python -c "import sqlite3; conn = sqlite3.connect('nhakhoaso.db'); cursor = conn.cursor(); cursor.execute('SELECT name FROM sqlite_master WHERE type=\"table\"'); tables = cursor.fetchall(); print('Các bảng trong cơ sở dữ liệu:'); [print(table[0]) for table in tables]; conn.close()") >> /tmp/710ab196-b24a-47a5-a552-9afba8c452ff.log 2>&1
+(cd /home/huong/nhakhoaso && python3 -c "import sqlite3; conn = sqlite3.connect('nhakhoaso.db'); cursor = conn.cursor(); cursor.execute('SELECT name FROM sqlite_master WHERE type=\"table\"'); tables = cursor.fetchall(); print('Các bảng trong cơ sở dữ liệu:'); [print(table[0]) for table in tables]; conn.close()") >> /tmp/9a7c6deb-0606-448f-abdf-71b9e7a51b1c.log 2>&1
+(cd /home/huong/nhakhoaso && python3 create_user.py khanhlinh khanhlinh123 "Đồng Khánh Linh") >> /tmp/295d22b9-f2a4-48ff-9714-c7508e5ce9e2.log 2>&1
+(cd /home/huong && find . -name "create_user.py") >> /tmp/5cb8dd85-410b-4909-b470-32cea1b6133b.log 2>&1
+(cd /home/huong && python3 create_user.py khanhlinh khanhlinh123 "Đồng Khánh Linh") >> /tmp/4351bf2c-7b06-442d-a86e-074674de7726.log 2>&1
+cd nhakhoaso
+flask run
+cd nhakhoaso
+cd database
+sqlite3 nhakhoaso.db
+cd qtcsdl
+docker exec mysql-container mysql -u root -p
+docker exec mysql-container -u root -p
+docker stop mysql-container
+docker start mysql-container
+docker exec mysql-container mysql -u root -p
+docker exec -i mysql-container mysql -u root -phuong24052005
+cd qtcsdl
+flask run
+cd qtcsdl
+docker exec -it mysql-container mysql -u root -p
+yes
+cd qtcsdl
+flask run
+docker exec -it mysql-container mysql -u root -p
+(cd /home/huong/qtcsdl && ls -la templates/) >> /tmp/2e666c3d-8797-4890-8f5f-a9819a2359bc.log 2>&1
+(cd /home/huong/qtcsdl && mkdir -p templates/backup && mv templates/danh-sach-gia-su.html templates/danh-sach-giao-dich.html templates/danh-sach-lop-hoc.html templates/danh-sach-phu-huynh.html templates/qlgd.html templates/qlgs.html templates/qllh.html templates/qlph.html templates/sua-gia-su.html templates/sua-giao-dich.html templates/sua-phu-huynh.html templates/them-moi-gia-su.html templates/them-moi-giao-dich.html templates/them-moi-phu-huynh.html templates/tim-kiem-gia-su.html templates/tim-kiem-giao-dich.html templates/tim-kiem-phu-huynh.html templates/trangchu.html templates/xoa-gia-su.html templates/xoa-giao-dich.html templates/xoa-phu-huynh.html templates/backup/) >> /tmp/5814f9b7-cd50-4831-a00e-49c561a740cc.log 2>&1
+(cd /home/huong/qtcsdl && ls -la templates/) >> /tmp/8a10d294-6148-47d3-8587-f7f576bfb9cf.log 2>&1
+(cd /home/huong/qtcsdl && grep -r "render_template" app.py | sort) >> /tmp/676df767-b829-4755-9eb0-e73fe0a99fde.log 2>&1
+(cd /home/huong/qtcsdl && ls -la templates/) >> /tmp/e77af5ee-c17a-4e5b-8c05-1430b5ac7f75.log 2>&1
+(cd /home/huong/qtcsdl && mv templates/backup/danh-sach-lop-hoc.html templates/) >> /tmp/0722d116-dad8-4def-8ba5-eea2459e6dcb.log 2>&1
+(cd /home/huong/qtcsdl && ls -la templates/) >> /tmp/14c0614a-ac55-4793-9839-1b6932e7f358.log 2>&1
+(cd /home/huong/qtcsdl && ls -la templates/backup/) >> /tmp/126b5025-8675-41ea-9b8d-f1612829961d.log 2>&1
+(cd /home/huong/qtcsdl && grep -r "danh-sach-" app.py) >> /tmp/0a0d91a2-e806-4e0d-a2c0-88b216c63bfa.log 2>&1
+(cd /home/huong/qtcsdl && grep -r "xoa-" app.py) >> /tmp/bf7d206f-5da4-4aea-90de-9653a6d69047.log 2>&1
+(cd /home/huong/qtcsdl && grep -r "tim-kiem-" app.py) >> /tmp/e8d2b37d-a79b-4a7f-beb8-77f38e5cba37.log 2>&1
+(cd /home/huong/qtcsdl && grep -r "them-moi-" app.py) >> /tmp/09fb5054-3668-44b0-8e62-4bc45f541833.log 2>&1
+(cd /home/huong/qtcsdl && grep -r "sua-" app.py) >> /tmp/caf35127-7a07-493e-a599-8e53acdb0786.log 2>&1
+(cd /home/huong/qtcsdl && grep -r "chi-tiet-" app.py) >> /tmp/a24b6d71-18f2-4598-b7d7-4669fed9d783.log 2>&1
+(cd /home/huong/qtcsdl && grep -r "thong-ke-" app.py) >> /tmp/077439d8-f483-4dda-960a-ccf2fd7b0f5c.log 2>&1
+cd qtcsdl
+flask run
+(mysql -u root -phuong24052005 -e "SELECT MaGD FROM QuanLyGiaSu.GIAODICH ORDER BY MaGD DESC LIMIT 10;") >> /tmp/4777d901-36e0-4a59-9b1b-a33198d52a2e.log 2>&1
+cd qtcsdl
+flask run
+cd qtcsdl
+docker exec -it mysql-container mysql -u root -p
+cd qtcsdl
+docker start mysql-container
+docker exec mysql-container
+docker exec mysql-container mysql -u root -p
+y
+docker exec -i mysql-container mysql -u root -p
+cd qtcsdl
+docker exec -it mysql-container mysql -u root -p
+docker stop mysql-container
+cd qtcsdl
+flask run
+(find /home/huong -name "*.sql" | grep -v init_db.sql) >> /tmp/1c566acf-351c-44a6-9074-5d0369a09ce2.log 2>&1
+(find /home/huong/nhakhoaso -type f -name "*.sql" | xargs grep -l "NGUOIDUNG") >> /tmp/8dba4af8-8059-4f4f-b934-e6dc12149c70.log 2>&1
+(grep -r "CREATE TABLE.*NGUOIDUNG" /home/huong/nhakhoaso) >> /tmp/a6a0575f-3183-478a-892f-f053d504118a.log 2>&1
+(cd /home/huong/nhakhoaso && sqlite3 nhakhoaso.db ".schema NGUOIDUNG") >> /tmp/405ee039-038f-4e01-b142-ff6d833c6a00.log 2>&1
+cd nhakhoaso
+flask run

@@ -1,0 +1,335 @@
+{% extends 'layout.html' %}
+
+{% block title %}Báo cáo lượng dịch vụ - NHAKHOASO{% endblock %}
+
+{% block content %}
+<div class="section-title">
+    <h2>BÁO CÁO LƯỢNG DỊCH VỤ</h2>
+</div>
+
+<!-- Flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+                <div class="flash-message {{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<div class="report-container">
+    <div class="report-header">
+        <h3>Báo cáo lượng dịch vụ</h3>
+        <div class="report-actions">
+            <button id="printBtn" class="btn btn-primary">
+                <i class="fas fa-print"></i> In
+            </button>
+        </div>
+    </div>
+
+    <div class="filter-section">
+        <form method="POST" action="{{ url_for('bao_cao_luong_dich_vu') }}" class="filter-form">
+            <div class="form-group">
+                <label for="tu_ngay">Từ ngày:</label>
+                <input type="date" id="tu_ngay" name="tu_ngay" value="{{ tu_ngay }}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="den_ngay">Đến ngày:</label>
+                <input type="date" id="den_ngay" name="den_ngay" value="{{ den_ngay }}" class="form-control">
+            </div>
+            <button type="submit" class="btn">Lọc dữ liệu</button>
+        </form>
+    </div>
+
+    <div class="report-content" id="printableArea">
+        <div class="chart-section">
+            <div class="donut-chart-container">
+                <canvas id="dichVuDonutChart"></canvas>
+            </div>
+            <div class="chart-legend">
+                <p class="popular-service-note">
+                    <i class="fas fa-star"></i> Dịch vụ <strong>{{ dich_vu_pho_bien }}</strong> được sử dụng nhiều nhất trong thời gian này
+                </p>
+            </div>
+        </div>
+
+        <div class="table-section">
+            <h4>Chi tiết dịch vụ</h4>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Mã dịch vụ</th>
+                        <th>Tên dịch vụ</th>
+                        <th>Số lượng</th>
+                        <th>Tỷ lệ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for dv in dich_vu_list %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ dv.MaDV }}</td>
+                        <td>{{ dv.TenDV }}</td>
+                        <td>{{ dv.SoLuong }}</td>
+                        <td>{{ "%.2f"|format(dv.TyLe) }}%</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-right"><strong>Tổng cộng:</strong></td>
+                        <td><strong>{{ tong_so_luong }}</strong></td>
+                        <td><strong>100%</strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <div class="navigation-buttons">
+        <a href="{{ url_for('bao_cao') }}" class="nav-btn home-btn">
+            <i class="fas fa-home"></i>
+        </a>
+        <a href="javascript:history.back()" class="nav-btn back-btn">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Biểu đồ tròn (Donut) cho dịch vụ
+        const dichVuCtx = document.getElementById('dichVuDonutChart').getContext('2d');
+        const dichVuChart = new Chart(dichVuCtx, {
+            type: 'doughnut',
+            data: {
+                labels: {{ dich_vu_labels|safe }},
+                datasets: [{
+                    data: {{ dich_vu_data|safe }},
+                    backgroundColor: [
+                        '#4e73df', '#1cc88a', '#36b9cc', '#f6c23e', '#e74a3b',
+                        '#5a5c69', '#858796', '#6610f2', '#fd7e14', '#20c9a6'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            boxWidth: 15,
+                            padding: 15
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Tỷ lệ sử dụng dịch vụ',
+                        font: {
+                            size: 16
+                        }
+                    }
+                }
+            }
+        });
+
+        // Xử lý nút in báo cáo
+        document.getElementById('printBtn').addEventListener('click', function() {
+            const printContents = document.getElementById('printableArea').innerHTML;
+            const originalContents = document.body.innerHTML;
+            
+            document.body.innerHTML = `
+                <div class="print-header">
+                    <h1>BÁO CÁO LƯỢNG DỊCH VỤ</h1>
+                    <p>Từ ngày: ${document.getElementById('tu_ngay').value} - Đến ngày: ${document.getElementById('den_ngay').value}</p>
+                </div>
+                ${printContents}
+            `;
+            
+            window.print();
+            document.body.innerHTML = originalContents;
+            location.reload();
+        });
+    });
+</script>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .report-container {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        margin-top: 20px;
+        position: relative;
+    }
+
+    .report-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #e3e6f0;
+        padding-bottom: 15px;
+    }
+
+    .report-header h3 {
+        margin: 0;
+        color: var(--primary-color);
+        font-size: 22px;
+    }
+
+    .filter-section {
+        background-color: #f8f9fc;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+    }
+
+    .filter-form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        align-items: flex-end;
+    }
+
+    .filter-form .form-group {
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .filter-form label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+    }
+
+    .chart-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 40px;
+    }
+
+    .donut-chart-container {
+        width: 100%;
+        height: 400px;
+        margin-bottom: 20px;
+    }
+
+    .chart-legend {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .popular-service-note {
+        background-color: #f8f9fc;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 16px;
+        color: #333;
+    }
+
+    .popular-service-note i {
+        color: #f6c23e;
+        margin-right: 5px;
+    }
+
+    .table-section {
+        margin-top: 30px;
+    }
+
+    .table-section h4 {
+        margin-bottom: 15px;
+        color: var(--primary-color);
+    }
+
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .data-table th, .data-table td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #e3e6f0;
+    }
+
+    .data-table th {
+        background-color: var(--secondary-color);
+        color: var(--primary-color);
+        font-weight: 600;
+    }
+
+    .data-table tr:hover {
+        background-color: #f8f9fc;
+    }
+
+    .text-right {
+        text-align: right;
+    }
+
+    .navigation-buttons {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .nav-btn:hover {
+        transform: scale(1.1);
+        background-color: var(--hover-color);
+    }
+
+    .nav-btn i {
+        font-size: 20px;
+    }
+
+    /* Styles for print */
+    @media print {
+        .filter-section, .report-actions, .navigation-buttons {
+            display: none;
+        }
+
+        .report-container {
+            box-shadow: none;
+            padding: 0;
+        }
+
+        .print-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .chart-section {
+            page-break-after: always;
+        }
+    }
+</style>
+{% endblock %}

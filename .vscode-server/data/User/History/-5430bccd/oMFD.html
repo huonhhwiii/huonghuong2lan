@@ -1,0 +1,324 @@
+{% extends 'layout.html' %}
+
+{% block title %}Báo cáo dịch vụ sử dụng | NHAKHOASO{% endblock %}
+
+{% block extra_css %}
+<style>
+    .filter-form {
+        background-color: #f5f5f5;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        align-items: flex-end;
+    }
+    
+    .filter-form .form-group {
+        flex: 1;
+        min-width: 200px;
+    }
+    
+    .filter-form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+    
+    .filter-form input[type="date"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    
+    .filter-form button {
+        padding: 8px 15px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    .filter-form button:hover {
+        background-color: #45a049;
+    }
+    
+    .report-summary {
+        background-color: #e9f7ef;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    
+    .summary-item {
+        text-align: center;
+        padding: 10px;
+    }
+    
+    .summary-item .value {
+        font-size: 24px;
+        font-weight: bold;
+        color: #2E7D32;
+    }
+    
+    .summary-item .label {
+        font-size: 14px;
+        color: #555;
+    }
+    
+    .report-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    
+    .report-table th, .report-table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+    
+    .report-table th {
+        background-color: #4CAF50;
+        color: white;
+    }
+    
+    .report-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    
+    .report-table tr:hover {
+        background-color: #e9f7ef;
+    }
+    
+    .no-data {
+        text-align: center;
+        padding: 30px;
+        color: #777;
+        font-style: italic;
+    }
+    
+    .chart-container {
+        margin-top: 30px;
+        height: 400px;
+    }
+    
+    .export-buttons {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+    }
+    
+    .export-buttons button {
+        padding: 8px 15px;
+        background-color: #2196F3;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    
+    .export-buttons button:hover {
+        background-color: #0b7dda;
+    }
+    
+    @media print {
+        .filter-form, .export-buttons, .sidebar, .header, .footer {
+            display: none;
+        }
+        
+        .main-content {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="section-title">
+    <h2>BÁO CÁO DỊCH VỤ SỬ DỤNG</h2>
+</div>
+
+<!-- Form lọc báo cáo -->
+<form class="filter-form" method="GET" action="{{ url_for('bao_cao_dich_vu') }}">
+    <div class="form-group">
+        <label for="tu_ngay">Từ ngày:</label>
+        <input type="date" id="tu_ngay" name="tu_ngay" value="{{ tu_ngay }}">
+    </div>
+    
+    <div class="form-group">
+        <label for="den_ngay">Đến ngày:</label>
+        <input type="date" id="den_ngay" name="den_ngay" value="{{ den_ngay }}">
+    </div>
+    
+    <button type="submit">
+        <i class="fas fa-filter"></i> Lọc báo cáo
+    </button>
+</form>
+
+<!-- Tóm tắt báo cáo -->
+<div class="report-summary">
+    <div class="summary-item">
+        <div class="value">{{ summary.tong_luot_su_dung }}</div>
+        <div class="label">Tổng lượt sử dụng</div>
+    </div>
+    
+    <div class="summary-item">
+        <div class="value">{{ "{:,.0f}".format(summary.tong_tien) }} VNĐ</div>
+        <div class="label">Tổng doanh thu</div>
+    </div>
+    
+    <div class="summary-item">
+        <div class="value">{{ dich_vu_list|length }}</div>
+        <div class="label">Số dịch vụ đã sử dụng</div>
+    </div>
+</div>
+
+<!-- Bảng báo cáo -->
+{% if dich_vu_list %}
+<div class="table-responsive">
+    <table class="report-table">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Mã dịch vụ</th>
+                <th>Tên dịch vụ</th>
+                <th>Đơn giá (VNĐ)</th>
+                <th>Số lượt sử dụng</th>
+                <th>Tỷ lệ (%)</th>
+                <th>Doanh thu (VNĐ)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dv in dich_vu_list %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ dv.MaDV }}</td>
+                <td>{{ dv.TenDV }}</td>
+                <td>{{ "{:,.0f}".format(dv.Gia) }}</td>
+                <td>{{ dv.SoLuotSuDung }}</td>
+                <td>{{ "%.2f"|format(dv.SoLuotSuDung / summary.tong_luot_su_dung * 100) if summary.tong_luot_su_dung > 0 else 0 }}</td>
+                <td>{{ "{:,.0f}".format(dv.TongTien) }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Biểu đồ -->
+<div class="chart-container">
+    <canvas id="dichVuChart"></canvas>
+</div>
+
+<!-- Nút xuất báo cáo -->
+<div class="export-buttons">
+    <button onclick="window.print()">
+        <i class="fas fa-print"></i> In báo cáo
+    </button>
+    <button id="exportExcel">
+        <i class="fas fa-file-excel"></i> Xuất Excel
+    </button>
+    <button id="exportPDF">
+        <i class="fas fa-file-pdf"></i> Xuất PDF
+    </button>
+</div>
+{% else %}
+<div class="no-data">
+    <p>Không có dữ liệu báo cáo trong khoảng thời gian đã chọn</p>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        {% if dich_vu_list %}
+        // Dữ liệu cho biểu đồ
+        const labels = [{% for dv in dich_vu_list %}{% if loop.index <= 10 %}'{{ dv.TenDV }}',{% endif %}{% endfor %}];
+        const data = [{% for dv in dich_vu_list %}{% if loop.index <= 10 %}{{ dv.SoLuotSuDung }},{% endif %}{% endfor %}];
+        const backgroundColors = [
+            'rgba(75, 192, 192, 0.7)',
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(255, 206, 86, 0.7)',
+            'rgba(255, 99, 132, 0.7)',
+            'rgba(153, 102, 255, 0.7)',
+            'rgba(255, 159, 64, 0.7)',
+            'rgba(199, 199, 199, 0.7)',
+            'rgba(83, 102, 255, 0.7)',
+            'rgba(40, 159, 64, 0.7)',
+            'rgba(210, 199, 199, 0.7)'
+        ];
+        
+        // Tạo biểu đồ
+        const ctx = document.getElementById('dichVuChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Số lượt sử dụng',
+                    data: data,
+                    backgroundColor: backgroundColors,
+                    borderColor: backgroundColors.map(color => color.replace('0.7', '1')),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Số lượt sử dụng'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Dịch vụ'
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Top 10 dịch vụ được sử dụng nhiều nhất',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+        
+        // Xử lý xuất Excel và PDF (giả lập)
+        document.getElementById('exportExcel').addEventListener('click', function() {
+            alert('Chức năng xuất Excel đang được phát triển');
+        });
+        
+        document.getElementById('exportPDF').addEventListener('click', function() {
+            alert('Chức năng xuất PDF đang được phát triển');
+        });
+        {% endif %}
+    });
+</script>
+{% endblock %}

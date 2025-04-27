@@ -1,0 +1,21 @@
+2025-04-26 09:05:44.747 [info] 
+
+
+
+
+2025-04-26 09:05:44.775 [info] Extension host agent started.
+2025-04-26 09:05:45.004 [info] [127.0.0.1][dcf2beeb][ManagementConnection] New connection established.
+2025-04-26 09:05:45.101 [info] [127.0.0.1][fb00ccf9][ExtensionHostConnection] New connection established.
+2025-04-26 09:05:45.504 [info] [127.0.0.1][fb00ccf9][ExtensionHostConnection] <662> Launched Extension Host Process.
+2025-04-26 09:05:53.236 [info] Getting Manifest... github.copilot
+2025-04-26 09:05:56.656 [info] Installing extension: github.copilot {"productVersion":{"version":"1.99.3","date":"2025-04-15T23:18:46.076Z"},"pinned":false,"operation":3,"isApplicationScoped":true,"donotVerifySignature":false,"context":{"clientTargetPlatform":"win32-x64"},"profileLocation":{"$mid":1,"fsPath":"/home/huong/.vscode-server/extensions/extensions.json","external":"file:///home/huong/.vscode-server/extensions/extensions.json","path":"/home/huong/.vscode-server/extensions/extensions.json","scheme":"file"}}
+2025-04-26 09:05:57.175 [error] [File Watcher] Unexpected error: inotify_add_watch on '/home/huong/.vscode-server/data/logs/20250423T222849/exthost1/ms-python.python' failed: No such file or directory (EUNKNOWN) (path: /home/huong)
+2025-04-26 09:05:57.176 [error] [File Watcher (universal)] inotify_add_watch on '/home/huong/.vscode-server/data/logs/20250423T222849/exthost1/ms-python.python' failed: No such file or directory
+2025-04-26 09:05:57.640 [info] Getting Manifest... github.copilot-chat
+2025-04-26 09:06:18.890 [info] Extension signature verification result for github.copilot: Success. Internal Code: 0. Executed: true. Duration: 1696ms.
+2025-04-26 09:06:20.016 [info] Extracted extension to file:///home/huong/.vscode-server/extensions/github.copilot-1.309.0: github.copilot
+2025-04-26 09:06:20.046 [info] Renamed to /home/huong/.vscode-server/extensions/github.copilot-1.309.0
+2025-04-26 09:06:20.083 [info] Marked extension as removed github.copilot-1.303.0
+2025-04-26 09:06:20.110 [info] Extension installed successfully: github.copilot file:///home/huong/.vscode-server/extensions/extensions.json
+2025-04-26 11:37:44.146 [info] [127.0.0.1][dcf2beeb][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+2025-04-26 11:37:46.208 [info] [127.0.0.1][fb00ccf9][ExtensionHostConnection] <662> Extension Host Process exited with code: 0, signal: null.

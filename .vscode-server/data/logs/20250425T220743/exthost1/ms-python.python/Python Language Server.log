@@ -1,0 +1,117 @@
+2025-04-25 22:08:00.040 [info] (Client) Pylance async client (2025.4.1) started with python extension (2025.4.0)
+2025-04-25 22:08:00.534 [info] [Info  - 22:08:00] (967) Server root directory: file:///home/huong/.vscode-server/extensions/ms-python.vscode-pylance-2025.4.1/dist
+2025-04-25 22:08:00.535 [info] [Info  - 22:08:00] (967) Pylance language server 2025.4.1 (pyright version 1.1.398, commit 4f24eccc) starting
+2025-04-25 22:08:00.537 [info] [Info  - 22:08:00] (967) Starting service instance "huong" for workspace "/home/huong"
+2025-04-25 22:08:00.682 [info] [Info  - 22:08:00] (967) Setting environmentName for service "huong": "3.12.3 (global)"
+2025-04-25 22:08:00.682 [info] [Info  - 22:08:00] (967) Setting pythonPath for service "huong": "/bin/python3"
+2025-04-25 22:08:00.683 [info] [Info  - 22:08:00] (967) No include entries specified; assuming /home/huong
+2025-04-25 22:08:00.684 [info] [Info  - 22:08:00] (967) Auto-excluding **/node_modules
+2025-04-25 22:08:00.684 [info] [Info  - 22:08:00] (967) Auto-excluding **/__pycache__
+2025-04-25 22:08:00.684 [info] [Info  - 22:08:00] (967) Auto-excluding **/.*
+2025-04-25 22:08:00.725 [info] [Info  - 22:08:00] (967) Assuming Python version 3.12.3.final.0
+2025-04-25 22:08:00.979 [info] [Info  - 22:08:00] (967) Found 26 source files
+2025-04-25 22:08:01.142 [info] [Info  - 22:08:01] (967) Setting environmentName for service "huong": "3.12.3 (global)"
+2025-04-25 22:08:01.142 [info] [Info  - 22:08:01] (967) Setting pythonPath for service "huong": "/bin/python3"
+2025-04-25 22:08:01.142 [info] [Info  - 22:08:01] (967) No include entries specified; assuming /home/huong
+2025-04-25 22:08:01.143 [info] [Info  - 22:08:01] (967) Auto-excluding **/node_modules
+2025-04-25 22:08:01.146 [info] [Info  - 22:08:01] (967) Auto-excluding **/__pycache__
+2025-04-25 22:08:01.147 [info] [Info  - 22:08:01] (967) Auto-excluding **/.*
+2025-04-25 22:08:01.330 [info] [Info  - 22:08:01] (967) Assuming Python version 3.12.3.final.0
+2025-04-25 22:08:01.468 [info] [Info  - 22:08:01] (967) Found 26 source files
+2025-04-25 22:08:03.075 [info] [Info  - 22:08:03] (967) BG: Priority queue background worker(2) root directory: file:///home/huong/.vscode-server/extensions/ms-python.vscode-pylance-2025.4.1/dist
+2025-04-25 22:08:03.076 [info] [Info  - 22:08:03] (967) BG: Priority queue background worker(2) started
+2025-04-25 22:08:03.984 [info] [Info  - 22:08:03] (967) BG: Indexer background runner(3) root directory: file:///home/huong/.vscode-server/extensions/ms-python.vscode-pylance-2025.4.1/dist (index)
+2025-04-25 22:08:03.984 [info] [Info  - 22:08:03] (967) BG: Indexing(3) started
+2025-04-25 22:08:06.855 [info] [Info  - 22:08:06] (967) BG: [IDX(3)] Long operation: scan packages file:///home/huong (2317ms)
+2025-04-25 22:08:06.855 [info] [Info  - 22:08:06] (967) BG: scanned(3) 108 files over 1 exec env
+2025-04-25 22:08:07.774 [info] [Info  - 22:08:07] (967) BG: indexed(3) 108 files over 1 exec env
+2025-04-25 22:08:08.661 [info] [Info  - 22:08:08] (967) BG: [BG(1)] Long operation: SemanticTokens range 435:0 - 485:43 at file:///home/huong/nhakhoaso/app.py (4628ms)
+2025-04-25 22:08:08.675 [info] [Info  - 22:08:08] (967) BG: Indexing finished(3).
+2025-04-25 22:24:00.127 [info] [Info  - 22:24:00] (967) BG: [BG(1)] Long operation: checking: file:///home/huong/qtcsdl/app.py (4773ms)
+2025-04-25 22:24:00.127 [info] [Info  - 22:24:00] (967) BG: [BG(1)] Long operation: analyzing: file:///home/huong/qtcsdl/app.py (4774ms)
+2025-04-25 23:02:24.934 [info] [Info  - 23:02:24] (967) BG: [BG(1)] Long operation: SemanticTokens full at file:///home/huong/qtcsdl/app.py (4049ms)
+2025-04-26 00:32:30.025 [info] [Info  - 00:32:30] (967) BG: [BG(1)] Long operation: checking: file:///home/huong/nhakhoaso/app.py (3010ms)
+2025-04-26 00:32:30.025 [info] [Info  - 00:32:30] (967) BG: [BG(1)] Long operation: analyzing: file:///home/huong/nhakhoaso/app.py (3011ms)
+2025-04-26 00:36:45.191 [info] [Info  - 00:36:45] Server process exited successfully
+2025-04-26 00:36:47.348 [info] (Client) Pylance async client (2025.4.1) started with python extension (2025.4.0)
+2025-04-26 00:36:52.432 [info] [Info  - 00:36:52] (23938) Server root directory: file:///home/huong/.vscode-server/extensions/ms-python.vscode-pylance-2025.4.1/dist
+2025-04-26 00:36:58.453 [info] [Info  - 00:36:58] (23938) Pylance language server 2025.4.1 (pyright version 1.1.398, commit 4f24eccc) starting
+2025-04-26 00:36:58.496 [info] [Info  - 00:36:58] (23938) Starting service instance "huong" for workspace "/home/huong"
+2025-04-26 00:37:02.802 [info] [Info  - 00:37:02] (23938) Setting environmentName for service "huong": "3.12.3 (global)"
+2025-04-26 00:37:02.802 [info] [Info  - 00:37:02] (23938) Setting pythonPath for service "huong": "/bin/python3"
+2025-04-26 00:37:02.802 [info] [Info  - 00:37:02] (23938) No include entries specified; assuming /home/huong
+2025-04-26 00:37:02.803 [info] [Info  - 00:37:02] (23938) Auto-excluding **/node_modules
+2025-04-26 00:37:02.803 [info] [Info  - 00:37:02] (23938) Auto-excluding **/__pycache__
+2025-04-26 00:37:02.803 [info] [Info  - 00:37:02] (23938) Auto-excluding **/.*
+2025-04-26 00:37:02.999 [info] [Info  - 00:37:02] (23938) Assuming Python version 3.12.3.final.0
+2025-04-26 00:37:06.713 [info] [Info  - 00:37:06] (23938) Found 26 source files
+2025-04-26 00:37:09.964 [info] [Info  - 00:37:09] (23938) Setting environmentName for service "huong": "3.12.3 (global)"
+2025-04-26 00:37:10.043 [info] [Info  - 00:37:10] (23938) Setting pythonPath for service "huong": "/bin/python3"
+2025-04-26 00:37:10.053 [info] [Info  - 00:37:10] (23938) No include entries specified; assuming /home/huong
+2025-04-26 00:37:10.128 [info] [Info  - 00:37:10] (23938) Auto-excluding **/node_modules
+2025-04-26 00:37:10.633 [info] [Info  - 00:37:10] (23938) Auto-excluding **/__pycache__
+2025-04-26 00:37:10.711 [info] [Info  - 00:37:10] (23938) Auto-excluding **/.*
+2025-04-26 00:37:10.859 [info] [Info  - 00:37:10] (23938) Assuming Python version 3.12.3.final.0
+2025-04-26 00:37:10.860 [info] [Info  - 00:37:10] (23938) Found 26 source files
+2025-04-26 00:37:10.933 [info] [Info  - 00:37:10] (23938) BG: Priority queue background worker(2) root directory: file:///home/huong/.vscode-server/extensions/ms-python.vscode-pylance-2025.4.1/dist
+2025-04-26 00:37:10.960 [info] [Info  - 00:37:10] (23938) BG: Priority queue background worker(2) started
+2025-04-26 00:37:14.553 [info] [Info  - 00:37:14] (23938) BG: Indexer background runner(3) root directory: file:///home/huong/.vscode-server/extensions/ms-python.vscode-pylance-2025.4.1/dist (index)
+2025-04-26 00:37:14.563 [info] [Info  - 00:37:14] (23938) BG: Indexing(3) started
+2025-04-26 00:37:20.120 [info] [Info  - 00:37:20] (23938) BG: [IDX(3)] Long operation: scan packages file:///home/huong (6131ms)
+2025-04-26 00:37:20.120 [info] [Info  - 00:37:20] (23938) BG: scanned(3) 108 files over 1 exec env
+2025-04-26 00:37:23.204 [info] [Info  - 00:37:23] (23938) BG: indexed(3) 108 files over 1 exec env
+2025-04-26 00:37:23.643 [info] [Info  - 00:37:23] (23938) BG: Indexing finished(3).
+2025-04-26 00:37:27.220 [info] [Info  - 00:37:27] (23938) BG: [BG(1)] Long operation: checking: file:///home/huong/nhakhoaso/app.py (10900ms)
+2025-04-26 00:37:27.233 [info] [Info  - 00:37:27] (23938) BG: [BG(1)] Long operation: analyzing: file:///home/huong/nhakhoaso/app.py (13772ms)
+2025-04-26 00:37:33.245 [info] [Info  - 00:37:33] (23938) BG: [BG(1)] Long operation: checking: file:///home/huong/qtcsdl/app.py (4199ms)
+2025-04-26 00:37:33.256 [info] [Info  - 00:37:33] (23938) BG: [BG(1)] Long operation: analyzing: file:///home/huong/qtcsdl/app.py (4354ms)
+2025-04-26 00:38:28.896 [info] [Info  - 00:38:28] (23938) virtual workspace: vscode-chat-code-block://72fd5649-4750-468b-9148-9dde3276cf6c/
+2025-04-26 00:38:28.897 [info] [Info  - 00:38:28] (23938) Starting service instance "<default>" for workspace "vscode-chat-code-block://72fd5649-4750-468b-9148-9dde3276cf6c/"
+2025-04-26 00:38:29.784 [info] [Info  - 00:38:29] (23938) Setting environmentName for service "<default>": "3.12.3 (global)"
+2025-04-26 00:38:29.785 [info] [Info  - 00:38:29] (23938) No include entries specified; assuming vscode-chat-code-block://72fd5649-4750-468b-9148-9dde3276cf6c/
+2025-04-26 00:38:29.785 [info] [Info  - 00:38:29] (23938) Auto-excluding **/node_modules
+2025-04-26 00:38:29.786 [info] [Info  - 00:38:29] (23938) Auto-excluding **/__pycache__
+2025-04-26 00:38:29.786 [info] [Info  - 00:38:29] (23938) Auto-excluding **/.*
+2025-04-26 00:38:29.935 [info] [Info  - 00:38:29] (23938) Assuming Python version 3.12.3.final.0
+2025-04-26 00:38:30.343 [info] [Error - 00:38:30] (23938) File or directory "vscode-chat-code-block://72fd5649-4750-468b-9148-9dde3276cf6c/" does not exist.
+2025-04-26 00:38:30.412 [info] [Info  - 00:38:30] (23938) No source files found.
+2025-04-26 00:44:25.204 [info] [Info  - 00:44:25] (23938) [FG] Long operation: parsing: file:///home/huong/.vscode-server/extensions/ms-python.vscode-pylance-2025.4.1/dist/typeshed-fallback/stdlib/builtins.pyi (3363ms)
+2025-04-26 00:44:26.070 [info] [Info  - 00:44:26] (23938) BG: [BG(1)] Long operation: checking: file:///home/huong/nhakhoaso/app.py (5493ms)
+2025-04-26 00:44:26.070 [info] [Info  - 00:44:26] (23938) BG: [BG(1)] Long operation: analyzing: file:///home/huong/nhakhoaso/app.py (5493ms)
+2025-04-26 00:44:28.581 [info] [Info  - 00:44:28] (23938) BG: [BG(1)] Long operation: SemanticTokens full at file:///home/huong/nhakhoaso/database/bao_cao.py (2489ms)
+2025-04-26 01:22:57.319 [info] [Info  - 01:22:57] (23938) Setting environmentName for service "huong": "3.12.3 (global)"
+2025-04-26 01:22:57.321 [info] [Info  - 01:22:57] (23938) Setting pythonPath for service "huong": "/bin/python3"
+2025-04-26 01:22:57.321 [info] [Info  - 01:22:57] (23938) No include entries specified; assuming /home/huong
+2025-04-26 01:22:57.321 [info] [Info  - 01:22:57] (23938) Auto-excluding **/node_modules
+2025-04-26 01:22:57.321 [info] [Info  - 01:22:57] (23938) Auto-excluding **/__pycache__
+2025-04-26 01:22:57.322 [info] [Info  - 01:22:57] (23938) Auto-excluding **/.*
+2025-04-26 01:22:57.446 [info] [Info  - 01:22:57] (23938) Assuming Python version 3.12.3.final.0
+2025-04-26 01:22:58.852 [info] [Info  - 01:22:58] (23938) Found 26 source files
+2025-04-26 01:22:59.457 [info] [Info  - 01:22:59] (23938) Setting environmentName for service "<default>": "3.12.3 (global)"
+2025-04-26 01:22:59.457 [info] [Info  - 01:22:59] (23938) No include entries specified; assuming vscode-chat-code-block://72fd5649-4750-468b-9148-9dde3276cf6c/
+2025-04-26 01:22:59.457 [info] [Info  - 01:22:59] (23938) Auto-excluding **/node_modules
+2025-04-26 01:22:59.457 [info] [Info  - 01:22:59] (23938) Auto-excluding **/__pycache__
+2025-04-26 01:22:59.457 [info] [Info  - 01:22:59] (23938) Auto-excluding **/.*
+2025-04-26 01:22:59.686 [info] [Info  - 01:22:59] (23938) Assuming Python version 3.12.3.final.0
+2025-04-26 01:23:00.135 [info] [Error - 01:23:00] (23938) File or directory "vscode-chat-code-block://72fd5649-4750-468b-9148-9dde3276cf6c/" does not exist.
+2025-04-26 01:23:00.200 [info] [Info  - 01:23:00] (23938) No source files found.
+2025-04-26 01:23:16.034 [info] [Info  - 01:23:16] (23938) [FG] Long operation: checking: vscode-chat-code-block://72fd5649-4750-468b-9148-9dde3276cf6c/response_eb227695-0030-4f80-88fd-c25482c435df/0#%7B%22references%22%3A%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22external%22%3A%22vscode-remote%3A%2F%2Fwsl%252Bubuntu-24.04%2Fhome%2Fhuong%2Fnhakhoaso%2Ftemplates%2Fbao_cao_dich_vu.html%22%2C%22path%22%3A%22%2Fhome%2Fhuong%2Fnhakhoaso%2Ftemplates%2Fbao_cao_dich_vu.html%22%2C%22scheme%22%3A%22vscode-remote%22%2C%22authority%22%3A%22wsl%2Bubuntu-24.04%22%7D%7D%5D%7D (13020ms)
+2025-04-26 01:23:16.036 [info] [Info  - 01:23:16] (23938) [FG] Long operation: analyzing: vscode-chat-code-block://72fd5649-4750-468b-9148-9dde3276cf6c/response_eb227695-0030-4f80-88fd-c25482c435df/0#%7B%22references%22%3A%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22external%22%3A%22vscode-remote%3A%2F%2Fwsl%252Bubuntu-24.04%2Fhome%2Fhuong%2Fnhakhoaso%2Ftemplates%2Fbao_cao_dich_vu.html%22%2C%22path%22%3A%22%2Fhome%2Fhuong%2Fnhakhoaso%2Ftemplates%2Fbao_cao_dich_vu.html%22%2C%22scheme%22%3A%22vscode-remote%22%2C%22authority%22%3A%22wsl%2Bubuntu-24.04%22%7D%7D%5D%7D (15805ms)
+2025-04-26 01:23:16.192 [info] [Info  - 01:23:16] (23938) BG: [BG(1)] Long operation: checking: file:///home/huong/nhakhoaso/app.py (10690ms)
+2025-04-26 01:23:16.192 [info] [Info  - 01:23:16] (23938) BG: [BG(1)] Long operation: analyzing: file:///home/huong/nhakhoaso/app.py (14742ms)
+2025-04-26 01:23:16.192 [info] [Info  - 01:23:16] (23938) BG: Indexer background runner(4) root directory: file:///home/huong/.vscode-server/extensions/ms-python.vscode-pylance-2025.4.1/dist (index)
+2025-04-26 01:23:16.193 [info] [Info  - 01:23:16] (23938) BG: Indexing(4) started
+2025-04-26 01:23:16.193 [info] [Info  - 01:23:16] (23938) BG: [IDX(4)] Long operation: scan packages file:///home/huong (4134ms)
+2025-04-26 01:23:16.193 [info] [Info  - 01:23:16] (23938) BG: scanned(4) 108 files over 1 exec env
+2025-04-26 01:23:17.090 [info] [Info  - 01:23:17] (23938) BG: [BG(1)] Long operation: checking: file:///home/huong/nhakhoaso/database/bao_cao.py (2630ms)
+2025-04-26 01:23:17.090 [info] [Info  - 01:23:17] (23938) BG: [BG(1)] Long operation: analyzing: file:///home/huong/nhakhoaso/database/bao_cao.py (2772ms)
+2025-04-26 01:23:17.386 [info] [Info  - 01:23:17] (23938) BG: indexed(4) 108 files over 1 exec env
+2025-04-26 01:23:17.625 [info] [Info  - 01:23:17] (23938) BG: Indexing finished(4).
+2025-04-26 01:23:21.166 [info] [Info  - 01:23:21] (23938) BG: [BG(1)] Long operation: checking: file:///home/huong/qtcsdl/app.py (3601ms)
+2025-04-26 01:23:21.166 [info] [Info  - 01:23:21] (23938) BG: [BG(1)] Long operation: analyzing: file:///home/huong/qtcsdl/app.py (3787ms)
+2025-04-26 01:39:30.523 [info] [Info  - 01:39:30] (23938) [FG] Long operation: parsing: file:///home/huong/nhakhoaso/app.py (2181ms)
+2025-04-26 01:39:32.461 [info] [Info  - 01:39:32] (23938) BG: [BG(1)] Long operation: checking: file:///home/huong/nhakhoaso/app.py (2544ms)
+2025-04-26 01:39:32.462 [info] [Info  - 01:39:32] (23938) BG: [BG(1)] Long operation: analyzing: file:///home/huong/nhakhoaso/app.py (2545ms)
+2025-04-26 01:39:35.368 [info] [Info  - 01:39:35] (23938) BG: [BG(1)] Long operation: SemanticTokens delta previousResultId:1745604912783 at file:///home/huong/nhakhoaso/app.py (2628ms)
+2025-04-26 02:03:05.349 [info] [Info  - 02:03:05] (23938) BG: [BG(1)] Long operation: checking: file:///home/huong/nhakhoaso/database/bao_cao.py (2380ms)
+2025-04-26 02:03:05.353 [info] [Info  - 02:03:05] (23938) BG: [BG(1)] Long operation: analyzing: file:///home/huong/nhakhoaso/database/bao_cao.py (2381ms)

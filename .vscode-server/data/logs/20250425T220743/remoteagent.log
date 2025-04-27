@@ -1,0 +1,32 @@
+2025-04-25 22:07:43.686 [info] 
+
+
+
+
+2025-04-25 22:07:43.721 [info] Extension host agent started.
+2025-04-25 22:07:43.911 [info] [127.0.0.1][3afcded6][ManagementConnection] New connection established.
+2025-04-25 22:07:44.404 [info] [127.0.0.1][fea22876][ExtensionHostConnection] New connection established.
+2025-04-25 22:07:44.593 [info] [127.0.0.1][fea22876][ExtensionHostConnection] <643> Launched Extension Host Process.
+2025-04-25 22:07:57.459 [error] [File Watcher] Unexpected error: inotify_add_watch on '/home/huong/.vscode-server/data/logs/20250423T154002/exthost1/ZencoderAI.zencoder' failed: No such file or directory (EUNKNOWN) (path: /home/huong)
+2025-04-25 22:07:57.461 [error] [File Watcher (universal)] inotify_add_watch on '/home/huong/.vscode-server/data/logs/20250423T154002/exthost1/ZencoderAI.zencoder' failed: No such file or directory
+2025-04-25 22:38:36.083 [warning] No ptyHost heartbeat after 6 seconds
+2025-04-25 22:38:48.762 [info] [127.0.0.1][fea22876][ExtensionHostConnection] The client has reconnected.
+2025-04-25 22:38:49.064 [info] [127.0.0.1][3afcded6][ManagementConnection] The client has reconnected.
+2025-04-25 23:27:41.577 [warning] No ptyHost heartbeat after 6 seconds
+2025-04-25 23:28:13.017 [info] [127.0.0.1][3afcded6][ManagementConnection] The client has reconnected.
+2025-04-25 23:28:13.374 [info] [127.0.0.1][fea22876][ExtensionHostConnection] The client has reconnected.
+2025-04-26 00:35:56.655 [info] Getting Manifest... github.copilot
+2025-04-26 00:35:56.901 [info] Installing extension: github.copilot {"enable":true,"isApplicationScoped":true,"isMachineScoped":false,"installEverywhere":true,"installPreReleaseVersion":false,"pinned":false,"donotVerifySignature":false,"context":{"clientTargetPlatform":"win32-x64"},"profileLocation":{"$mid":1,"fsPath":"/home/huong/.vscode-server/extensions/extensions.json","external":"file:///home/huong/.vscode-server/extensions/extensions.json","path":"/home/huong/.vscode-server/extensions/extensions.json","scheme":"file"},"productVersion":{"version":"1.99.3","date":"2025-04-15T23:18:46.076Z"}}
+2025-04-26 00:36:01.669 [info] Getting Manifest... github.copilot-chat
+2025-04-26 00:36:02.069 [info] Installing extension: github.copilot-chat {"enable":true,"isApplicationScoped":true,"isMachineScoped":false,"installEverywhere":true,"installPreReleaseVersion":false,"pinned":false,"donotVerifySignature":false,"context":{"clientTargetPlatform":"win32-x64","dependecyOrPackExtensionInstall":true},"profileLocation":{"$mid":1,"fsPath":"/home/huong/.vscode-server/extensions/extensions.json","external":"file:///home/huong/.vscode-server/extensions/extensions.json","path":"/home/huong/.vscode-server/extensions/extensions.json","scheme":"file"},"productVersion":{"version":"1.99.3","date":"2025-04-15T23:18:46.076Z"}}
+2025-04-26 00:36:08.950 [error] #10: https://GitHub.gallery.vsassets.io/_apis/public/gallery/publisher/GitHub/extension/copilot/1.303.0/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage?redirect=true&install=true - error GET AggregateError [ETIMEDOUT]: 
+2025-04-26 00:36:23.973 [info] Extension signature verification result for github.copilot: Success. Internal Code: 0. Executed: true. Duration: 10550ms.
+2025-04-26 00:36:26.056 [info] Extension signature verification result for github.copilot-chat: Success. Internal Code: 0. Executed: true. Duration: 13799ms.
+2025-04-26 00:36:29.473 [info] Extracted extension to file:///home/huong/.vscode-server/extensions/github.copilot-chat-0.26.7: github.copilot-chat
+2025-04-26 00:36:29.516 [info] Extracted extension to file:///home/huong/.vscode-server/extensions/github.copilot-1.303.0: github.copilot
+2025-04-26 00:36:29.635 [info] Renamed to /home/huong/.vscode-server/extensions/github.copilot-chat-0.26.7
+2025-04-26 00:36:29.637 [info] Renamed to /home/huong/.vscode-server/extensions/github.copilot-1.303.0
+2025-04-26 00:36:29.997 [info] Extension installed successfully: github.copilot file:///home/huong/.vscode-server/extensions/extensions.json
+2025-04-26 00:36:29.998 [info] Extension installed successfully: github.copilot-chat file:///home/huong/.vscode-server/extensions/extensions.json
+2025-04-26 02:13:45.464 [info] [127.0.0.1][3afcded6][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+2025-04-26 02:13:48.881 [info] [127.0.0.1][fea22876][ExtensionHostConnection] <643> Extension Host Process exited with code: 0, signal: null.

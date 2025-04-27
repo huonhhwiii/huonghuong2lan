@@ -1,0 +1,112 @@
+<!-- Sidebar -->
+<div class="sidebar">
+    
+    
+    <div class="sidebar-title">
+        <i class="fas fa-user-injured"></i> Quản lý bệnh nhân
+    </div>
+    <ul class="sidebar-menu">
+        <li>
+            <a href="{{ url_for('them_moi_benh_nhan') }}" {% if request.endpoint == 'them_moi_benh_nhan' %}class="active"{% endif %}>
+                <i class="fas fa-plus"></i> Thêm mới bệnh nhân
+            </a>
+        </li>
+        <li>
+            <a href="{{ url_for('tim_kiem_benh_nhan') }}" {% if request.endpoint == 'tim_kiem_benh_nhan' %}class="active"{% endif %}>
+                <i class="fas fa-search"></i> Tìm kiếm bệnh nhân
+            </a>
+        </li>
+        <li>
+            <a href="{{ url_for('benh_nhan_list') }}" {% if request.endpoint == 'benh_nhan_list' %}class="active"{% endif %}>
+                <i class="fas fa-list"></i> Danh sách bệnh nhân
+            </a>
+        </li>
+    </ul>
+    
+    <div class="sidebar-title">
+        <i class="fas fa-user-md"></i> Quản lý bác sĩ
+    </div>
+    <ul class="sidebar-menu">
+        <li>
+            <a href="{{ url_for('them_moi_bac_si') }}" {% if request.endpoint == 'them_moi_bac_si' %}class="active"{% endif %}>
+                <i class="fas fa-plus"></i> Thêm mới bác sĩ
+            </a>
+        </li>
+        <li>
+            <a href="{{ url_for('tim_kiem_bac_si') }}" {% if request.endpoint == 'tim_kiem_bac_si' %}class="active"{% endif %}>
+                <i class="fas fa-search"></i> Tìm kiếm bác sĩ
+            </a>
+        </li>
+        <li>
+            <a href="{{ url_for('bac_si_list') }}" {% if request.endpoint == 'bac_si_list' %}class="active"{% endif %}>
+                <i class="fas fa-list"></i> Danh sách bác sĩ
+            </a>
+        </li>
+    </ul>
+    
+    <div class="sidebar-title">
+        <i class="fas fa-clipboard-list"></i> Quản lý phiếu khám
+    </div>
+    <ul class="sidebar-menu">
+        <li>
+            <a href="{{ url_for('them_moi_phieu_kham') }}" {% if request.endpoint == 'them_moi_phieu_kham' %}class="active"{% endif %}>
+                <i class="fas fa-plus"></i> Tạo phiếu khám
+            </a>
+        </li>
+        <li>
+            <a href="{{ url_for('tim_kiem_phieu_kham') }}" {% if request.endpoint == 'tim_kiem_phieu_kham' %}class="active"{% endif %}>
+                <i class="fas fa-search"></i> Tìm kiếm phiếu khám
+            </a>
+        </li>
+        <li>
+            <a href="{{ url_for('phieu_kham_list') }}" {% if request.endpoint == 'phieu_kham_list' %}class="active"{% endif %}>
+                <i class="fas fa-list"></i> Danh sách phiếu khám
+            </a>
+        </li>
+    </ul>
+    
+    <div class="sidebar-title">
+        <i class="fas fa-calendar-check"></i> Quản lý lịch hẹn
+    </div>
+    <ul class="sidebar-menu">
+        <li>
+            <a href="{{ url_for('them_moi_lich_hen') }}" {% if request.endpoint == 'them_moi_lich_hen' %}class="active"{% endif %}>
+                <i class="fas fa-plus"></i> Tạo lịch hẹn
+            </a>
+        </li>
+        <li>
+            <a href="{{ url_for('tim_kiem_lich_hen') }}" {% if request.endpoint == 'tim_kiem_lich_hen' %}class="active"{% endif %}>
+                <i class="fas fa-search"></i> Tìm kiếm lịch hẹn
+            </a>
+        </li>
+        <li>
+            <a href="{{ url_for('lich_hen_list') }}" {% if request.endpoint == 'lich_hen_list' %}class="active"{% endif %}>
+                <i class="fas fa-list"></i> Danh sách lịch hẹn
+            </a>
+        </li>
+    </ul>
+    
+    <div class="sidebar-title">
+        <i class="fas fa-hand-holding-heart"></i> Quản lý dịch vụ
+    </div>
+    <ul class="sidebar-menu">
+        <li>
+            <a href="{{ url_for('them_moi_dich_vu') }}" {% if request.endpoint == 'them_moi_dich_vu' %}class="active"{% endif %}>
+                <i class="fas fa-plus"></i> Thêm mới dịch vụ
+            </a>
+        </li>
+        <li>
+            <a href="{{ url_for('tim_kiem_dich_vu') }}" {% if request.endpoint == 'tim_kiem_dich_vu' %}class="active"{% endif %}>
+                <i class="fas fa-search"></i> Tìm kiếm dịch vụ
+            </a>
+        </li>
+        <li>
+            <a href="{{ url_for('dich_vu_list') }}" {% if request.endpoint == 'dich_vu_list' %}class="active"{% endif %}>
+                <i class="fas fa-list"></i> Danh sách dịch vụ
+            </a>
+        </li>
+    </ul>
+    
+
+
+</div>
